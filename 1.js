@@ -890,7 +890,7 @@ setTimeout(() => {
 
     // imgdiv('Chhichhore (2019) [1.4GB] & 720','chi',{q720p:'',q1080p:''},{size720:'',size1080:''})
 
-    imgdiv('Thor ragnarok (2017) [1.3GB]', 'thor3',{q720p:'https://abcd.bdff.workers.dev/0:/Thor-ragnarock-mp3.mp4'}, {size720:'1.3GB'})
+    imgdiv('Thor ragnarok (2017) [1.3GB]', 'thor3',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/Thor-ragnarock-mp3.mp4'}, {size720:'1.3GB'})
 
 
     imgdiv('Guardian of the galaxy vol.2  (2017) [1.2GB]', 'galaxy2',{q720p:'https://abcd.bdff.workers.dev/0:/Guardian2-mp3.mp4'}, {size720:'1.2GB',imgchace:'yeah'})
