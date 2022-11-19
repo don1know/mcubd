@@ -90,7 +90,11 @@ div.append(a, button, hr, h7, button1, button2, button3, button4)
 
 
 
-document.body.append(div, h4,order,div3,div2)
+document.body.append(div, h4,order,div3)
+
+var bgOfVid=document.getElementById('bg-of-vid')
+
+bgOfVid.append(div2)
 
 
 
@@ -98,6 +102,8 @@ document.body.append(div, h4,order,div3,div2)
 document.body.style.cssText = 'background-color: #0F0F0F;color: rgb(255, 255, 255);margin: 0px;padding: 0px;margin-left: 1.2%;margin-right: 1.2%;';
 
 div.style.cssText = 'background-color: #373737;height: calc(100vh*.144);position: sticky;top: 0;'
+
+div2.style.cssText = 'position: relative;'
 
 img.style.cssText = 'height:calc(100vh*.144*.5) ;padding-left:calc(100vw*.045) ;'
 
