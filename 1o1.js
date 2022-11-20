@@ -59,7 +59,7 @@ order.setAttribute('onclick', 'order()')
 
 
 contact.innerText = 'Contact me?/Movie request'
-h4.innerText = ''
+h4.innerText = 'Going ofline for somedays,movie request will not be available for somedays'
 button1.innerText = 'Marvel'
 button2.innerText = 'Marvel-Seris'
 button3.innerText = 'fox & sony'
@@ -113,7 +113,7 @@ order.style.cssText = 'padding: 8px   calc(100vw*.06) 15px calc(100vw*.06); back
 
 hr.style.cssText = 'margin: 0;border-color: #473737;'
 
-h4.style.cssText = 'opacity: 0.3;'
+h4.style.cssText = 'opacity: 0.8;'
 
 // mcuListDiv.style.cssText = 'overflow: hidden;'
 
