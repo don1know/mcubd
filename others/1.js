@@ -47,7 +47,7 @@ function me() {
     xhttp.setRequestHeader('reqs', 'fb')
     xhttp.send();
 
-    window.open('https://www.facebook.com/zafar.niloy','_self')
+    window.open('https://mcubd.netlify.app/contact','_self')
 
 }
 
