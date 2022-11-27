@@ -56,7 +56,7 @@ function mar() {
 function other() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'other-'+navigator.deviceMemory+'gb-h'+screen.height+'w'+screen.width)
+    xhttp.setRequestHeader('reqs', 'other-'+navigator.deviceMemory+'gb-h'+screen.height+'x'+screen.width)
     xhttp.send();
 
 

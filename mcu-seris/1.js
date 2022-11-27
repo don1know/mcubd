@@ -10,7 +10,7 @@ function me() {
 function mcus() {
 var xhttp = new XMLHttpRequest();
 xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-xhttp.setRequestHeader('reqs', 'Marvel--seris--clicked')
+xhttp.setRequestHeader('reqs', 'seris-'+navigator.deviceMemory+'gb-h'+screen.height+'x'+screen.width)
 xhttp.send();
 window.open('https://mcubd.netlify.app/mcu-seris/index','_self')
 
@@ -19,7 +19,7 @@ window.open('https://mcubd.netlify.app/mcu-seris/index','_self')
 function mcu() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'Mcu--but--clicked')
+    xhttp.setRequestHeader('reqs', 'Mcu-bt-'+navigator.deviceMemory+'gb-h'+screen.height+'x'+screen.width)
     xhttp.send();
 
     window.open('https://mcubd.netlify.app', '_self')
@@ -28,7 +28,7 @@ function mcu() {
 function home() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'mcubd--logo--clicked')
+    xhttp.setRequestHeader('reqs', 'logo-'+navigator.deviceMemory+'gb-h'+screen.height+'x'+screen.width)
     xhttp.send();
 
 
@@ -38,7 +38,7 @@ function home() {
 function mar() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'Marvel--but--clicked')
+    xhttp.setRequestHeader('reqs', 'fox-'+navigator.deviceMemory+'gb-h'+screen.height+'x'+screen.width)
     xhttp.send();
     window.open('https://mcubd.netlify.app/marvel/index','_self')
     
