@@ -160,7 +160,7 @@
             <input type="submit" name="submitt" value="Submit">
         </form>
 
-        <div class="fsending">
+        <div style="display:none" class="fsending">
             <div class="sending">
                 <div class="box">
                     <div class="border one"></div>
@@ -175,14 +175,25 @@
             </div>
             <p id="sendtxt">Sending</p>
         </div>
+
+        <div style="display:none" class="fsent">
+            <lottie-player id="sentsvg" src="f20_voBLTvIbhG.json"background="transparent" speed="1" style=" height: 80px;" loop autoplay></lottie-player>
+                <p id="sendtxt">Sent</p>
+            </div>
+
+            <div style="display:none" class="failed">
+                <lottie-player src="https://assets8.lottiefiles.com/private_files/lf30_ose4iyma.json"  background="transparent"  speed="1"  style=" height: 120px;"  loop  autoplay></lottie-player>
+
+                <p id="sendtxt">Failed to send.Plz cheak ur internet connection or refresh the website</p>
+            </div>
+
     </div>
 
 
     <script src="lottie-player.js"></script>
-    <div class="fsent">
-    <lottie-player id="sentsvg" src="f20_voBLTvIbhG.json"background="transparent" speed="1" style=" height: 80px;" loop autoplay></lottie-player>
-        <p id="sendtxt">Sent</p>
-    </div>
+
+
+
 
     <script>
         var widt = document.getElementById('content').offsetWidth;
