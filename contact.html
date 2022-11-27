@@ -102,7 +102,8 @@
 
 
 
-        document.body.style.cssText = 'background-color: #0f0f0f;margin: 0px;padding: 0px;margin-left: 1.2%;margin-right: 1.2%;';
+
+        document.body.style.cssText = 'background-color:#000;margin: 0px;padding: 0px;margin-left: 1.2%;margin-right: 1.2%;';
 
         header.style.cssText = 'background-color: #373737;height: calc(100vh*.144);position: static;top: 0;z-index: 1;'
 
@@ -143,9 +144,9 @@
     </script>
 
     <div id="content">
-
+        
+        <h3 id="h3">Request A Movie</h3>
         <form name="myForm" onsubmit="return mySubmitFunction(event)" autocomplete="off">
-            <h1 id="namm"></h1>
             <label  for="fname">Name</label>
             <input type="text" id="fname" name="fname" placeholder="Enter your name..">
 
@@ -173,6 +174,15 @@
     </div>
 
     <script>
+        var widt = document.getElementById('content').offsetWidth;
+        // alert(widt)
+        console.log(document.body.offsetWidth)
+        console.log(widt)
+
+
+
+
+
         function mySubmitFunction(e) {
             e.preventDefault();
             var x = document.forms["myForm"]["subject"].value;
@@ -215,6 +225,17 @@
 
 
     <style>
+        body{
+            font-family: "Poppins",Arial,sans-serif;
+            /* font-size: 12px;
+            font-weight: 600; */
+        }
+        #h3{
+            font-size: 1.7rem;
+            font-weight: 400;
+            color: #000;
+            font-family: "Poppins",Arial,sans-serif;
+        }
         input[type=text],
         select,
         textarea {
@@ -256,23 +277,43 @@
             background-color: #f2f2f2;
             padding: 20px;
         }
-        #namm{
-            margin-top: 10vh
-        }
+
     </style>
 
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+<h1 >h</h1>
+
     <style>
-        .sending {
+    .sending {
     height:50px;
     width:40px;
-    position:absolute;
+    /* position:absolute; */
     left:0;
     right:0;
     top:0;
     bottom:0;
     margin:auto;
 }
-.container::after {
+.sending::after {
     content:'Sending';
     color:#007298;
     font-weight:700;
