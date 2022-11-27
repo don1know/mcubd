@@ -9,6 +9,9 @@
     <title>Mcubd</title>
 
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 
 </head>
 
@@ -144,10 +147,10 @@
     </script>
 
     <div id="content">
-        
+
         <h3 id="h3">Request A Movie</h3>
         <form name="myForm" onsubmit="return mySubmitFunction(event)" autocomplete="off">
-            <label  for="fname">Name</label>
+            <label for="fname">Name</label>
             <input type="text" id="fname" name="fname" placeholder="Enter your name..">
 
 
@@ -159,18 +162,20 @@
         </form>
 
     </div>
+    <div class="fsending">
+        <div class="sending">
+            <div class="box">
+                <div class="border one"></div>
+                <div class="border two"></div>
+                <div class="border three"></div>
+                <div class="border four"></div>
 
-    <div class="sending">
-        <div class="box">
-            <div class="border one"></div>
-            <div class="border two"></div>
-            <div class="border three"></div>
-            <div class="border four"></div>
-    
-            <div class="line one"></div>
-            <div class="line two"></div>
-            <div class="line three"></div>
+                <div class="line one"></div>
+                <div class="line two"></div>
+                <div class="line three"></div>
+            </div>
         </div>
+        <p id="sendtxt">Sending</p>
     </div>
 
     <script>
@@ -203,14 +208,14 @@
             xhttp.setRequestHeader('reqs', fname + '--' + msg)
             xhttp.send();
             xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 ) {
+                if (this.readyState == 4) {
                     // document.getElementById("but1").innerHTML = xhttp.responseText;
-                    document.getElementById("but1").innerHTML=this.readyState
+                    document.getElementById("but1").innerHTML = this.readyState
                 }
             }
- 
+
             setTimeout(() => {
-                xhttp.abort(); 
+                xhttp.abort();
             }, 10000);
         }
 
@@ -225,18 +230,20 @@
 
 
     <style>
-        body{
-            font-family: "Poppins",Arial,sans-serif;
+        body {
+            font-family: "Poppins", Arial, sans-serif;
             /* font-size: 12px;
             font-weight: 600; */
         }
-        #h3{
+
+        #h3 {
             font-size: 1.7rem;
             font-weight: 400;
             color: #000;
-            font-family: "Poppins",Arial,sans-serif;
+            font-family: "Poppins", Arial, sans-serif;
         }
-        label{
+
+        label {
             color: #000;
         }
 
@@ -282,183 +289,312 @@
             background-color: #fcfbfc;
             padding: 20px;
         }
-
     </style>
 
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-<h1 >h</h1>
-
+    <h1>h</h1>
+    <h1>h</h1>
+    <h1>h</h1>
+    <h1>h</h1>
+    <h1>h</h1>
+    <h1>h</h1>
+    <h1>h</h1>
+    
     <style>
-    .sending {
-    height:50px;
-    width:40px;
-    /* position:absolute; */
-    left:0;
-    right:0;
-    top:0;
-    bottom:0;
-    margin:auto;
-}
-.sending::after {
-    content:'Sending';
-    color:#007298;
-    font-weight:700;
-    position:absolute;
-    bottom:-50px;
-    left:-10px;
-}
-.box {
-    position:relative;
-    height:50px;
-    width:40px;
-    animation: box 5s infinite linear;
-}
+        .sending {
+            height: 50px;
+            width: 40px;
+            /* position:absolute; */
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
 
-.border {
-    background:#007298;
-    position:absolute;
-}
+        #sendtxt {
+            color:#007298;
+            font-weight:700;
+            font-family: 'Playfair Display', serif;
+            margin-top: 20px;
+            text-align: center;
+            /* margin: auto; */
 
-.border.one {
-    height:4px;
-    top:0;
-    left:0;
-    animation: border-one 5s infinite linear;
-}
+        }
+        .box {
+            position: relative;
+            height: 50px;
+            width: 40px;
+            animation: box 5s infinite linear;
+        }
 
-.border.two {
-    top:0;
-    right:0;
-    height:100%;
-    width:4px;
-    animation: border-two 5s infinite linear;
-}
+        .border {
+            background: #007298;
+            position: absolute;
+        }
 
-.border.three {
-    bottom:0;
-    right:0;
-    height:4px;
-    width:100%;
-    animation: border-three 5s infinite linear;
-}
+        .border.one {
+            height: 4px;
+            top: 0;
+            left: 0;
+            animation: border-one 5s infinite linear;
+        }
 
-.border.four {
-    bottom:0;
-    left:0;
-    height:100%;
-    width:4px;
-    animation: border-four 5s infinite linear;
-}
+        .border.two {
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 4px;
+            animation: border-two 5s infinite linear;
+        }
 
-.line {
-    height:4px;
-    background:#007298;
-    position:absolute;
-    width:0%;
-    left:25%;
-}
+        .border.three {
+            bottom: 0;
+            right: 0;
+            height: 4px;
+            width: 100%;
+            animation: border-three 5s infinite linear;
+        }
 
-.line.one {
-    top:25%;
-    width:0%;
-    animation: line-one 5s infinite linear;
-}
+        .border.four {
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            width: 4px;
+            animation: border-four 5s infinite linear;
+        }
 
-.line.two {
-    top:45%;
-    animation: line-two 5s infinite linear;
-}
+        .line {
+            height: 4px;
+            background: #007298;
+            position: absolute;
+            width: 0%;
+            left: 25%;
+        }
 
-.line.three {
-    top:65%;
-    animation: line-three 5s infinite linear;
-}
+        .line.one {
+            top: 25%;
+            width: 0%;
+            animation: line-one 5s infinite linear;
+        }
 
-@keyframes border-one {
-    0%   {width:0;}
-    10%  {width:100%;}
-    100% {width:100%;}
-}
+        .line.two {
+            top: 45%;
+            animation: line-two 5s infinite linear;
+        }
 
-@keyframes border-two {
-    0%   {height:0;}
-    10%  {height:0%;}
-    20%  {height:100%;}
-    100% {height:100%;}
-}
+        .line.three {
+            top: 65%;
+            animation: line-three 5s infinite linear;
+        }
 
-@keyframes border-three {
-    0%   {width:0;}
-    20%  {width:0%;}
-    30%  {width:100%;}
-    100% {width:100%;}
-}
+        @keyframes border-one {
+            0% {
+                width: 0;
+            }
 
-@keyframes border-four {
-    0%   {height:0;}
-    30%  {height:0%;}
-    40%  {height:100%;}
-    100% {height:100%;}
-}
+            10% {
+                width: 100%;
+            }
 
-@keyframes line-one {
-    0%   {left:25%;width:0;}
-    40%  {left:25%;width:0%;}
-    43%  {left:25%;width:50%;}
-    52%  {left:25%;width:50%;}
-    54%  {left:25%;width:0% }
-    55%  {right:25%;left:auto;}
-    63%  {width:10%;right:25%;left:auto;}
-    100% {width:10%;right:25%;left:auto;}
-}
+            100% {
+                width: 100%;
+            }
+        }
 
-@keyframes line-two {
-    0%   {width:0;}
-    42%  {width:0%;}
-    45%  {width:50%;}
-    53%  {width:50%;}
-    54%  {width:0% }
-    60%  {width:50%}
-    100% {width:50%;}
-}
+        @keyframes border-two {
+            0% {
+                height: 0;
+            }
 
-@keyframes line-three {
-    0%   {width:0;}
-    45%  {width:0%;}
-    48%  {width:50%;}
-    51%  {width:50%;}
-    52%  {width:0% }
-    100% {width:0%;}
-}
+            10% {
+                height: 0%;
+            }
 
-@keyframes box {
-    0%   {opacity:1;margin-left:0px;height:50px;width:40px;}
-    55%  {margin-left:0px;height:50px;width:40px;}
-    60%  {margin-left:0px;height:35px;width:50px;}
-    74%  {msthin-left:0;}
-    80%  {margin-left:-50px;opacity:1;}
-    90% {height:35px;width:50px;margin-left:50px;opacity:0;}
-    100% {opacity:0;}
-}
+            20% {
+                height: 100%;
+            }
+
+            100% {
+                height: 100%;
+            }
+        }
+
+        @keyframes border-three {
+            0% {
+                width: 0;
+            }
+
+            20% {
+                width: 0%;
+            }
+
+            30% {
+                width: 100%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes border-four {
+            0% {
+                height: 0;
+            }
+
+            30% {
+                height: 0%;
+            }
+
+            40% {
+                height: 100%;
+            }
+
+            100% {
+                height: 100%;
+            }
+        }
+
+        @keyframes line-one {
+            0% {
+                left: 25%;
+                width: 0;
+            }
+
+            40% {
+                left: 25%;
+                width: 0%;
+            }
+
+            43% {
+                left: 25%;
+                width: 50%;
+            }
+
+            52% {
+                left: 25%;
+                width: 50%;
+            }
+
+            54% {
+                left: 25%;
+                width: 0%
+            }
+
+            55% {
+                right: 25%;
+                left: auto;
+            }
+
+            63% {
+                width: 10%;
+                right: 25%;
+                left: auto;
+            }
+
+            100% {
+                width: 10%;
+                right: 25%;
+                left: auto;
+            }
+        }
+
+        @keyframes line-two {
+            0% {
+                width: 0;
+            }
+
+            42% {
+                width: 0%;
+            }
+
+            45% {
+                width: 50%;
+            }
+
+            53% {
+                width: 50%;
+            }
+
+            54% {
+                width: 0%
+            }
+
+            60% {
+                width: 50%
+            }
+
+            100% {
+                width: 50%;
+            }
+        }
+
+        @keyframes line-three {
+            0% {
+                width: 0;
+            }
+
+            45% {
+                width: 0%;
+            }
+
+            48% {
+                width: 50%;
+            }
+
+            51% {
+                width: 50%;
+            }
+
+            52% {
+                width: 0%
+            }
+
+            100% {
+                width: 0%;
+            }
+        }
+
+        @keyframes box {
+            0% {
+                opacity: 1;
+                margin-left: 0px;
+                height: 50px;
+                width: 40px;
+            }
+
+            55% {
+                margin-left: 0px;
+                height: 50px;
+                width: 40px;
+            }
+
+            60% {
+                margin-left: 0px;
+                height: 35px;
+                width: 50px;
+            }
+
+            74% {
+                msthin-left: 0;
+            }
+
+            80% {
+                margin-left: -50px;
+                opacity: 1;
+            }
+
+            90% {
+                height: 35px;
+                width: 50px;
+                margin-left: 50px;
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
     </style>
 </body>
 
