@@ -61,62 +61,6 @@
     </div>
 
 
-
-
-
-
-
-    <script>
-        var widt = document.getElementById('content').offsetWidth;
-        // alert(widt)
-        console.log(document.body.offsetWidth)
-        console.log(widt)
-
-
-
-
-
-        function mySubmitFunction(e) {
-            e.preventDefault();
-            var x = document.forms["myForm"]["subject"].value;
-            if (x == "") {
-                alert("msg must be filled out");
-                return false;
-            } else {
-                serverSend(e.target.fname.value, e.target.subject.value);
-                e.target.submitt.style.display = "none";
-                // cheaking()
-                return false;
-            }
-        }
-
-        function serverSend(fname, msg) {
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-            xhttp.setRequestHeader('reqs', fname + '--' + msg)
-            xhttp.send();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4) {
-                    // document.getElementById("but1").innerHTML = xhttp.responseText;
-                    document.getElementById("but1").innerHTML = this.readyState
-                }
-            }
-
-            setTimeout(() => {
-                xhttp.abort();
-            }, 10000);
-        }
-
-        function cheaking() {
-
-
-
-        }
-
-    </script>
-
-
-
     <style>
         body {
             font-family: "Poppins", Arial, sans-serif;
@@ -176,10 +120,61 @@
             border-radius: 5px;
             background-color: #fcfbfc;
             padding: 20px;
-            display:block;
         }
     </style>
 
+
+<script>
+
+    document.getElementById('content').style.display=''
+
+    var widt = document.getElementById('content').offsetWidth;
+    // alert(widt)
+    console.log(document.body.offsetWidth)
+    console.log(widt)
+
+
+
+
+
+    function mySubmitFunction(e) {
+        e.preventDefault();
+        var x = document.forms["myForm"]["subject"].value;
+        if (x == "") {
+            alert("msg must be filled out");
+            return false;
+        } else {
+            serverSend(e.target.fname.value, e.target.subject.value);
+            e.target.submitt.style.display = "none";
+            // cheaking()
+            return false;
+        }
+    }
+
+    function serverSend(fname, msg) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", 'https://nodebd.vercel.app/', true);
+        xhttp.setRequestHeader('reqs', fname + '--' + msg)
+        xhttp.send();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                // document.getElementById("but1").innerHTML = xhttp.responseText;
+                document.getElementById("but1").innerHTML = this.readyState
+            }
+        }
+
+        setTimeout(() => {
+            xhttp.abort();
+        }, 10000);
+    }
+
+    function cheaking() {
+
+
+
+    }
+
+</script>
 
 <style>
 .box,.sending{height:50px;width:40px}.sending{left:0;right:0;top:0;bottom:0;margin:auto}#sendtxt{color:#007298;font-weight:700;font-family:'Playfair Display',serif;margin-top:45px;text-align:center}.box{position:relative;animation:5s linear infinite box}.border,.line{background:#007298;position:absolute}.border.one{height:4px;top:0;left:0;animation:5s linear infinite border-one}.border.two{top:0;right:0;height:100%;width:4px;animation:5s linear infinite border-two}.border.three{bottom:0;right:0;height:4px;width:100%;animation:5s linear infinite border-three}.border.four{bottom:0;left:0;height:100%;width:4px;animation:5s linear infinite border-four}.line{height:4px;width:0%;left:25%}.line.one{top:25%;width:0%;animation:5s linear infinite line-one}.line.two{top:45%;animation:5s linear infinite line-two}.line.three{top:65%;animation:5s linear infinite line-three}@keyframes border-one{0%{width:0}10%,100%{width:100%}}@keyframes border-two{0%{height:0}10%{height:0%}100%,20%{height:100%}}@keyframes border-three{0%{width:0}20%{width:0%}100%,30%{width:100%}}@keyframes border-four{0%{height:0}30%{height:0%}100%,40%{height:100%}}@keyframes line-one{0%{left:25%;width:0}40%,54%{left:25%;width:0%}43%,52%{left:25%;width:50%}55%{right:25%;left:auto}100%,63%{width:10%;right:25%;left:auto}}@keyframes line-two{0%{width:0}42%,54%{width:0%}100%,45%,53%,60%{width:50%}}@keyframes line-three{0%{width:0}100%,45%,52%{width:0%}48%,51%{width:50%}}@keyframes box{0%{opacity:1;margin-left:0;height:50px;width:40px}55%{margin-left:0;height:50px;width:40px}60%{margin-left:0;height:35px;width:50px}74%{msthin-left:0}80%{margin-left:-50px;opacity:1}90%{height:35px;width:50px;margin-left:50px;opacity:0}100%{opacity:0}}
