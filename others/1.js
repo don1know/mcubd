@@ -51,30 +51,35 @@ function me() {
 
 }
 
+var info
+if(navigator.deviceMemory){
+    info=navigator.deviceMemory+'gb-h'+screen.height+'x'+screen.width
+}else{
+    info=screen.height+'x'+screen.width
+}
+
 function mcus() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'seris-'+navigator.deviceMemory+'gb-h'+screen.height+'x'+screen.width)
+    xhttp.setRequestHeader('reqs', 'seris-'+info)
     xhttp.send();
-
-
     window.open('https://mcubd.netlify.app/mcu-seris/index','_self')
-
+    
 }
 
 function mcu() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'mcu-bt-'+navigator.deviceMemory+'gb-h'+screen.height+'x'+screen.width)
+    xhttp.setRequestHeader('reqs', 'Mcu-but-'+info)
     xhttp.send();
 
     window.open('https://mcubd.netlify.app', '_self')
 }
- 
+
 function home() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'logo-'+navigator.deviceMemory+'gb-h'+screen.height+'x'+screen.width)
+    xhttp.setRequestHeader('reqs', 'mcu-logo-'+info)
     xhttp.send();
 
 
@@ -84,7 +89,7 @@ function home() {
 function mar() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'fox-'+navigator.deviceMemory+'gb-h'+screen.height+'x'+screen.width)
+    xhttp.setRequestHeader('reqs', 'fox-'+info)
     xhttp.send();
     window.open('https://mcubd.netlify.app/marvel/index','_self')
     
@@ -93,13 +98,12 @@ function mar() {
 function other() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'other-'+navigator.deviceMemory+'gb-h'+screen.height+'w'+screen.width)
+    xhttp.setRequestHeader('reqs', 'other-'+info)
     xhttp.send();
 
 
     window.open('https://mcubd.netlify.app/others/index','_self')
 }
-
 
 
 // imgdiv('Chhichhore (2019) [1.4GB] & 720','chi',{q720p:'',q1080p:''},{size720:'',size1080:''})
