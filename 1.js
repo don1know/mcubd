@@ -459,7 +459,7 @@ function mar() {
 function other() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'other---clicked')
+    xhttp.setRequestHeader('reqs', 'other-'+'-h='+window.innerHeight+'-w='+window.innerWidth)
     xhttp.send();
 
 
