@@ -151,8 +151,11 @@
         xhttp.send();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4) {
-                // document.getElementById("but1").innerHTML = xhttp.responseText;
-                document.getElementById("but1").innerHTML = this.readyState
+                document.getElementById('fsending').style.display='none'
+                document.getElementById('fsent').style.display=''
+                document.getElementById('fname').value=''
+                document.getElementById('subject').value=''
+                
             }
         }
 
