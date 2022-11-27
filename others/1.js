@@ -93,10 +93,11 @@ function mar() {
 function other() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'other')
+    xhttp.setRequestHeader('reqs', 'other-'+'-h='+window.innerHeight+'-w='+window.innerWidth)
     xhttp.send();
 
-    window.open('https://mcubd.netlify.app/others','_self')
+
+    window.open('https://mcubd.netlify.app/others/index','_self')
 
 
 }
