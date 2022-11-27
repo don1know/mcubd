@@ -10,8 +10,8 @@
 
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 
 </head>
 
@@ -178,6 +178,9 @@
         <p id="sendtxt">Sending</p>
     </div>
 
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <lottie-player id="sentsvg" src="https://assets7.lottiefiles.com/packages/lf20_voBLTvIbhG.json"background="transparent" speed="1" style=" height: 80px;" loop autoplay></lottie-player>
+
     <script>
         var widt = document.getElementById('content').offsetWidth;
         // alert(widt)
@@ -305,14 +308,15 @@
         }
 
         #sendtxt {
-            color:#007298;
-            font-weight:700;
+            color: #007298;
+            font-weight: 700;
             font-family: 'Playfair Display', serif;
             margin-top: 45px;
             text-align: center;
             /* margin: auto; */
 
         }
+
         .box {
             position: relative;
             height: 50px;
@@ -591,8 +595,7 @@
     </style>
 
 
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<lottie-player src="https://assets7.lottiefiles.com/packages/lf20_voBLTvIbhG.json"  background="transparent"  speed="1"  style=" height: 70px;"  loop  autoplay></lottie-player>
+
 
 
 </body>
