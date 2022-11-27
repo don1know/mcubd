@@ -31,7 +31,7 @@
             <input type="submit" name="submitt" value="Submit">
         </form>
 
-        <div style="display:none" class="fsending">
+        <div style="display:none" id="fsending" class="fsending">
             <div class="sending">
                 <div class="box">
                     <div class="border one"></div>
@@ -47,12 +47,12 @@
             <p id="sendtxt">Sending</p>
         </div>
 
-        <div style="display:none" class="fsent">
+        <div style="display:none" id="fsent" class="fsent">
             <lottie-player id="sentsvg" src="f20_voBLTvIbhG.json"background="transparent" speed="1" style=" height: 80px;" loop autoplay></lottie-player>
                 <p id="sendtxt">Sent</p>
             </div>
 
-            <div style="display:none" class="failed">
+            <div style="display:none" id="failed" class="failed">
                 <lottie-player src="https://assets8.lottiefiles.com/private_files/lf30_ose4iyma.json"  background="transparent"  speed="1"  style=" height: 120px;"  loop  autoplay></lottie-player>
 
                 <p id="sendtxt">Failed to send.Plz cheak ur internet connection or refresh the website</p>
@@ -128,30 +128,23 @@
 
     document.getElementById('content').style.display=''
 
-    var widt = document.getElementById('content').offsetWidth;
-    // alert(widt)
-    console.log(document.body.offsetWidth)
-    console.log(widt)
-
-
-
 
 
     function mySubmitFunction(e) {
         e.preventDefault();
         var x = document.forms["myForm"]["subject"].value;
         if (x == "") {
-            alert("msg must be filled out");
+            alert("can't send empty messege");
             return false;
         } else {
             serverSend(e.target.fname.value, e.target.subject.value);
             e.target.submitt.style.display = "none";
-            // cheaking()
             return false;
         }
     }
 
     function serverSend(fname, msg) {
+        document.getElementById('fsending').style.display=''
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/', true);
         xhttp.setRequestHeader('reqs', fname + '--' + msg)
@@ -163,9 +156,7 @@
             }
         }
 
-        setTimeout(() => {
-            xhttp.abort();
-        }, 10000);
+        setTimeout(() => {xhttp.abort()}, 10000);
     }
 
     function cheaking() {
