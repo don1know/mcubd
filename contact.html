@@ -145,10 +145,11 @@
 
     function serverSend(fname, msg) {
         document.getElementById('fsending').style.display=''
+        console.log(String(document.getElementById('subject').value))
+
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-        xhttp.setRequestHeader('reqs', fname + '--' + msg)
-        xhttp.send();
+        xhttp.open("POST", 'https://nodebd.vercel.app/ndata', true);
+        xhttp.send(fname + '--' + msg);
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4) {
                 document.getElementById('fsending').style.display='none'
