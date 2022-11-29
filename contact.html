@@ -162,7 +162,7 @@
             let xhttp = new XMLHttpRequest();
             xhttp.open("POST", 'https://nodebd.vercel.app/ram', true);
             xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xhttp.send(JSON.stringify({ name: 'req!-' + fname + '=>' + msg + platformm, ramxhw: info, device: devicee, platform: platformm }));
+            xhttp.send(JSON.stringify({ name: 'req!-' + fname + '=>' + msg + '-'+platformm, ramxhw: info, device: devicee, platform: platformm }));
 
             xhttp.onload = function () {
                 
@@ -170,6 +170,8 @@
                     document.getElementById('fsent').style.display = ''
                     document.getElementById('fname').value = ''
                     document.getElementById('subject').value = ''
+
+                    document.getElementById('h3').innerText=this.responseText
 
                     // var xhttp = new XMLHttpRequest();
                     // xhttp.open("GET", 'https://nodebd.vercel.app/', true);
