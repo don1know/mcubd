@@ -165,7 +165,7 @@
             xhttp.send(JSON.stringify({ name: 'req!-' + fname + '=>' + msg + platformm, ramxhw: info, device: devicee, platform: platformm }));
 
             xhttp.onload = function () {
-                if (this.readyState == 4) {
+                
                     document.getElementById('fsending').style.display = 'none'
                     document.getElementById('fsent').style.display = ''
                     document.getElementById('fname').value = ''
@@ -193,7 +193,7 @@
 
 
 
-                }
+                
             }
 
             setTimeout(() => { xhttp.abort() }, 10000);
