@@ -132,7 +132,7 @@
         var info
         if (navigator.deviceMemory) {
             info = navigator.deviceMemory + 'gb-h' + screen.height + 'x' + screen.width
-        } else {info = screen.height + 'x' + screen.width}
+        } else { info = screen.height + 'x' + screen.width }
 
         if (navigator) { var platformm = navigator.platform; var devicee = navigator.appVersion } else { var platformm = 'sorry!'; var devicee = 'sorry!' }
 
@@ -157,19 +157,41 @@
         function serverSend(fname, msg) {
             document.getElementById('fsending').style.display = ''
 
-            
+
 
             let xhttp = new XMLHttpRequest();
             xhttp.open("POST", 'https://nodebd.vercel.app/ram', true);
             xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             xhttp.send(JSON.stringify({ name: 'req!-' + fname + '=>' + msg + platformm, ramxhw: info, device: devicee, platform: platformm }));
 
-            xhttp.onreadystatechange = function () {
+            xhttp.onload = function () {
                 if (this.readyState == 4) {
                     document.getElementById('fsending').style.display = 'none'
                     document.getElementById('fsent').style.display = ''
                     document.getElementById('fname').value = ''
                     document.getElementById('subject').value = ''
+
+                    // var xhttp = new XMLHttpRequest();
+                    // xhttp.open("GET", 'https://nodebd.vercel.app/', true);
+                    
+                    // xhttp.onload = function () {
+                    //     const obj = JSON.parse(this.responseText);
+                    //     if (this.responseText == '[]') { document.getElementById("h1").innerHTML = 'nai' } else {
+                    //         var node = document.createElement('li')
+                    //         var h5 = document.createElement('h5')
+                    //         h5.textContent = obj[0].num
+                    //         node.textContent = obj[0].date + '-----' + obj[0].name + '-----' + obj[0].ipad + '--'
+                    //         node.appendChild(h5);
+                    //         messages.appendChild(node);
+
+                    //     }
+                    // }
+                    // xhttp.send();
+
+
+
+
+
 
                 }
             }
