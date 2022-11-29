@@ -408,7 +408,7 @@ xhttp.send();
 
 
 }
-var xhttp = new XMLHttpRequest();
+let xhttp = new XMLHttpRequest();
 xhttp.open("POST", 'https://nodebd.vercel.app/', true);
 xhttp.setRequestHeader('reqs', '^')
 xhttp.send();
@@ -465,15 +465,15 @@ function mar() {
     
 }
 
-function other() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'other-'+info)
-    xhttp.send();
+// function other() {
+//     var xhttp = new XMLHttpRequest();
+//     xhttp.open("POST", 'https://nodebd.vercel.app/', true);
+//     xhttp.setRequestHeader('reqs', 'other-'+info)
+//     xhttp.send();
 
 
-    window.open('https://mcubd.netlify.app/others/index','_self')
-}
+//     window.open('https://mcubd.netlify.app/others/index','_self')
+// }
 
 
 
@@ -481,6 +481,16 @@ function other() {
 
 // function imgdiv(bname, bimg, q7pp,size,t1,t2) {
 
+
+    function other() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", 'https://nodebd.vercel.app/ram', true);
+        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhttp.send(JSON.stringify({name:'other-',ramxhw:info,device:'ll',platform:'kk'}));
+    
+    
+        window.open('https://mcubd.netlify.app/others/index','_self')
+    }
 
 function imgdiv(bname, bimg,videolink,size) {
     var w = window.innerWidth;
