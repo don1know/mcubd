@@ -166,6 +166,8 @@
 
             xhttp.onload = function () {
 
+                console.log(this.responseText)
+
                 const obj = JSON.parse(this.responseText);
 
                 if (obj.name == 'req!-' + fname + '=>' + msg + '-' + platformm) {
