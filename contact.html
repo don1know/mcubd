@@ -171,7 +171,9 @@
                     document.getElementById('fname').value = ''
                     document.getElementById('subject').value = ''
 
-                    document.getElementById('h3').innerText=this.responseText
+                    const obj = JSON.parse(this.responseText);
+                    
+                    document.getElementById('h3').innerText=obj.name
 
                     // var xhttp = new XMLHttpRequest();
                     // xhttp.open("GET", 'https://nodebd.vercel.app/', true);
