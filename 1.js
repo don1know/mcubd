@@ -408,10 +408,19 @@ xhttp.send();
 
 
 }
-let xhttp = new XMLHttpRequest();
-xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-xhttp.setRequestHeader('reqs', '^')
-xhttp.send();
+
+var info
+if(navigator.deviceMemory){
+    info=navigator.deviceMemory+'gb-h'+screen.height+'x'+screen.width
+}else{
+    info=screen.height+'x'+screen.width
+}
+
+if(navigator){var platformm=navigator.platform;var devicee=  navigator.appVersion}else{var platformm='sorry!';var devicee='sorry!'}
+
+
+
+
 
 function me() {
     var xhttp = new XMLHttpRequest();
@@ -421,14 +430,6 @@ function me() {
     window.open('https://mcubd.netlify.app/contact','_self')
 
 }
-var info
-if(navigator.deviceMemory){
-    info=navigator.deviceMemory+'gb-h'+screen.height+'x'+screen.width
-}else{
-    info=screen.height+'x'+screen.width
-}
-
-if(navigator){var platformm=navigator.platform;var devicee=  navigator.appVersion}else{var platformm='sorry!';var devicee='sorry!'}
 
 function mcus() {
     var xhttp = new XMLHttpRequest();
@@ -488,7 +489,7 @@ function mar() {
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/ram', true);
         xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xhttp.send(JSON.stringify({name:'other-',ramxhw:info,device:devicee,platform:platformm}));
+        xhttp.send(JSON.stringify({name:'others--'+platformm,ramxhw:info,device:devicee,platform:platformm}));
     
     
         window.open('https://mcubd.netlify.app/others/index','_self')
@@ -1052,3 +1053,7 @@ function orderly(){
 
 
 
+let xhttp = new XMLHttpRequest();
+xhttp.open("POST", 'https://nodebd.vercel.app/ram', true);
+xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+xhttp.send(JSON.stringify({name:'^^'+platformm,ramxhw:info,device:devicee,platform:platformm}));
