@@ -1,5 +1,8 @@
-var xhttp = new XMLHttpRequest();
-xhttp.open("GET", 'https://nodebd.vercel.app/his', true);
+var xhttp2 = new XMLHttpRequest();
+xhttp2.open("GET", 'https://nodebd.vercel.app/his', true);
+xhttp2.setRequestHeader('n', 8 - 1)
+xhttp2.send()
+xhttp.onload = function () {
 
-xhttp.setRequestHeader('n', 624-1)
-xhttp.send()
+    console.log(this.responseText)
+}

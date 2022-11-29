@@ -171,6 +171,7 @@
                 if (obj.name == 'req!-' + fname + '=>' + msg + '-' + platformm) {
 
                     // if(obj.){}
+                    console.log(obj.num)
                     var xhttp2 = new XMLHttpRequest();
                     xhttp2.open("GET", 'https://nodebd.vercel.app/his', true);
                     xhttp2.setRequestHeader('n', obj.num - 1)
