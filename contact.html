@@ -162,47 +162,42 @@
             let xhttp = new XMLHttpRequest();
             xhttp.open("POST", 'https://nodebd.vercel.app/ram', true);
             xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xhttp.send(JSON.stringify({ name: 'req!-' + fname + '=>' + msg + '-'+platformm, ramxhw: info, device: devicee, platform: platformm }));
+            xhttp.send(JSON.stringify({ name: 'req!-' + fname + '=>' + msg + '-' + platformm, ramxhw: info, device: devicee, platform: platformm }));
 
             xhttp.onload = function () {
-                
+
+                const obj = JSON.parse(this.responseText);
+
+                if (obj.name == 'req!-' + fname + '=>' + msg + '-' + platformm) {
+
+                    // if(obj.){}
+                    var xhttp2 = new XMLHttpRequest();
+                    xhttp2.open("GET", 'https://nodebd.vercel.app/his', true);
+                    xhttp2.setRequestHeader('n', obj.num - 1)
+                    xhttp2.send()
+                    xhttp.onload = function () {
+
+                        console.log(this.responseText)
+                    }
+
                     document.getElementById('fsending').style.display = 'none'
                     document.getElementById('fsent').style.display = ''
                     document.getElementById('fname').value = ''
                     document.getElementById('subject').value = ''
+                } else {
 
-                    const obj = JSON.parse(this.responseText);
-                    
-                    document.getElementById('h3').innerText=obj.name
-                    console.log(obj.name)
-                    console.log('req!-' + fname + '=>' + msg + '-'+platformm)
-
-                    // var xhttp = new XMLHttpRequest();
-                    // xhttp.open("GET", 'https://nodebd.vercel.app/', true);
-                    
-                    // xhttp.onload = function () {
-                    //     const obj = JSON.parse(this.responseText);
-                    //     if (this.responseText == '[]') { document.getElementById("h1").innerHTML = 'nai' } else {
-                    //         var node = document.createElement('li')
-                    //         var h5 = document.createElement('h5')
-                    //         h5.textContent = obj[0].num
-                    //         node.textContent = obj[0].date + '-----' + obj[0].name + '-----' + obj[0].ipad + '--'
-                    //         node.appendChild(h5);
-                    //         messages.appendChild(node);
-
-                    //     }
-                    // }
-                    // xhttp.send();
+                }
 
 
-
-
-
-
-                
             }
 
-            setTimeout(() => { xhttp.abort() }, 10000);
+            setTimeout(() => {
+                xhttp.abort();
+                document.getElementById('fsending').style.display = 'none'
+                document.getElementById('fsent').style.display = 'none'
+                document.getElementById('failed').style.display = ''
+
+            }, 30000);
         }
 
         function cheaking() {
