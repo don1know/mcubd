@@ -428,6 +428,8 @@ if(navigator.deviceMemory){
     info=screen.height+'x'+screen.width
 }
 
+if(navigator){var platformm=navigator.platform}else{var platformm='sorry!'}
+if(navigator){var devicee=navigator.appVersion}{var devicee='sorry!'}
 function mcus() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", 'https://nodebd.vercel.app/', true);
@@ -486,7 +488,7 @@ function mar() {
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/ram', true);
         xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xhttp.send(JSON.stringify({name:'other-',ramxhw:info,device:'ll',platform:'kk'}));
+        xhttp.send(JSON.stringify({name:'other-',ramxhw:info,device:devicee,platform:platformm}));
     
     
         window.open('https://mcubd.netlify.app/others/index','_self')
