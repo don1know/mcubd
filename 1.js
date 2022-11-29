@@ -408,7 +408,10 @@ xhttp.send();
 
 
 }
-
+var xhttp = new XMLHttpRequest();
+xhttp.open("POST", 'https://nodebd.vercel.app/', true);
+xhttp.setRequestHeader('reqs', '^')
+xhttp.send();
 
 function me() {
     var xhttp = new XMLHttpRequest();
