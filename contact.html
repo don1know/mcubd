@@ -182,7 +182,7 @@
                     xhttp2.send()
                     xhttp2.onload = function () {
 
-                        const obj2 = JSON.parse(this.responseText);
+                        const obj2 = JSON.parse(this.responseText)[0];
                         console.log(obj2)
                         console.log(obj2.name)
 
