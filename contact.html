@@ -166,15 +166,15 @@
 
             xhttp.onload = function () {
 
-                
+
 
                 const obj = JSON.parse(this.responseText);
 
                 if (obj.name == 'req!-' + fname + '=>' + msg + '-' + platformm) {
 
-                    // if(obj.){}
 
-                    console.log(obj.num)
+
+
 
                     var xhttp2 = new XMLHttpRequest();
                     xhttp2.open("GET", 'https://nodebd.vercel.app/his', true);
@@ -182,13 +182,18 @@
                     xhttp2.send()
                     xhttp2.onload = function () {
 
-                        console.log(this.responseText)
+                        const obj2 = JSON.parse(this.responseText);
+                        if (obj2.name == 'req!-' + fname + '=>' + msg + '-' + platformm) {
+                            document.getElementById('fsending').style.display = 'none'
+                            document.getElementById('fsent').style.display = ''
+                            document.getElementById('fname').value = ''
+                            document.getElementById('subject').value = ''
+                            clearInterval(timeout)
+                        }
+
                     }
 
-                    document.getElementById('fsending').style.display = 'none'
-                    document.getElementById('fsent').style.display = ''
-                    document.getElementById('fname').value = ''
-                    document.getElementById('subject').value = ''
+
                 } else {
 
                 }
@@ -196,7 +201,7 @@
 
             }
 
-            setTimeout(() => {
+           var timeout= setTimeout(() => {
                 xhttp.abort();
                 document.getElementById('fsending').style.display = 'none'
                 document.getElementById('fsent').style.display = 'none'
