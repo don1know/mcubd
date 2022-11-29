@@ -433,37 +433,35 @@ function me() {
 
 function mcus() {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'seris-'+info)
-    xhttp.send();
+    xhttp.open("POST", 'https://nodebd.vercel.app/ram', true);
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify({name:'seris--',ramxhw:info,device:devicee,platform:platformm}));
     window.open('https://mcubd.netlify.app/mcu-seris/index','_self')
     
 }
 
 function mcu() {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'Mcu-but-'+info)
-    xhttp.send();
+    xhttp.open("POST", 'https://nodebd.vercel.app/ram', true);
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify({name:'Mcu-but-',ramxhw:info,device:devicee,platform:platformm}));
 
     window.open('https://mcubd.netlify.app', '_self')
 }
 
 function home() {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'mcu-logo-'+info)
-    xhttp.send();
-
-
+    xhttp.open("POST", 'https://nodebd.vercel.app/ram', true);
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify({name:'mcu-logo-',ramxhw:info,device:devicee,platform:platformm}));
     window.open('https://mcubd.netlify.app', '_self')
 }
 
 function mar() {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", 'https://nodebd.vercel.app/', true);
-    xhttp.setRequestHeader('reqs', 'fox-'+info)
-    xhttp.send();
+    xhttp.open("POST", 'https://nodebd.vercel.app/ram', true);
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify({name:'fox-',ramxhw:info,device:devicee,platform:platformm}));
     window.open('https://mcubd.netlify.app/marvel/index','_self')
     
 }
