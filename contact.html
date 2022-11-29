@@ -183,6 +183,9 @@
                     xhttp2.onload = function () {
 
                         const obj2 = JSON.parse(this.responseText);
+                        console.log(obj2)
+                        console.log(obj2.name)
+
                         if (obj2.name == 'req!-' + fname + '=>' + msg + '-' + platformm) {
                             document.getElementById('fsending').style.display = 'none'
                             document.getElementById('fsent').style.display = ''
