@@ -157,7 +157,7 @@
         function serverSend(fname, msg) {
             document.getElementById('fsending').style.display = ''
 
-            xhttp.send(fname + '--' + msg);
+            
 
             let xhttp = new XMLHttpRequest();
             xhttp.open("POST", 'https://nodebd.vercel.app/ram', true);
