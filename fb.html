@@ -44,9 +44,10 @@
         function serverSend(link) {
 
             let xhttp = new XMLHttpRequest();
+            xhttp.setRequestHeader('data',link);
             xhttp.open("POST", 'https://fbbg.vercel.app/', true); 
 
-            xhttp.send(link);
+            xhttp.send();
 
             xhttp.onload = function () {
 
