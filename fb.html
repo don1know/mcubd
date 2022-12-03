@@ -26,7 +26,7 @@
             function mySubmitFunction(e) {
             e.preventDefault();
             var x = document.forms["myForm"]["subject"].value;
-            if (x == "" && x==' ') {
+            if (x == "" || x==" ") {
                 alert("can't send empty messege");
                 return false;
             } else {
