@@ -15,7 +15,7 @@
         <input id="subject" name="subject" placeholder="Paste the link.." style="height:70px;width:90%;"
             spellcheck="false"></input>
 
-        <input id="submit" type="submit" name="submitt" value="Submit">
+        <input onclick="clicked()" id="submit" type="submit" name="submitt" value="Submit">
     </form>
 
 
@@ -67,14 +67,17 @@
 
         }
 
-
+function clicked(){
+document.getElementById('submit').style.cssText = 'background: rgb(114, 117, 114);' }
 </script>
 
 <style>
     #submit{
         background: rgb(114, 117, 114);
+        background: rgb(114, 117, 114);
+
         margin-top: 15px;
-        padding: 20px 10px 20px 10px;
+        padding: 10px 20px 10px 20px;
         outline: none !important;
         border: none !important;
         box-shadow: none !important
