@@ -939,7 +939,7 @@ setTimeout(() => {
     // imgdiv('Iron Man 3 (2013) [1.2GB]','iron3',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/Iron-man3.mp4'}, {size720:'1.2GB'})
 
 
-    // imgdiv('Spider-Man: Homecoming (2017) [1.3GB]','spi1',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/spi1.mp4'}, {size720:'1.3GB'})
+    imgdiv('Spider-Man: Homecoming (2017) [1.3GB]','spi1',{q720p:'https://root.bdff.workers.dev/0:/mcubd/MCU/spi1.mp4'}, {size720:'1.3GB'})
 
 
     // imgdiv('Captain America: The Winter Soldier (2014) [1.3GB]','cap2',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/cap2.mp4'}, {size720:'1.3GB'})
