@@ -3166,7 +3166,9 @@ setTimeout(() => {
 
     // imgdiv('K.G.F: Chapter 2   [1.6GB]','kgf2',{q1080p:'https://gdriv.bdff.workers.dev/0:/OTHERS/kgf2.mp4'},{size1080:'1.6GB'})
 
-    imgdiv('Major (2022)  [960MB]','major',{q1080p:'https://root.bdff.workers.dev/0:/mcubd/Major.mp4'},{size1080:'960MB'})
+    imgdiv('Major (2022)  [960MB]', 'major', { q1080p: 'https://root.bdff.workers.dev/0:/mcubd/Major.mp4' }, { size1080: '960MB' })
+
+    imgdiv('Sita Ramam  [1.3GB]', 'sita', { q1080p: 'https://root.bdff.workers.dev/0:/mcubd/Sita-Ramam.mp4' }, { size1080: '1.3GB' })
 
 
 
