@@ -910,39 +910,39 @@ setTimeout(() => {
 
     // imgdiv('Chhichhore (2019) [1.4GB] & 720','chi',{q720p:'',q1080p:''},{size720:'',size1080:''})
 
-    // imgdiv('Thor ragnarok (2017) [1.3GB]', 'thor3',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/Thor-ragnarock-mp3.mp4'}, {size720:'1.3GB'})
+    imgdiv('Thor ragnarok (2017) [1.3GB]', 'thor3',{q720p:'https://flame2.bdff.workers.dev/0:/mcubd/Thor-ragnarock-mp3.mp4'}, {size720:'1.3GB'})
 
 
-    // imgdiv('Guardian of the galaxy vol.2  (2017) [1.2GB]', 'galaxy2',{q720p:'https://abcd.bdff.workers.dev/0:/Guardian2-mp3.mp4'}, {size720:'1.2GB',imgchace:'yeah'})
+    imgdiv('Guardian of the galaxy vol.2  (2017) [1.2GB]', 'galaxy2',{q720p:'https://flame2.bdff.workers.dev/0:/mcubd/Guardian2-mp3.mp4'}, {size720:'1.2GB',imgchace:'yeah'})
 
-    // imgdiv('Avengers: Infinity War   (2018)         [1.3GB]', 'war',{q720p:'https://abcd.bdff.workers.dev/0:/infinity.mp4'}, {size720:'1.3GB',imgchace:'yeah'})
-
-
-
-    // imgdiv('Avengers: Endgame(2019) [1.6GB]','end',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/Endgame720p.mp4'}, {size720:'1.6GB',imgchace:'yeah'})
-
-
-    // imgdiv('Avengers age of ultron (2015) [1.2GB]', 'Avengers2',{q720p:'https://abcd.bdff.workers.dev/0:/ultron-mp3.mp4'}, {size720:'1.2GB',imgchace:'yeah'})
+    imgdiv('Avengers: Infinity War   (2018)         [1.3GB]', 'war',{q720p:'https://flame2.bdff.workers.dev/0:/mcubd/infinity.mp4'}, {size720:'1.3GB',imgchace:'yeah'})
 
 
 
+    imgdiv('Avengers: Endgame(2019) [1.6GB]','end',{q720p:'https://flame2.bdff.workers.dev/0:/mcubd/Endgame720p.mp4'}, {size720:'1.6GB',imgchace:'yeah'})
 
 
-    // imgdiv('Captain America: The First Avenger (2011)    [1.2GB]','cap',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/captain-america-720.mp4'}, {size720:'1.2GB'})
+    imgdiv('Avengers age of ultron (2015) [1.2GB]', 'Avengers2',{q720p:'https://flame2.bdff.workers.dev/0:/mcubd/ultron-mp3.mp4'}, {size720:'1.2GB',imgchace:'yeah'})
 
 
-    // imgdiv('Iron Man  (2008) [984MB]','iron',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/IronMan-720p.mp4'}, {size720:'984MB',imgchace:'yeah'})
 
 
-    // imgdiv('Captain America: Civil War  (2016) [1.5GB]','civil',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/Civil-war.mp4'}, {size720:'1.5GB'})
 
-    // imgdiv('Iron Man 3 (2013) [1.2GB]','iron3',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/Iron-man3.mp4'}, {size720:'1.2GB'})
+    imgdiv('Captain America: The First Avenger (2011)    [1.2GB]','cap',{q720p:'https://root.bdff.workers.dev/0:/mcubd/MCU/captain-america-720.mp4'}, {size720:'1.2GB'})
+
+
+    imgdiv('Iron Man  (2008) [984MB]','iron',{q720p:'https://flame2.bdff.workers.dev/0:/mcubd/IronMan-720p.mp4'}, {size720:'984MB',imgchace:'yeah'})
+
+
+    imgdiv('Captain America: Civil War  (2016) [1.5GB]','civil',{q720p:'https://root.bdff.workers.dev/0:/mcubd/MCU/Civil-war.mp4'}, {size720:'1.5GB'})
+
+    imgdiv('Iron Man 3 (2013) [1.2GB]','iron3',{q720p:'https://flame2.bdff.workers.dev/0:/mcubd/Iron-man3.mp4'}, {size720:'1.2GB'})
 
 
     imgdiv('Spider-Man: Homecoming (2017) [1.3GB]','spi1',{q720p:'https://root.bdff.workers.dev/0:/mcubd/MCU/spi1.mp4'}, {size720:'1.3GB'})
 
 
-    // imgdiv('Captain America: The Winter Soldier (2014) [1.3GB]','cap2',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/cap2.mp4'}, {size720:'1.3GB'})
+    imgdiv('Captain America: The Winter Soldier (2014) [1.3GB]','cap2',{q720p:'https://root.bdff.workers.dev/0:/mcubd/MCU/cap2.mp4'}, {size720:'1.3GB'})
 
 
 
@@ -950,20 +950,20 @@ setTimeout(() => {
 
 
 
-    // imgdiv('Ant-man (2015) [920MB]', 'ant',{q720p:'https://abcd.bdff.workers.dev/0:/Ant.Man-mp3.mp4'}, {size720:'920MB'})
+    imgdiv('Ant-man (2015) [920MB]', 'ant',{q720p:'https://root.bdff.workers.dev/0:/mcubd/MCU/Ant.Man-mp3.mp4'}, {size720:'920MB'})
 
 
-    // imgdiv('Guardian of the galaxy vol.1   (2014)   [1.9GB]','galaxy',{q1080p:'https://abcd.bdff.workers.dev/0:/guardian.mp4'}, {size1080:'1.9GB'})
-
-
-
-    // imgdiv('Doctor Strange (2016) [1.2GB]', 'dr',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/Doctor.Strange.2016.720p.mp4'}, {size720:'1.2GB',imgchace:'yeah'})
+    imgdiv('Guardian of the galaxy vol.1   (2014)   [1.9GB]','galaxy',{q1080p:'https://flame2.bdff.workers.dev/0:/mcubd/guardian.mp4'}, {size1080:'1.9GB'})
 
 
 
-    // imgdiv('Ant-Man and the Wasp  (2018)  [1.2GB]','ant2',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/ant2.mp4'}, {size720:'1.2GB'})
+    imgdiv('Doctor Strange (2016) [1.2GB]', 'dr',{q720p:'https://flame2.bdff.workers.dev/0:/mcubd/Doctor.Strange.2016.720p.mp4'}, {size720:'1.2GB',imgchace:'yeah'})
 
-    // imgdiv('Doctor Strange in the Multiverse of Madness (2022)  [1.5GB]','drst2',{downonly:'https://gdriv.bdff.workers.dev/0:/MCU-720/imax/dr.strange.2-imax-hevc.mp4'}, {sizedownonly:'1.5GB',imgchace:'yeah'}) 
+
+
+    imgdiv('Ant-Man and the Wasp  (2018)  [1.2GB]','ant2',{q720p:'https://root.bdff.workers.dev/0:/mcubd/MCU/ant2.mp4'}, {size720:'1.2GB'})
+
+    imgdiv('Doctor Strange in the Multiverse of Madness (2022)  [1.5GB]','drst2',{downonly:'https://flame2.bdff.workers.dev/0:/mcubd/imax/dr.strange.2-imax-hevc.mp4'}, {sizedownonly:'1.5GB',imgchace:'yeah'}) 
 
 
 }, 1);
@@ -993,58 +993,58 @@ function sig(bimg,sett,tim){
 
 
 function orderly(){
-    setTimeout(() => {
+    // setTimeout(() => {
 
 
-        imgdiv('Iron Man  (2008) [984MB]','iron',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/IronMan-720p.mp4'}, {size720:'984MB'})
+    //     imgdiv('Iron Man  (2008) [984MB]','iron',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/IronMan-720p.mp4'}, {size720:'984MB'})
 
 
-        imgdiv('Captain America: The First Avenger (2011)    [1.2GB]','cap',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/captain-america-720.mp4'}, {size720:'1.2GB'})
+    //     imgdiv('Captain America: The First Avenger (2011)    [1.2GB]','cap',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/captain-america-720.mp4'}, {size720:'1.2GB'})
 
 
 
-        imgdiv('Iron Man 3 (2013) [1.2GB]','iron3',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/Iron-man3.mp4'}, {size720:'1.2GB'})
+    //     imgdiv('Iron Man 3 (2013) [1.2GB]','iron3',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/Iron-man3.mp4'}, {size720:'1.2GB'})
 
 
-        imgdiv('Captain America: The Winter Soldier (2014) [1.3GB]','cap2',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/cap2.mp4'}, {size720:'1.3GB'})
+    //     imgdiv('Captain America: The Winter Soldier (2014) [1.3GB]','cap2',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/cap2.mp4'}, {size720:'1.3GB'})
 
 
-        imgdiv('Guardian of the galaxy vol.1   (2014)   [1.9GB]','galaxy',{q1080p:'https://abcd.bdff.workers.dev/0:/guardian.mp4'}, {size1080:'1.9GB'})
+    //     imgdiv('Guardian of the galaxy vol.1   (2014)   [1.9GB]','galaxy',{q1080p:'https://abcd.bdff.workers.dev/0:/guardian.mp4'}, {size1080:'1.9GB'})
 
 
-        imgdiv('Avengers age of ultron (2015) [1.2GB]', 'Avengers2',{q720p:'https://abcd.bdff.workers.dev/0:/ultron-mp3.mp4'}, {size720:'1.2GB'})
+    //     imgdiv('Avengers age of ultron (2015) [1.2GB]', 'Avengers2',{q720p:'https://abcd.bdff.workers.dev/0:/ultron-mp3.mp4'}, {size720:'1.2GB'})
 
 
-        imgdiv('Ant-man (2015) [920MB]', 'ant',{q720p:'https://abcd.bdff.workers.dev/0:/Ant.Man-mp3.mp4'}, {size720:'920MB'})
+    //     imgdiv('Ant-man (2015) [920MB]', 'ant',{q720p:'https://abcd.bdff.workers.dev/0:/Ant.Man-mp3.mp4'}, {size720:'920MB'})
 
 
-        imgdiv('Captain America: Civil War  (2016) [1.5GB]','civil',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/Civil-war.mp4'}, {size720:'1.5GB'})
+    //     imgdiv('Captain America: Civil War  (2016) [1.5GB]','civil',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/Civil-war.mp4'}, {size720:'1.5GB'})
 
 
-        imgdiv('Doctor Strange (2016) [1.2GB]', 'dr',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/Doctor.Strange.2016.720p.mp4'}, {size720:'1.2GB'})
+    //     imgdiv('Doctor Strange (2016) [1.2GB]', 'dr',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/Doctor.Strange.2016.720p.mp4'}, {size720:'1.2GB'})
 
 
     
-        imgdiv('Guardian of the galaxy vol.2  (2017) [1.2GB]', 'galaxy2',{q720p:'https://abcd.bdff.workers.dev/0:/Guardian2-mp3.mp4'}, {size720:'1.2GB'})
+    //     imgdiv('Guardian of the galaxy vol.2  (2017) [1.2GB]', 'galaxy2',{q720p:'https://abcd.bdff.workers.dev/0:/Guardian2-mp3.mp4'}, {size720:'1.2GB'})
 
 
-        imgdiv('Spider-Man: Homecoming (2017) [1.3GB]','spi1',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/spi1.mp4'}, {size720:'1.3GB'})
+    //     imgdiv('Spider-Man: Homecoming (2017) [1.3GB]','spi1',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/spi1.mp4'}, {size720:'1.3GB'})
 
 
-        imgdiv('Thor ragnarok (2017) [1.3GB]', 'Thor3',{q720p:'https://abcd.bdff.workers.dev/0:/Thor-ragnarock-mp3.mp4'}, {size720:'1.3GB'})
+    //     imgdiv('Thor ragnarok (2017) [1.3GB]', 'Thor3',{q720p:'https://abcd.bdff.workers.dev/0:/Thor-ragnarock-mp3.mp4'}, {size720:'1.3GB'})
     
 
-        imgdiv('Avengers: Infinity War   (2018)         [1.3GB]', 'war',{q720p:'https://abcd.bdff.workers.dev/0:/infinity.mp4'}, {size720:'1.3GB'})
+    //     imgdiv('Avengers: Infinity War   (2018)         [1.3GB]', 'war',{q720p:'https://abcd.bdff.workers.dev/0:/infinity.mp4'}, {size720:'1.3GB'})
 
-        imgdiv('Ant-Man and the Wasp  (2018)  [1.2GB]','ant2',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/ant2.mp4'}, {size720:'1.2GB'})
+    //     imgdiv('Ant-Man and the Wasp  (2018)  [1.2GB]','ant2',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/ant2.mp4'}, {size720:'1.2GB'})
     
-        imgdiv('Avengers: Endgame(2019) [1.6GB]','end',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/Endgame720p.mp4'}, {size720:'1.6GB'})
-    
-    
-        imgdiv('Doctor Strange in the Multiverse of Madness (2022)  [1.5GB]','drst2',{downonly:'https://gdriv.bdff.workers.dev/0:/MCU-720/imax/dr.strange.2-imax-hevc.mp4'}, {sizedownonly:'1.5GB'})
+    //     imgdiv('Avengers: Endgame(2019) [1.6GB]','end',{q720p:'https://gdriv.bdff.workers.dev/0:/MCU-720/Endgame720p.mp4'}, {size720:'1.6GB'})
     
     
-    }, 1);
+    //     imgdiv('Doctor Strange in the Multiverse of Madness (2022)  [1.5GB]','drst2',{downonly:'https://gdriv.bdff.workers.dev/0:/MCU-720/imax/dr.strange.2-imax-hevc.mp4'}, {sizedownonly:'1.5GB'})
+    
+    
+    // }, 1);
 
 }
 
