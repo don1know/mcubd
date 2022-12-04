@@ -25,7 +25,10 @@
 <script>
             function mySubmitFunction(e) {
             e.preventDefault();
-            var x = document.forms["myForm"]["subject"].value;
+            var y = document.forms["myForm"]["subject"].value;
+            // " +" 
+            const regex = /^.+ /;
+            var x= y.replace(regex, '');
             if (x == "" || x==" ") {
                 alert("can't send empty messege");
                 return false;
