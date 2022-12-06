@@ -42,7 +42,7 @@ h4.setAttribute('id', 'h4')
 
 
 
-contact.setAttribute('onclick', 'me()')
+// contact.setAttribute('onclick', 'me()')
 
 button1.setAttribute('onclick', 'mcu()')
 button2.setAttribute('onclick', 'mcus()')
@@ -58,7 +58,9 @@ order.setAttribute('onclick', 'order()')
 
 
 
-contact.innerText = 'Contact me?/Movie request'
+// contact.innerText = 'Contact me?/Movie request'
+contact.innerText = ''
+
 h4.innerText = 'Reuploading Others Section...This can Take some hours'
 button1.innerText = 'Marvel'
 button2.innerText = 'Marvel-Seris'
