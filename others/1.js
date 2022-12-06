@@ -3142,10 +3142,10 @@ setTimeout(() => {
     //     seris('Inside Job {Season 1} (2021) 1080p [300MB]','inside',['https://gdriv.bdff.workers.dev/0:/OTHERS/Inside-job/Inside-Job-S01-E01.mp4','https://gdriv.bdff.workers.dev/0:/OTHERS/Inside-job/Inside-Job-S01-E02.mp4','https://gdriv.bdff.workers.dev/0:/OTHERS/Inside-job/Inside-Job-S01-E03.mp4','https://gdriv.bdff.workers.dev/0:/OTHERS/Inside-job/Inside-Job-S01-E04.mp4','https://gdriv.bdff.workers.dev/0:/OTHERS/Inside-job/Inside-Job-S01-E05.mp4','https://gdriv.bdff.workers.dev/0:/OTHERS/Inside-job/Inside-Job-S01-E06.mp4','https://gdriv.bdff.workers.dev/0:/OTHERS/Inside-job/Inside-Job-S01-E07.mp4','https://gdriv.bdff.workers.dev/0:/OTHERS/Inside-job/Inside-Job-S01-E08.mp4','https://gdriv.bdff.workers.dev/0:/OTHERS/Inside-job/Inside-Job-S01-E09.mp4','https://gdriv.bdff.workers.dev/0:/OTHERS/Inside-job/Inside-Job-S01-E10.mp4'],'300MB')
 
 
-        imgdiv('Minions (2015)   1080p [800MB]','minions',{q1080p:'https://flame2.bdff.workers.dev/0:/mcubd2/Others/Minions.mp4'},{size1080:'800MB'})
+    imgdiv('Minions (2015)   1080p [800MB]', 'minions', { q1080p: 'https://flame2.bdff.workers.dev/0:/mcubd2/Others/Minions.mp4' }, { size1080: '800MB' })
 
 
-        imgdiv('Extraction (2020) 1080p [1.1GB]','dhaka',{q1080p:'https://flame2.bdff.workers.dev/0:/mcubd2/Others/Extraction.mp4'},{size1080:'1.1GB'})
+    imgdiv('Extraction (2020) 1080p [1.1GB]', 'dhaka', { q1080p: 'https://flame2.bdff.workers.dev/0:/mcubd2/Others/Extraction.mp4' }, { size1080: '1.1GB' })
 
 
     //     seris('Rick and Morty {Season 1} {English Only} 1080p [185MB]','rickk',['https://gdriv.bdff.workers.dev/0:/OTHERS/Rick/S1/Rick.and.Morty-save-summer-e1-2-6.mp4','https://gdriv.bdff.workers.dev/0:/OTHERS/Rick/S1/Rick.and.Morty-pickle-e2-3-3.mp4','https://gdriv.bdff.workers.dev/0:/OTHERS/Rick/S1/Rick.and.Morty-love-spray-e3-1-6.mp4','https://gdriv.bdff.workers.dev/0:/OTHERS/Rick/S1/Rick.and.Morty-sleppy-garry-e4-2-4.mp4'],'185MB')
@@ -3160,13 +3160,15 @@ setTimeout(() => {
     imgdiv('Sita Ramam  [1.3GB]', 'sita', { q1080p: 'https://root.bdff.workers.dev/0:/mcubd/Sita-Ramam.mp4' }, { size1080: '1.3GB' })
 
 
-    seris('Doctors {Season 1} 1080p [400 MB]','doc',['https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E01.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E02.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E03.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E04.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E05.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E06.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E07.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E08.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E09.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E10.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E11.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E12.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E13.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E14.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E15.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E16.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E17.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E18.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E19.mkv','https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E20.mkv'],'400MB')
+    seris('Doctors {Season 1} 1080p [400 MB]', 'doc', ['https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E01.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E02.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E03.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E04.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E05.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E06.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E07.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E08.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E09.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E10.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E11.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E12.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E13.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E14.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E15.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E16.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E17.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E18.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E19.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E20.mkv'], '400MB')
 
 
 
 
 
     // imgdiv('K.G.F: Chapter 2   [1.6GB]','kgf2',{q1080p:'https://gdriv.bdff.workers.dev/0:/OTHERS/kgf2.mp4'},{size1080:'1.6GB'})
+
+    imgdiv('Jab We Met   [1.3GB]','jab',{q1080p:'https://zaynr2h.bdff.workers.dev/0:/mcubd/Others/Jab-We-Met.mp4'},{size1080:'1.3GB'})
 
 
 
