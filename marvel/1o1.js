@@ -42,7 +42,7 @@ a.setAttribute('onclick', 'home()')
 
 
 
-button.setAttribute('onclick', 'me()')
+// button.setAttribute('onclick', 'me()')
 
 button1.setAttribute('onclick', 'mcu()')
 button2.setAttribute('onclick', 'mcus()')
@@ -54,7 +54,7 @@ button4.setAttribute('onclick', 'other()')
 
 
 
-button.innerText = 'Contact me?/Movie request'
+button.innerText = ''
 h4.innerText = 'These are not MARVEL movies ,these are MARVEL comics carecters movies which are not owned by MARVEL ,MARVEL sold this to other studios like fox studios,sony studios.The MARVEL movies are in MCU(MARVEL CINEMATIC UNIVERSE) section'
 button1.innerText = 'Marvel'
 button2.innerText = 'Marvel-Seris'
@@ -91,7 +91,7 @@ div.style.cssText = 'background-color: #373737;height: calc(100vh*.144);position
 
 img.style.cssText = 'height:calc(100vh*.144*.5) ;padding-left:calc(100vw*.045) ;'
 
-button.style.cssText = 'float: right;padding: calc(100vh*.144*.03);background-color: #acacac;font-size: 10px;'
+button.style.cssText = 'float: right;padding: calc(100vh*.144*.03);background-color: #373737;font-size: 10px; outline: none !important;border: none !important;box-shadow: none !important;'
 
 button1.style.cssText = 'height: calc(100vh*.056);font-size: calc(100vh*.056*.3);padding: 0   calc(100vw*.06) 0 calc(100vw*.06);'
 button2.style.cssText = 'height: calc(100vh*.056);font-size: calc(100vh*.056*.3);padding: 0   calc(100vw*.04) 0 calc(100vw*.04);'
