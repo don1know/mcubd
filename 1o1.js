@@ -61,7 +61,7 @@ order.setAttribute('onclick', 'order()')
 // contact.innerText = 'Contact me?/Movie request'
 contact.innerText = ''
 
-h4.innerText = 'Reuploading Others Section...This can Take some hours'
+h4.innerText = ''
 button1.innerText = 'Marvel'
 button2.innerText = 'Marvel-Seris'
 button3.innerText = 'fox & sony'
