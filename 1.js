@@ -931,21 +931,21 @@ setTimeout(() => {
 
 
 
-    imgdiv('Captain America: The First Avenger (2011)    [1.2GB]','cap',{q720p:'https://root.bdff.workers.dev/0:/mcubd/MCU/captain-america-720.mp4'}, {size720:'1.2GB'})
+    imgdiv('Captain America: The First Avenger (2011)    [1.2GB]','cap',{q720p:'https://zaynr2h.bdff.workers.dev/0:/mcubd/mcu/captain-america-720.mp4'}, {size720:'1.2GB'})
 
 
     imgdiv('Iron Man  (2008) [984MB]','iron',{q720p:'https://flame2.bdff.workers.dev/0:/mcubd/IronMan-720p.mp4'}, {size720:'984MB',imgchace:'yeah'})
 
 
-    imgdiv('Captain America: Civil War  (2016) [1.5GB]','civil',{q720p:'https://root.bdff.workers.dev/0:/mcubd/MCU/Civil-war.mp4'}, {size720:'1.5GB'})
+    imgdiv('Captain America: Civil War  (2016) [1.5GB]','civil',{q720p:'https://zaynr2h.bdff.workers.dev/0:/mcubd/mcu/Civil-war.mp4'}, {size720:'1.5GB'})
 
     imgdiv('Iron Man 3 (2013) [1.2GB]','iron3',{q720p:'https://flame2.bdff.workers.dev/0:/mcubd/Iron-man3.mp4'}, {size720:'1.2GB'})
 
 
-    imgdiv('Spider-Man: Homecoming (2017) [1.3GB]','spi1',{q720p:'https://root.bdff.workers.dev/0:/mcubd/MCU/spi1.mp4'}, {size720:'1.3GB'})
+    imgdiv('Spider-Man: Homecoming (2017) [1.3GB]','spi1',{q720p:'https://zaynr2h.bdff.workers.dev/0:/mcubd/mcu/spi1.mp4'}, {size720:'1.3GB'})
 
 
-    imgdiv('Captain America: The Winter Soldier (2014) [1.3GB]','cap2',{q720p:'https://root.bdff.workers.dev/0:/mcubd/MCU/cap2.mp4'}, {size720:'1.3GB'})
+    imgdiv('Captain America: The Winter Soldier (2014) [1.3GB]','cap2',{q720p:'https://zaynr2h.bdff.workers.dev/0:/mcubd/mcu/cap2.mp4'}, {size720:'1.3GB'})
 
 
 
@@ -953,7 +953,7 @@ setTimeout(() => {
 
 
 
-    imgdiv('Ant-man (2015) [920MB]', 'ant',{q720p:'https://root.bdff.workers.dev/0:/mcubd/MCU/Ant.Man-mp3.mp4'}, {size720:'920MB'})
+    imgdiv('Ant-man (2015) [920MB]', 'ant',{q720p:'https://zaynr2h.bdff.workers.dev/0:/mcubd/mcu/Ant.Man-mp3.mp4'}, {size720:'920MB'})
 
 
     imgdiv('Guardian of the galaxy vol.1   (2014)   [1.9GB]','galaxy',{q1080p:'https://flame2.bdff.workers.dev/0:/mcubd/guardian.mp4'}, {size1080:'1.9GB'})
@@ -964,7 +964,7 @@ setTimeout(() => {
 
 
 
-    imgdiv('Ant-Man and the Wasp  (2018)  [1.2GB]','ant2',{q720p:'https://root.bdff.workers.dev/0:/mcubd/MCU/ant2.mp4'}, {size720:'1.2GB'})
+    imgdiv('Ant-Man and the Wasp  (2018)  [1.2GB]','ant2',{q720p:'https://zaynr2h.bdff.workers.dev/0:/mcubd/mcu/ant2.mp4'}, {size720:'1.2GB'})
 
     imgdiv('Doctor Strange in the Multiverse of Madness (2022)  [1.5GB]','drst2',{downonly:'https://flame2.bdff.workers.dev/0:/mcubd/imax/dr.strange.2-imax-hevc.mp4'}, {sizedownonly:'1.5GB',imgchace:'yeah'}) 
 
