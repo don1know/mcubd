@@ -3155,9 +3155,9 @@ setTimeout(() => {
     //     imgdiv('John Wick 2 || 1080p [1.6GB]','john2',{q1080p:'https://abcd.bdff.workers.dev/0:/John.Wick-2-mp3.mp4'},{size1080:'1.6GB'})
 
 
-    imgdiv('Major (2022)  [960MB]', 'major', { q1080p: 'https://root.bdff.workers.dev/0:/mcubd/Major.mp4' }, { size1080: '960MB' })
+    imgdiv('Major (2022)  [960MB]', 'major', { q1080p: 'https://zaynr2h.bdff.workers.dev/0:/mcubd/Others/Major.mp4' }, { size1080: '960MB' })
 
-    imgdiv('Sita Ramam  [1.3GB]', 'sita', { q1080p: 'https://root.bdff.workers.dev/0:/mcubd/Sita-Ramam.mp4' }, { size1080: '1.3GB' })
+    imgdiv('Sita Ramam  [1.3GB]', 'sita', { q1080p: 'https://zaynr2h.bdff.workers.dev/0:/mcubd/Others/Sita-Ramam.mp4' }, { size1080: '1.3GB' })
 
 
     seris('Doctors {Season 1} 1080p [400 MB]', 'doc', ['https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E01.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E02.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E03.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E04.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E05.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E06.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E07.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E08.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E09.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E10.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E11.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E12.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E13.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E14.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E15.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E16.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E17.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E18.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E19.mkv', 'https://flame.bdff.workers.dev/0:/mcubd/OTHERS/doctors/Doctors-S01E20.mkv'], '400MB')
