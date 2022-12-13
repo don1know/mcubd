@@ -26,6 +26,24 @@
           color: white;
         }
         </style>
+        <style>
+            .box {
+  background: goldenrod;
+  width: 300px;
+  height: 300px;
+  margin: 30px auto;
+  transition: all 1s linear;
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.visuallyhidden {
+  opacity: 0;
+}
+        </style>
 </head>
 <body>
 
@@ -304,7 +322,23 @@
     <script>
         function clicked(e){
             if (confirm("are you sure?")) {
-                e.parentElement.parentElement.remove()
+                // e.parentElement.parentElement.remove()
+                e.parentElement.parentElement.
+                 
+
+                
+                 classList.add('visuallyhidden');    
+                 e.parentElement.parentElement.addEventListener('transitionend', function(e) {
+                    e.parentElement.parentElement.classList.add('hidden');
+                    }, {
+                     capture: false,
+                     once: true,
+                      passive: false
+                    });
+                
+  
+
+
 
             } else {
                 e.checked = false;
