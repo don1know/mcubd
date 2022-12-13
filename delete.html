@@ -32,6 +32,7 @@
 
     <table>
         <tr id="0">
+            <th>remove</th>
             <th>EIIN </th>
             <th>College Name </th>
             <th>Shift </th>
@@ -42,6 +43,7 @@
             <th>AvailableSeat</th>
         </tr>
         <tr id="1">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
             <td>132085 </td>
             <td>AHSANIA MISSION COLLEGE </td>
             <td>Day</td>
@@ -52,6 +54,7 @@
             <td>50</td>
         </tr>
         <tr id="2">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
             <td>108214</td>
             <td>BANOPHOOL ADIBASHI GREEN HEART COLLEGE      </td>
             <td>Day</td>
@@ -62,6 +65,8 @@
             <td>50</td>
         </tr>
         <tr id="3">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>108217</td>
             <td>BASHIRUDDIN ADARSHA UCHCHA MADHYAMIKBIDYALAYA  MIRPUR
             </td>
@@ -73,6 +78,8 @@
             <td>100</td>
         </tr>
         <tr id="4">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>133798</td>
             <td>DHAKA MODEL COLLEGE 
             </td>
@@ -84,6 +91,8 @@
             <td>80</td>
         </tr>
         <tr id="5">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>108208</td>
             <td>DHAKA MODERN COLLEGE 
             </td>
@@ -95,6 +104,8 @@
             <td>50</td>
         </tr>
         <tr id="6">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>134478</td>
             <td>FM INTERNATIONAL COLLEGE 
             </td>
@@ -106,6 +117,8 @@
             <td>50</td>
         </tr>
         <tr id="7">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>132200</td>
             <td>GOVERNMENT RUPNAGAR MODEL SCHOOLAND COLLEGE
             </td>
@@ -117,6 +130,8 @@
             <td>400</td>
         </tr>
         <tr id="8">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>108210</td>
             <td>GOVT. BANGLA COLLEGE
             </td>
@@ -128,6 +143,8 @@
             <td>410</td>
         </tr>
         <tr id="9">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>134180</td>
             <td>GREEN FIELD COLLEGE
 
@@ -140,6 +157,8 @@
             <td>150</td>
         </tr>
         <tr id="10">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>131878</td>
             <td>HARUN MOLLAH COLLEGE
             </td>
@@ -151,6 +170,8 @@
             <td>100</td>
         </tr>
         <tr id="11">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>108188</td>
             <td>MIRPUR BANGLA SCHOOL AND COLLEGE
 
@@ -163,6 +184,8 @@
             <td>100</td>
         </tr>
         <tr id="12">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>108206</td>
             <td>MIRPUR COLLEGE 
             </td>
@@ -174,6 +197,8 @@
             <td>350</td>
         </tr>
         <tr id="13">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>138449</td>
             <td>MIRPUR ENGLISH VERSION COLLEGE
 
@@ -186,6 +211,8 @@
             <td>40</td>
         </tr>
         <tr id="14">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>138960</td>
             <td>MIRPUR SCIENCE COLLEGE
 
@@ -198,6 +225,8 @@
             <td>200</td>
         </tr>
         <tr id="15">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>108181</td>
             <td>MONIPUR UCCHA BIDDALAYA & COLLEGE
 
@@ -210,6 +239,8 @@
             <td>500</td>
         </tr>
         <tr id="16">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>136850</td>
             <td>NORTH WESTERN COLLEGE
             </td>
@@ -221,6 +252,8 @@
             <td>100</td>
         </tr>
         <tr id="17">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>134216</td>
             <td>PRIME CITY INTERNATIONAL COLLEGE
             </td>
@@ -232,6 +265,8 @@
             <td>50</td>
         </tr>
         <tr id="18">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>132141</td>
             <td>SHAROJ INTERNATIONAL COLLEGE
             </td>
@@ -243,6 +278,8 @@
             <td>50</td>
         </tr>
         <tr id="19">
+            <td><input type="checkbox" onclick="clicked(this)"></td>
+
             <td>130926</td>
             <td>UNIVERSE COLLEGE
 
@@ -261,7 +298,20 @@
     <br>
     <br>
 
-    <h1>end</h1>
+    <h1></h1>
+
+
+    <script>
+        function clicked(e){
+            if (confirm("are you sure?")) {
+                e.parentElement.parentElement.remove()
+
+            } else {
+                e.checked = false;
+             }
+        
+        }
+    </script>
     
 </body>
 </html>
