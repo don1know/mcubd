@@ -11,6 +11,8 @@
       #messages > li:nth-child(odd) { background: #efefef; } 
       #messages > li { padding: 1rem 0.5rem  1rem 0.5rem;word-wrap: break-word; }
       #h5{margin: 0px;padding: 0px;}
+      .copy{padding: 10px;background-color: #eee286;}
+      .block{display: block;font-size: 6px;}
 
         
 

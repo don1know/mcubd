@@ -90,19 +90,45 @@ xhttp.onload = function () {
 xhttp.send();
 };get()
 
+function copy(ele){
+  console.log(ele.parentElement.firstChild.innerText)
+  navigator.clipboard.writeText(ele.parentElement.firstChild.innerText)
+  .then(() => {
+        alert("successfully copied");
+      })
+      .catch(() => {
+        alert("something went wrong");
+      });
+      
+  ele.style.backgroundColor='white'
+}
+
 var print=async function (obj){
 
     var node = document.createElement('li')
       var num = document.createElement('span')
+      var txt = document.createElement('span')
+      var time = document.createElement('span')
       var copy = document.createElement('button')
       copy.innerHTML='kk'
+      copy.setAttribute("class", "copy")
+      copy.setAttribute("onClick", "copy(this)")
 
+
+      txt.textContent= obj.data+'-----'+obj.ip+'--'
+      
+      time.textContent=obj.date
       num.textContent=obj.num
-      const msgtxt = document.createTextNode(obj.date+'-----'+ obj.data+'-----'+obj.ip+'--');
+      num.setAttribute("class", "block")
 
-    node.append(msgtxt);
+
+      // num.textContent=obj.num
+      // const msgtxt = document.createTextNode(obj.date+'-----'+ obj.data+'-----'+obj.ip+'--');
+      // msgtxt.setAttribute("class", "block")
+
+    node.append(txt,num,copy,time);
     // msgtxt.before(num)
-    msgtxt.before(copy)
+    // msgtxt.after(copy)
 
 
         messages.appendChild(node);
