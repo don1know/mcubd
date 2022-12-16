@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <!-- <style>
+     h5{
+      display: inline-block;
+      font-size: 7px;
+     }
+     li{
+      font-size: 12px;
+     }
+     #input{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+     }
+     #but{
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      padding: 15px 25px 15px 25px;
+     }
+    
+    </style> -->
+  </head>
+  <body>
+    <button class="his" id="his"  onclick="loadHis()">History</button>
+    <h5 id="h5"></h5>
+    <ul id="messages"></ul>
+    <form id="form" action="">
+        <input id="input" autocomplete="off" /><button>Send</button>
+    </form>
+    <!-- <h1 id="h1"></h1> -->
+
+
+    <!-- <button id="but" onclick="go()" >stop reloading</button> -->
+
+
+
+
+
+<script>
+var messages = document.getElementById('messages');
+var form = document.getElementById('form');
+
+
+form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (input.value) {
+        //   socket.emit('chat message', input.value);
+          upload(input.value)
+          input.value = '';
+        }
+    });
+
+
+// ---------------get
+
+function get(){
+var xhttp = new XMLHttpRequest();
+xhttp.open("GET", 'https://nodebd.vercel.app/chatdata', true);
+xhttp.onload = function () {
+
+    if(this.responseText == [] || this.responseText == '[]'){
+        
+        document.getElementById('h5').innerText='0 data in collection'
+        
+    }else{
+        const arr = JSON.parse(this.responseText)
+        const obj=arr[0]
+
+        
+
+    //   var node = document.createElement('li')
+    //   var h5 = document.createElement('h5')
+    //   h5.textContent=obj.num
+    //   node.textContent =obj.date+'-----'+ obj.data+'-----'+obj.ip+'--' 
+    //   node.appendChild(h5);
+    //     messages.appendChild(node);
+
+    print(obj)
+
+    }
+}
+xhttp.send();
+};get()
+
+var print=async function (obj){
+
+    var node = document.createElement('li')
+      var num = document.createElement('span')
+      var copy = document.createElement('button')
+      copy.innerHTML='kk'
+
+      num.textContent=obj.num
+      const msgtxt = document.createTextNode(obj.date+'-----'+ obj.data+'-----'+obj.ip+'--');
+
+    node.append(msgtxt);
+    // msgtxt.before(num)
+    msgtxt.before(copy)
+
+
+        messages.appendChild(node);
+
+}
+
+
+
+async function upload(msgdata){
+
+    const ram=navigator.deviceMemory
+    const device=navigator.appVersion
+    const platform =navigator.platform
+
+
+ var xhttp = new XMLHttpRequest();
+xhttp.open("POST", 'http://localhost:8000/chatdata', true);
+// xhttp.onload = function () {
+//     const obj = JSON.parse(this.responseText);
+//     if(this.responseText=='[]'){document.getElementById("h1").innerHTML ='nai'}else{
+//       var node = document.createElement('li')
+//       var h5 = document.createElement('h5')
+//       h5.textContent=obj[0].num
+//       node.textContent =obj[0].date+'-----'+ obj[0].name+'-----'+obj[0].ipad+'--' 
+//       node.appendChild(h5);
+//         messages.appendChild(node);
+
+//     }}
+
+    xhttp.send(JSON.stringify({"data":msgdata,"ram":ram
+,"device":device,"platform":platform}));
+
+
+
+
+// data:JSON.parse(req.body).data,
+//     ram:JSON.parse(req.body).ram,
+//     device:JSON.parse(req.body).device,
+//     platform:JSON.parse(req.body).platform,
+
+
+}
+
+function loadHis(){
+  document.getElementById('his').disabled =true
+  var last =document.getElementById('messages')
+ if(last.firstChild.lastChild.innerHTML==1){alert('no more')}else{
+
+
+  var xhttp = new XMLHttpRequest();
+xhttp.open("GET", 'https://nodebd.vercel.app/his', true);
+
+xhttp.setRequestHeader('n', last.firstChild.lastChild.innerHTML-2)
+xhttp.onload = function () {
+    const obj = JSON.parse(this.responseText);
+    if(this.responseText=='[]'){document.getElementById("h1").innerHTML ='nai'}else{
+      var node = document.createElement('li')
+      var h5 = document.createElement('h5')
+      h5.textContent=obj[0].num
+    node.textContent =obj[0].date+'-----'+ obj[0].name+'-----'+obj[0].ipad+'--' 
+    node.appendChild(h5);
+
+    last.insertBefore(node, last.firstChild)
+  document.getElementById('his').disabled =false
+
+    }}
+    xhttp.send();
+
+}}
+
+
+function neww(){
+  var las =document.getElementById('messages')
+  var h11 =document.getElementById('h1')
+if(h11.innerHTML='nai'){
+
+  var xhttp = new XMLHttpRequest();
+xhttp.open("GET", 'https://nodebd.vercel.app/his', true);
+
+xhttp.onload = function () {
+    const obj = JSON.parse(this.responseText);
+    if(this.responseText=='[]'){}else{
+      var node = document.createElement('li')
+      var h5 = document.createElement('h5')
+      h5.textContent=obj[0].num
+    node.textContent =obj[0].date+'-----'+ obj[0].name+'-----'+obj[0].ipad+'--' 
+    node.appendChild(h5);
+    las.append(node);
+    }}
+
+    xhttp.send();
+}else if(document.getElementById('messages').lastChild){
+
+  var mesg=document.getElementById('messages')
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", 'https://nodebd.vercel.app/his', true);
+  xhttp.setRequestHeader('n', mesg.lastChild.lastChild.innerHTML)
+
+  xhttp.onload = function () {
+    const obj = JSON.parse(this.responseText);
+    if(this.responseText=='[]'){}else{
+      var node = document.createElement('li')
+      var h5 = document.createElement('h5')
+      h5.textContent=obj[0].num
+    node.textContent =obj[0].date+'-----'+ obj[0].name+'-----'+obj[0].ipad+'--' 
+    node.appendChild(h5);
+    las.append(node);
+    }}
+
+    xhttp.send();
+
+}else if(h11.innerHTML=''){}else{alert('what!!!')}
+
+}
+
+function go(){
+var but=document.getElementById('but')
+
+
+clearInterval(inter)
+but.style.backgroundColor='grey'
+but.innerText='stopped'
+}
+
+// var addMessage = function (msg, d, con) {
+//     var node = document.createElement('li')
+//     // node.style.backgroundColor = "red"
+//     node.textContent = msg;
+//         messages.appendChild(node);
+//       // if (con !== 'noo') { lkk() }
+//     addtime(d)
+// };
+
+
+// function loadHis(){
+//      var dae = document.getElementById("messages").children[1].innerText
+//     socket.emit('loadhis', dae)
+
+// }
+
+// socket.on('his', (data, ttt) => {
+//     addhis(data, ttt);
+// })
+
+
+// var addhis = function (msg, o) {
+//     {
+//       var onn=document.getElementById("messages")
+
+//       var node = document.createElement('li')
+//       node.textContent = msg;
+//       var no = document.createElement('li')
+      
+//         // messages.appendChild(no);
+//     }
+
+//     if (msg !== "No more data") { no.textContent = o; }
+//     // if (message === "No more data") { node.classList.add('last') }
+
+//     var one = onn.firstElementChild;
+//     onn.insertBefore(node, one)
+//     onn.insertBefore(no, one)
+// }
+
+
+
+
+</script>
+
+
+
+
+<link href="1.css" rel="stylesheet">
+
+  </body>
+</html>
+
+
+
+
