@@ -1,9 +1,6 @@
-if (("Notification" in window)) {
-    alert('yes noti in window')
-
-
-
+if (!("Notification" in window)) {
+    alert('no noti in windowk')
 }
 else{
-    alert('no noti in windowk')
+    alert('yes noti in window')
 }
