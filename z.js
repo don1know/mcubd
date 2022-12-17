@@ -1,3 +1,11 @@
+Notification.requestPermission().then(function(getperm) 
+{ 
+
+    console.log('Perm granted', getperm) 
+
+});
+
+
 if (!("Notification" in window)) {
     alert('no noti in windowk')
 }
