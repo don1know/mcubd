@@ -85,10 +85,11 @@
     }; get()
 
     function copy(ele) {
-      console.log(ele.parentElement.firstChild.innerText)
+      console.log('copied:'+ ele.parentElement.firstChild.innerText)
       navigator.clipboard.writeText(ele.parentElement.firstChild.innerText)
 
-      document.getElementById('copylogo').stop()
+      
+      ele.children[0].stop()
     }
 
     var print = async function (obj, hisprint) {
@@ -111,15 +112,8 @@
       copylogo.setAttribute("style", "width:30px; ")
       // copylogo.setAttribute("loop","true")
       copylogo.setAttribute("autoplay","true")
-
-
       ip.setAttribute("style", "float:right; ")
       
-
-
-
-
-
       txt.textContent = obj.data
       ip.textContent = ' '+'['+obj.ip+']'
       time.textContent = obj.date
