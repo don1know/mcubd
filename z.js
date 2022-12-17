@@ -1,6 +1,6 @@
 if (!("Notification" in window)) {
     alert('no noti in windowk')
 }
-else{
-    alert('yes noti in window')
+else if(Notification.permission === "granted"){
+    const notification = new Notification("Hi there!");
 }
