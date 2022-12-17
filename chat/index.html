@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head> 
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat</title>
-    <!-- <style>
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
+  <!-- <style>
      h5{
       display: inline-block;
       font-size: 7px;
@@ -27,285 +28,233 @@
      }
     
     </style> -->
-  </head>
-  <body>
-    <button class="his" id="his"  onclick="loadHis()">History</button>
-    <h5 id="h5"></h5>
-    <ul id="messages"></ul>
-    <form id="form" action="">
-        <input id="input" autocomplete="off" /><button>Send</button>
-    </form>
-    <!-- <h1 id="h1"></h1> -->
+</head>
+
+<body>
+  <button class="his" id="his" onclick="loadHis()">History</button>
+  <h5 id="h5"></h5>
+  <ul id="messages"></ul>
+  <form id="form" action="">
+    <input id="input" autocomplete="off" /><button>Send</button>
+  </form>
+  <!-- <h1 id="h1"></h1> -->
 
 
-    <!-- <button id="but" onclick="go()" >stop reloading</button> -->
+  <!-- <button id="but" onclick="go()" >stop reloading</button> -->
 
 
 
 
 
-<script>
-var messages = document.getElementById('messages');
-var form = document.getElementById('form');
+  <script>
+    var messages = document.getElementById('messages');
+    var form = document.getElementById('form');
 
 
-form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (input.value) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (input.value) {
         //   socket.emit('chat message', input.value);
-          upload(input.value)
-          input.value = '';
-        }
+        dbsend(input.value)
+        // input.value = '';
+      }
     });
 
 
-// ---------------get
+    // ---------------get
 
-function get(){
-var xhttp = new XMLHttpRequest();
-xhttp.open("GET", 'https://nodebd.vercel.app/chatdata', true);
-xhttp.onload = function () {
+    function get() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("GET", 'https://nodebd.vercel.app/chatdata', true);
+      xhttp.onload = function () {
 
-    if(this.responseText == [] || this.responseText == '[]'){
-        
-        document.getElementById('h5').innerText='0 data in collection'
-        
-    }else{
-        const arr = JSON.parse(this.responseText)
-        const obj=arr[0]
+        if (this.responseText == [] || this.responseText == '[]') {
 
-        
+          document.getElementById('h5').innerText = '0 data in collection'
 
-    //   var node = document.createElement('li')
-    //   var h5 = document.createElement('h5')
-    //   h5.textContent=obj.num
-    //   node.textContent =obj.date+'-----'+ obj.data+'-----'+obj.ip+'--' 
-    //   node.appendChild(h5);
-    //     messages.appendChild(node);
+        } else {
+          const arr = JSON.parse(this.responseText)
+          const obj = arr[0]
 
-    print(obj)
 
+          print(obj)
+
+        }
+      }
+      xhttp.send();
+    }; get()
+
+    function copy(ele) {
+      console.log(ele.parentElement.firstChild.innerText)
+      navigator.clipboard.writeText(ele.parentElement.firstChild.innerText)
+
+      ele.style.backgroundColor = 'white'
     }
-}
-xhttp.send();
-};get()
 
-function copy(ele){
-  console.log(ele.parentElement.firstChild.innerText)
-  navigator.clipboard.writeText(ele.parentElement.firstChild.innerText)
-  .then(() => {
-        alert("successfully copied");
-      })
-      .catch(() => {
-        alert("something went wrong");
-      });
-      
-  ele.style.backgroundColor='white'
-}
+    var print = async function (obj, hisprint) {
 
-var print=async function (obj){
 
-    var node = document.createElement('li')
+
+      var node = document.createElement('li')
       var num = document.createElement('span')
       var txt = document.createElement('span')
       var time = document.createElement('span')
       var copy = document.createElement('button')
-      copy.innerHTML='kk'
+      copy.innerHTML = 'kk'
       copy.setAttribute("class", "copy")
       copy.setAttribute("onClick", "copy(this)")
 
 
-      txt.textContent= obj.data+'-----'+obj.ip+'--'
-      
-      time.textContent=obj.date
-      num.textContent=obj.num
+      txt.textContent = obj.data + '-----' + obj.ip + '--'
+
+      time.textContent = obj.date
+      num.textContent = obj.num
       num.setAttribute("class", "block")
 
+      node.append(txt, num, copy, time);
+      if (hisprint == 'hisprint') {
+        console.log(messages.firstChild)
+        messages.insertBefore(node,document.getElementById('messages').firstChild)
+      document.getElementById('his').disabled = false
 
-      // num.textContent=obj.num
-      // const msgtxt = document.createTextNode(obj.date+'-----'+ obj.data+'-----'+obj.ip+'--');
-      // msgtxt.setAttribute("class", "block")
-
-    node.append(txt,num,copy,time);
-    // msgtxt.before(num)
-    // msgtxt.after(copy)
-
-
+        
+      } else {
         messages.appendChild(node);
 
-}
+      }
+    }
 
 
 
-async function upload(msgdata){
+    async function dbsend(msgdata) {
+      let ram='not-found'
+      let  device='not-found'
+      let platform='not-found'
+      if(window.navigator.deviceMemory){ram = navigator.deviceMemory}
+      if(window.navigator.appVersion){device = navigator.appVersion}
+      if(window.navigator.platform){platform =navigator.platform}
 
-    const ram=navigator.deviceMemory
-    const device=navigator.appVersion
-    const platform =navigator.platform
+       
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("POST", 'https://nodebd.vercel.app/chatdata', true);
+      xhttp.onload = function () {
+        const arr = JSON.parse(this.responseText);
+        const obj=arr[0]
+        if(obj.data==msgdata){
 
+          print(obj)
+         document.getElementById('input').value=''
 
- var xhttp = new XMLHttpRequest();
-xhttp.open("POST", 'http://localhost:8000/chatdata', true);
-// xhttp.onload = function () {
-//     const obj = JSON.parse(this.responseText);
-//     if(this.responseText=='[]'){document.getElementById("h1").innerHTML ='nai'}else{
-//       var node = document.createElement('li')
-//       var h5 = document.createElement('h5')
-//       h5.textContent=obj[0].num
-//       node.textContent =obj[0].date+'-----'+ obj[0].name+'-----'+obj[0].ipad+'--' 
-//       node.appendChild(h5);
-//         messages.appendChild(node);
+        }
+        else{
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
 
-//     }}
+        }
 
-    xhttp.send(JSON.stringify({"data":msgdata,"ram":ram
-,"device":device,"platform":platform}));
+        
+      }
 
+      xhttp.send(JSON.stringify({
+        "data": msgdata, "ram": ram
+        , "device": device, "platform": platform
+      }));
 
+    }
 
+    function loadHis() {
+      document.getElementById('his').disabled = true
+      var last = document.getElementById('messages')
 
-// data:JSON.parse(req.body).data,
-//     ram:JSON.parse(req.body).ram,
-//     device:JSON.parse(req.body).device,
-//     platform:JSON.parse(req.body).platform,
+      if (last.firstChild.children[1].innerText == 1) { alert('no more') } else {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", 'https://nodebd.vercel.app/chatdatahis', true);
 
+        xhttp.onload = function () {
+          const obj = JSON.parse(this.responseText);
+          if (this.responseText == '[]') { document.getElementById("h5").innerHTML = 'nai' } else {
 
-}
+            const arr = JSON.parse(this.responseText)
+            const obj = arr[0]
+            print(obj, 'hisprint')
 
-function loadHis(){
-  document.getElementById('his').disabled =true
-  var last =document.getElementById('messages')
- if(last.firstChild.lastChild.innerHTML==1){alert('no more')}else{
-
-
-  var xhttp = new XMLHttpRequest();
-xhttp.open("GET", 'https://nodebd.vercel.app/his', true);
-
-xhttp.setRequestHeader('n', last.firstChild.lastChild.innerHTML-2)
-xhttp.onload = function () {
-    const obj = JSON.parse(this.responseText);
-    if(this.responseText=='[]'){document.getElementById("h1").innerHTML ='nai'}else{
-      var node = document.createElement('li')
-      var h5 = document.createElement('h5')
-      h5.textContent=obj[0].num
-    node.textContent =obj[0].date+'-----'+ obj[0].name+'-----'+obj[0].ipad+'--' 
-    node.appendChild(h5);
-
-    last.insertBefore(node, last.firstChild)
-  document.getElementById('his').disabled =false
-
-    }}
-    xhttp.send();
-
-}}
-
-
-function neww(){
-  var las =document.getElementById('messages')
-  var h11 =document.getElementById('h1')
-if(h11.innerHTML='nai'){
-
-  var xhttp = new XMLHttpRequest();
-xhttp.open("GET", 'https://nodebd.vercel.app/his', true);
-
-xhttp.onload = function () {
-    const obj = JSON.parse(this.responseText);
-    if(this.responseText=='[]'){}else{
-      var node = document.createElement('li')
-      var h5 = document.createElement('h5')
-      h5.textContent=obj[0].num
-    node.textContent =obj[0].date+'-----'+ obj[0].name+'-----'+obj[0].ipad+'--' 
-    node.appendChild(h5);
-    las.append(node);
-    }}
-
-    xhttp.send();
-}else if(document.getElementById('messages').lastChild){
-
-  var mesg=document.getElementById('messages')
-  var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", 'https://nodebd.vercel.app/his', true);
-  xhttp.setRequestHeader('n', mesg.lastChild.lastChild.innerHTML)
-
-  xhttp.onload = function () {
-    const obj = JSON.parse(this.responseText);
-    if(this.responseText=='[]'){}else{
-      var node = document.createElement('li')
-      var h5 = document.createElement('h5')
-      h5.textContent=obj[0].num
-    node.textContent =obj[0].date+'-----'+ obj[0].name+'-----'+obj[0].ipad+'--' 
-    node.appendChild(h5);
-    las.append(node);
-    }}
-
-    xhttp.send();
-
-}else if(h11.innerHTML=''){}else{alert('what!!!')}
-
-}
-
-function go(){
-var but=document.getElementById('but')
+          }
+        }
 
 
-clearInterval(inter)
-but.style.backgroundColor='grey'
-but.innerText='stopped'
-}
 
-// var addMessage = function (msg, d, con) {
-//     var node = document.createElement('li')
-//     // node.style.backgroundColor = "red"
-//     node.textContent = msg;
-//         messages.appendChild(node);
-//       // if (con !== 'noo') { lkk() }
-//     addtime(d)
-// };
+        xhttp.send(last.firstChild.children[1].innerText);
+
+      }
+    }
 
 
-// function loadHis(){
-//      var dae = document.getElementById("messages").children[1].innerText
-//     socket.emit('loadhis', dae)
+    // function neww() {
+    //   var las = document.getElementById('messages')
+    //   var h11 = document.getElementById('h1')
+    //   if (h11.innerHTML = 'nai') {
 
-// }
+    //     var xhttp = new XMLHttpRequest();
+    //     xhttp.open("GET", 'https://nodebd.vercel.app/his', true);
 
-// socket.on('his', (data, ttt) => {
-//     addhis(data, ttt);
-// })
+    //     xhttp.onload = function () {
+    //       const obj = JSON.parse(this.responseText);
+    //       if (this.responseText == '[]') { } else {
+    //         var node = document.createElement('li')
+    //         var h5 = document.createElement('h5')
+    //         h5.textContent = obj[0].num
+    //         node.textContent = obj[0].date + '-----' + obj[0].name + '-----' + obj[0].ipad + '--'
+    //         node.appendChild(h5);
+    //         las.append(node);
+    //       }
+    //     }
 
+    //     xhttp.send();
+    //   } else if (document.getElementById('messages').lastChild) {
 
-// var addhis = function (msg, o) {
-//     {
-//       var onn=document.getElementById("messages")
+    //     var mesg = document.getElementById('messages')
+    //     var xhttp = new XMLHttpRequest();
+    //     xhttp.open("GET", 'https://nodebd.vercel.app/his', true);
+    //     xhttp.setRequestHeader('n', mesg.lastChild.lastChild.innerHTML)
 
-//       var node = document.createElement('li')
-//       node.textContent = msg;
-//       var no = document.createElement('li')
-      
-//         // messages.appendChild(no);
-//     }
+    //     xhttp.onload = function () {
+    //       const obj = JSON.parse(this.responseText);
+    //       if (this.responseText == '[]') { } else {
+    //         var node = document.createElement('li')
+    //         var h5 = document.createElement('h5')
+    //         h5.textContent = obj[0].num
+    //         node.textContent = obj[0].date + '-----' + obj[0].name + '-----' + obj[0].ipad + '--'
+    //         node.appendChild(h5);
+    //         las.append(node);
+    //       }
+    //     }
 
-//     if (msg !== "No more data") { no.textContent = o; }
-//     // if (message === "No more data") { node.classList.add('last') }
+    //     xhttp.send();
 
-//     var one = onn.firstElementChild;
-//     onn.insertBefore(node, one)
-//     onn.insertBefore(no, one)
-// }
+    //   } else if (h11.innerHTML = '') { } else { alert('what!!!') }
+
+    // }
 
 
 
 
-</script>
+
+
+
+  </script>
 
 
 
 
-<link href="1.css" rel="stylesheet">
+  <link href="1.css" rel="stylesheet">
 
-  </body>
+</body>
+
 </html>
-
-
-
-
