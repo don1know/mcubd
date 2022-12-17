@@ -3,7 +3,9 @@ Notification.requestPermission().then(function(getperm)
 
     console.log('Perm granted', getperm) 
 
-});
+}).catch((e) => {
+ console.log(e)
+})
 
 
 if (!("Notification" in window)) {
