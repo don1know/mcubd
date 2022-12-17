@@ -1,4 +1,4 @@
-if (!("Notification" in window)) {
+if (("Notification" in window)) {
     alert('yes noti in window')
 
 
