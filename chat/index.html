@@ -88,40 +88,55 @@
       console.log(ele.parentElement.firstChild.innerText)
       navigator.clipboard.writeText(ele.parentElement.firstChild.innerText)
 
-      ele.style.backgroundColor = 'white'
+      document.getElementById('copylogo').stop()
     }
 
     var print = async function (obj, hisprint) {
 
-
-
       var node = document.createElement('li')
       var num = document.createElement('span')
+      var ip = document.createElement('span')
       var txt = document.createElement('span')
       var time = document.createElement('span')
       var copy = document.createElement('button')
-      copy.innerHTML = 'kk'
+      var copylogo = document.createElement('lottie-player')
+
+
       copy.setAttribute("class", "copy")
       copy.setAttribute("onClick", "copy(this)")
+      copylogo.setAttribute("src", "https://assets6.lottiefiles.com/packages/lf20_niqylzi0.json")
+      copylogo.setAttribute("background", "transparent")
+      copylogo.setAttribute("speed", "3")
+      copylogo.setAttribute("id", "copylogo")
+      copylogo.setAttribute("style", "width:30px; ")
+      // copylogo.setAttribute("loop","true")
+      copylogo.setAttribute("autoplay","true")
 
 
-      txt.textContent = obj.data + '-----' + obj.ip + '--'
+      ip.setAttribute("style", "float:right; ")
+      
 
+
+
+
+
+      txt.textContent = obj.data
+      ip.textContent = ' '+'['+obj.ip+']'
       time.textContent = obj.date
       num.textContent = obj.num
       num.setAttribute("class", "block")
-
-      node.append(txt, num, copy, time);
+      copy.append(copylogo);
+      node.append(txt,num, copy, time,ip);
       if (hisprint == 'hisprint') {
         console.log(messages.firstChild)
         messages.insertBefore(node,document.getElementById('messages').firstChild)
       document.getElementById('his').disabled = false
-
-        
       } else {
         messages.appendChild(node);
-
       }
+      // document.getElementById('copylogo').stop()
+
+
     }
 
 
@@ -196,51 +211,39 @@
     }
 
 
-    // function neww() {
-    //   var las = document.getElementById('messages')
-    //   var h11 = document.getElementById('h1')
-    //   if (h11.innerHTML = 'nai') {
+    function neww() {
+      var ul = document.getElementById('messages')
+      // console.log(ul.lastChild.children[1].innerText)
+      
+      if(ul.lastChild){
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", 'https://nodebd.vercel.app/chatdatanew', true);
 
-    //     var xhttp = new XMLHttpRequest();
-    //     xhttp.open("GET", 'https://nodebd.vercel.app/his', true);
+        xhttp.onload = function () {
+          if (this.responseText == '[]' || this.responseText== []) { } else {
+            const arr = JSON.parse(this.responseText);
+            const obj =arr[0]
+            console.log(obj)
 
-    //     xhttp.onload = function () {
-    //       const obj = JSON.parse(this.responseText);
-    //       if (this.responseText == '[]') { } else {
-    //         var node = document.createElement('li')
-    //         var h5 = document.createElement('h5')
-    //         h5.textContent = obj[0].num
-    //         node.textContent = obj[0].date + '-----' + obj[0].name + '-----' + obj[0].ipad + '--'
-    //         node.appendChild(h5);
-    //         las.append(node);
-    //       }
-    //     }
+            print(obj)
 
-    //     xhttp.send();
-    //   } else if (document.getElementById('messages').lastChild) {
+          }
+        }
 
-    //     var mesg = document.getElementById('messages')
-    //     var xhttp = new XMLHttpRequest();
-    //     xhttp.open("GET", 'https://nodebd.vercel.app/his', true);
-    //     xhttp.setRequestHeader('n', mesg.lastChild.lastChild.innerHTML)
+        xhttp.send(ul.lastChild.children[1].innerText);
+      }else{
+        
+      }
 
-    //     xhttp.onload = function () {
-    //       const obj = JSON.parse(this.responseText);
-    //       if (this.responseText == '[]') { } else {
-    //         var node = document.createElement('li')
-    //         var h5 = document.createElement('h5')
-    //         h5.textContent = obj[0].num
-    //         node.textContent = obj[0].date + '-----' + obj[0].name + '-----' + obj[0].ipad + '--'
-    //         node.appendChild(h5);
-    //         las.append(node);
-    //       }
-    //     }
 
-    //     xhttp.send();
+  }
 
-    //   } else if (h11.innerHTML = '') { } else { alert('what!!!') }
 
-    // }
+setInterval(() => {
+  
+  neww()
+}, 12000);
+
 
 
 
@@ -251,12 +254,10 @@
   </script>
 
 
-<div style="display:none" id="failed" class="failed">
+<!-- <div style="" id="failed" class="failed">
   <lottie-player src="https://mcubd.netlify.app/logoimg/copy.json"
-      background="transparent" speed="1" style=" height: 120px;" loop autoplay></lottie-player>
-
-  <p id="sendtxt">Failed to send.Plz cheak ur internet connection or refresh the website</p>
-</div>
+      background="transparent" speed="1" style=" height: 20px;" loop autoplay></lottie-player>
+</div> -->
 
   <link href="1.css" rel="stylesheet">
   <script src="http://mcubd.netlify.app/lottie-player.js"></script>
