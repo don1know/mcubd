@@ -34,7 +34,7 @@ function upload() {
         h3.innerHTML = percent + '%'
     }, (err) => {
         console.log(err)
-
+ 
     }, () => {
         uploadtusk.snapshot.ref.getDownloadURL().then((url) => {
             console.log(url)

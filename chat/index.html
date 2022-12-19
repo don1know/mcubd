@@ -1,65 +1,114 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat</title>
+  <link href="1.css" rel="stylesheet">
+  <script src="https://mcubd.netlify.app/lottie-player.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
 </head>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-<script src="https://kit.fontawesome.com/a33530bb41.js" crossorigin="anonymous"></script>
-
 
 <body>
-  <button class="his" id="his" onclick="loadHis()">History</button>
-  <h5 id="h5"></h5>
-  <ul id="messages"></ul>
-  
-  <i class="fa-solid fa-paper-plane-top"></i>
 
-  <form id="form" action="">
-    <input id="input" placeholder="Type..." autocomplete="off" /><button>
-
-    </button>
-  </form>
+  <div id="body">
 
 
+    <button class="his" id="his" onclick="loadHis()">History</button>
+    <h5 id="h5"></h5>
+    <ul id="messages"></ul>
+
+
+
+    <form id="form" action="">
+      <div class="box">
+        <hr>
+
+        <!-- gallary logo svg -->
+
+        <label id="file">
+
+
+
+
+          <svg fill="#000000" viewBox="0 0 64 64">
+            <path
+              d="M49,13c3.314,0,6,2.686,6,6v26c0,3.314-2.686,6-6,6H15c-3.314,0-6-2.686-6-6V19c0-3.314,2.686-6,6-6H49z M23,23	c-2.209,0-4,1.791-4,4c0,2.209,1.791,4,4,4c2.209,0,4-1.791,4-4C27,24.791,25.209,23,23,23z M51,45v-3.566l-9.319-8.38	c-1.524-1.37-3.836-1.367-5.356,0.006l-7.922,7.158l-3.793-3.244c-1.501-1.284-3.714-1.28-5.211,0.009L13,42.496V45	c0,1.105,0.895,2,2,2h34C50.104,47,51,46.105,51,45z">
+
+            </path>
+          </svg>
+          <input id="f" accept="image/*" onchange="gotfile(event)" type="file" />
+
+        </label>
+
+
+        <textarea id="input" rows="1" placeholder="Type..." autocomplete="off"></textarea>
+
+
+
+        <!-- Send logo svg -->
+        <svg id="send" onclick="sendclick()" viewBox="0 0 24 24" id="trt">
+          <path
+            d="M16.6915026,12.4744748 L3.50612381,13.2599618 C3.19218622,13.2599618 3.03521743,13.4170592 3.03521743,13.5741566 L1.15159189,20.0151496 C0.8376543,20.8006365 0.99,21.89 1.77946707,22.52 C2.41,22.99 3.50612381,23.1 4.13399899,22.8429026 L21.714504,14.0454487 C22.6563168,13.5741566 23.1272231,12.6315722 22.9702544,11.6889879 C22.8132856,11.0605983 22.3423792,10.4322088 21.714504,10.118014 L4.13399899,1.16346272 C3.34915502,0.9 2.40734225,1.00636533 1.77946707,1.4776575 C0.994623095,2.10604706 0.8376543,3.0486314 1.15159189,3.99121575 L3.03521743,10.4322088 C3.03521743,10.5893061 3.34915502,10.7464035 3.50612381,10.7464035 L16.6915026,11.5318905 C16.6915026,11.5318905 17.1624089,11.5318905 17.1624089,12.0031827 C17.1624089,12.4744748 16.6915026,12.4744748 16.6915026,12.4744748 Z">
+          </path>
+        </svg>
+
+
+      </div>
+    </form>
+
+
+  </div>
 
 
 
   <script>
     var messages = document.getElementById('messages');
     var form = document.getElementById('form');
+    const firebaseConfig = {
+      apiKey: "AIzaSyA5gs25IDoaJfCE5_tI7ulE8zossMcnnkY",
+      authDomain: "jsprj-b0693.firebaseapp.com",
+      databaseURL: "https://jsprj-b0693-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "jsprj-b0693",
+      storageBucket: "jsprj-b0693.appspot.com",
+      messagingSenderId: "581883143558",
+      appId: "1:581883143558:web:26fa31b2aa1b5afd19b807",
+      measurementId: "G-VVQ6N17N9M"
+    };
+    var fileitem, filename, percent
 
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
+    function sendclick() {
+      // e.preventDefault();
       if (input.value) {
         //   socket.emit('chat message', input.value);
         dbsend(input.value)
         // input.value = '';
       }
-    });
+
+    }
+
 
 
     // ---------------get
-
-  
     function get() {
       var xhttp = new XMLHttpRequest();
       xhttp.open("GET", 'https://nodebd.vercel.app/chatdata', true);
       xhttp.onload = function () {
 
         if (this.responseText == [] || this.responseText == '[]') {
-
           document.getElementById('h5').innerText = '0 data in collection'
-
         } else {
           const arr = JSON.parse(this.responseText)
           const obj = arr[0]
 
-
-          print(obj)
+          if(obj.media){
+            print(obj,'media')
+          }else{
+            print(obj)
+          }
 
         }
       }
@@ -67,19 +116,25 @@
     }; get()
 
     function copy(ele) {
-      console.log('copied:'+ ele.parentElement.firstChild.innerText)
+      console.log('copied:' + ele.parentElement.firstChild.innerText)
       navigator.clipboard.writeText(ele.parentElement.firstChild.innerText)
 
-      
+
       ele.children[0].stop()
 
       setTimeout(() => {
-      ele.children[0].play()
-        
+        ele.children[0].play()
+
       }, 4000);
     }
 
-    var print = async function (obj, hisprint) {
+    var print = async function (obj, two) {
+
+      if(two=='media'){
+        print2(obj,obj.media)
+      }else{
+
+     
 
       var node = document.createElement('li')
       var num = document.createElement('span')
@@ -98,69 +153,161 @@
       copylogo.setAttribute("id", "copylogo")
       copylogo.setAttribute("style", "width:30px; ")
       // copylogo.setAttribute("loop","true")
-      copylogo.setAttribute("autoplay","true")
+      copylogo.setAttribute("autoplay", "true")
       ip.setAttribute("style", "float:right; ")
-      
+
       txt.textContent = obj.data
-      ip.textContent = ' '+'['+obj.ip+']'
+      ip.textContent = ' ' + '[' + obj.ip + ']'
       time.textContent = obj.date
       num.textContent = obj.num
       num.setAttribute("class", "block")
       copy.append(copylogo);
-      node.append(txt,num, copy, time,ip);
-      if (hisprint == 'hisprint') {
+      node.append(txt, num, copy, time, ip);
+      if (two == 'hisprint') {
         console.log(messages.firstChild)
-        messages.insertBefore(node,document.getElementById('messages').firstChild)
-      document.getElementById('his').disabled = false
+        messages.insertBefore(node, document.getElementById('messages').firstChild)
+        document.getElementById('his').disabled = false
       } else {
         messages.appendChild(node);
       }
       // document.getElementById('copylogo').stop()
 
+    }
+    }
+
+
+    var print2 = async function (obj, type,his) {
+      var node = document.createElement('li')
+      var clickdiv = document.createElement('div')
+      var num = document.createElement('span')
+      var ip = document.createElement('span')
+      var time = document.createElement('span')
+      num.textContent = obj.num
+      num.setAttribute("class", "block")
+
+
+
+      if (type == 'img') {
+        var img = document.createElement('img'); img.setAttribute("src", obj.data)
+        img.setAttribute("width", "50%"); clickdiv.setAttribute("onclick", "full(this)")
+        clickdiv.append(img)
+      } 
+      else if (type == 'audio') {
+        var aud = document.createElement('audio')
+        aud.src=obj.data;
+        aud.setAttribute("controls", true)
+        aud.style.cssText = 'width:40%;'
+        clickdiv.append(aud)
+      }
+       else if (type == 'vid') {
+        var vid = document.createElement('video')
+        vid.src=obj.data;
+        vid.setAttribute("controls", true)
+        
+        // vid.setAttribute('autoplay', 'true')
+        vid.setAttribute('controlsList', 'noplaybackrate  ')
+        vid.setAttribute('oncontextmenu', 'return false;')
+        vid.disablePictureInPicture = true;
+        vid.style.cssText = 'width:80%;'
+        clickdiv.append(vid)
+      }
+      else {
+        var download = document.createElement('button')
+
+
+      }
+
+
+
+      node.append(clickdiv,num)
+
+      if(his){
+        messages.insertBefore(node, document.getElementById('messages').firstChild)
+        document.getElementById('his').disabled = false
+
+
+      }else{
+
+        messages.appendChild(node);
+      }
+
 
     }
 
 
+    function full(ele) {
+      console.log(ele.children[0].src)
+      document.getElementById('body').style.display = 'none'
 
-    async function dbsend(msgdata) {
-      let ram='not-found'
-      let  device='not-found'
-      let platform='not-found'
-      if(window.navigator.deviceMemory){ram = navigator.deviceMemory}
-      if(window.navigator.appVersion){device = navigator.appVersion}
-      if(window.navigator.platform){platform =navigator.platform}
 
-       
+      var tempo = document.createElement('div')
+      var cut = document.createElement('button')
+      var img = document.createElement('img')
+      img.setAttribute("src", ele.children[0].src)
+      img.style.cssText = 'width:99%'
+
+      cut.textContent = 'x'
+
+      cut.onclick = function () {
+        document.getElementById('body').style.display = ''
+        tempo.remove()
+
+      }
+
+
+
+
+      tempo.append(img, cut)
+      document.body.append(tempo)
+    }
+
+
+
+
+    async function dbsend(msgdata, media) {
+      let ram = 'not-found'
+      let device = 'not-found'
+      let platform = 'not-found'
+      if (window.navigator.deviceMemory) { ram = navigator.deviceMemory }
+      if (window.navigator.appVersion) { device = navigator.appVersion }
+      if (window.navigator.platform) { platform = navigator.platform }
+
+
       var xhttp = new XMLHttpRequest();
       xhttp.open("POST", 'https://nodebd.vercel.app/chatdata', true);
       xhttp.onload = function () {
         const arr = JSON.parse(this.responseText);
-        const obj=arr[0]
-        if(obj.data==msgdata){
+        const obj = arr[0]
+        if (obj.data == msgdata) {
 
-          print(obj)
-         document.getElementById('input').value=''
- 
-        }
-        else{
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
+          if (obj.media) {
+            print(obj,'media')
+            
+          } else {
+            print(obj)
+            document.getElementById('input').value = ''
+          }
 
         }
+        else {
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
 
-        
+        }
+
+
       }
 
       xhttp.send(JSON.stringify({
         "data": msgdata, "ram": ram
-        , "device": device, "platform": platform
+        , "device": device, "platform": platform, media: media
       }));
 
     }
@@ -169,7 +316,8 @@
       document.getElementById('his').disabled = true
       var last = document.getElementById('messages')
 
-      if (last.firstChild.children[1].innerText == 1) { alert('no more') } else {
+
+      if (last.firstChild.querySelector('.block').innerText == 1) { alert('no more') } else {
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/chatdatahis', true);
 
@@ -179,7 +327,14 @@
 
             const arr = JSON.parse(this.responseText)
             const obj = arr[0]
-            print(obj, 'hisprint')
+
+            if(obj.media){
+              print2(obj,obj.media,'his')
+            }else{
+
+              print(obj, 'hisprint')
+            }
+
 
           }
         }
@@ -195,15 +350,15 @@
     function neww() {
       var ul = document.getElementById('messages')
       // console.log(ul.lastChild.children[1].innerText)
-      
-      if(ul.lastChild){
+
+      if (ul.lastChild) {
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/chatdatanew', true);
 
         xhttp.onload = function () {
-          if (this.responseText == '[]' || this.responseText== []) { } else {
+          if (this.responseText == '[]' || this.responseText == []) { } else {
             const arr = JSON.parse(this.responseText);
-            const obj =arr[0]
+            const obj = arr[0]
             console.log(obj)
 
             print(obj)
@@ -212,33 +367,70 @@
         }
 
         xhttp.send(ul.lastChild.children[1].innerText);
-      }else{
-        
+      } else {
+
       }
 
 
-  }
+    }
 
 
-setInterval(() => { neww() }, 12000);
+    setInterval(() => { neww() }, 12000);
 
 
+    setTimeout(() => { firebase.initializeApp(firebaseConfig); }, 2000);
 
 
+    function gotfile(e) {
+      fileitem = e.target.files[0]
+      filename = fileitem.name
+      filetype = fileitem.type
+      var type = filetype.toLowerCase();
 
+      var resimg = type.match(/image/i)
+      var resaudio = type.match(/audio/i)
+      var resvid = type.match(/video/i)
 
+      var firestr
+      var dbsendtype
+      if (resimg) {
+        firestr = firebase.storage().ref("img/" + filename); dbsendtype = 'img'
+      } else if (resaudio) {
+        firestr = firebase.storage().ref("audio/" + filename); dbsendtype = 'audio'
+      } else if (resvid) {
+        firestr = firebase.storage().ref("vid/" + filename); dbsendtype = 'vid'
+      } else {
+        firestr = firebase.storage().ref("file/" + filename); dbsendtype = 'file'
+      }
+
+      var uploadtusk = firestr.put(fileitem)
+
+      uploadtusk.on("state_changed", (snapshot) => {
+        console.log(snapshot)
+        var percent = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+        console.log(percent)
+        // h3.innerHTML = percent + '%'
+      }, (err) => {
+        console.log(err)
+
+      }, () => {
+        uploadtusk.snapshot.ref.getDownloadURL().then((url) => {
+          console.log(url)
+          dbsend(url, dbsendtype)
+          // img.src=url
+
+        }).catch((err) => {
+          console.log(err)
+        })
+      })
+
+    }
 
 
   </script>
 
 
-<!-- <div style="" id="failed" class="failed">
-  <lottie-player src="https://mcubd.netlify.app/logoimg/copy.json"
-      background="transparent" speed="1" style=" height: 20px;" loop autoplay></lottie-player>
-</div> -->
 
-  <link href="1.css" rel="stylesheet">
-  <script src="https://mcubd.netlify.app/lottie-player.js"></script>
 
 
 </body>
