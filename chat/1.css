@@ -45,7 +45,9 @@
       #h5{margin: 0px;padding: 0px;}
       .copy{outline: none !important;border: none !important;box-shadow: none !important;padding: 0px;}
       .block{display: block;font-size: 6px;}
-
+a{
+      background-color: #141412;
+}
 
       #file{
             position: absolute;
@@ -58,8 +60,18 @@
 
       hr{margin: 0px;padding: 0px;border-top: 1px solid #fdfdfd;}
 
-      img,video{
+      .img,.vid{
             border:1px solid green;
+            background-color:black;
+            width: calc(40vw);
+            /* height: calc(40vh);  */
+            /* overflow: hidden; */
+            object-fit:contain;
+            /* image-rendering: optimizeSpeed; */
+            /* aspect-ratio: 9/16; */
+            /* object-fit: cover; */
+            
+
       }
 
 

@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" 
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <title>Chat</title>
   <link href="1.css" rel="stylesheet">
   <script src="https://mcubd.netlify.app/lottie-player.js"></script>
@@ -104,9 +105,9 @@
           const arr = JSON.parse(this.responseText)
           const obj = arr[0]
 
-          if(obj.media){
-            print(obj,'media')
-          }else{
+          if (obj.media) {
+            print(obj, 'media')
+          } else {
             print(obj)
           }
 
@@ -130,53 +131,55 @@
 
     var print = async function (obj, two) {
 
-      if(two=='media'){
-        print2(obj,obj.media)
-      }else{
-
-     
-
-      var node = document.createElement('li')
-      var num = document.createElement('span')
-      var ip = document.createElement('span')
-      var txt = document.createElement('span')
-      var time = document.createElement('span')
-      var copy = document.createElement('button')
-      var copylogo = document.createElement('lottie-player')
-
-
-      copy.setAttribute("class", "copy")
-      copy.setAttribute("onClick", "copy(this)")
-      copylogo.setAttribute("src", "https://assets6.lottiefiles.com/packages/lf20_niqylzi0.json")
-      copylogo.setAttribute("background", "transparent")
-      copylogo.setAttribute("speed", "3")
-      copylogo.setAttribute("id", "copylogo")
-      copylogo.setAttribute("style", "width:30px; ")
-      // copylogo.setAttribute("loop","true")
-      copylogo.setAttribute("autoplay", "true")
-      ip.setAttribute("style", "float:right; ")
-
-      txt.textContent = obj.data
-      ip.textContent = ' ' + '[' + obj.ip + ']'
-      time.textContent = obj.date
-      num.textContent = obj.num
-      num.setAttribute("class", "block")
-      copy.append(copylogo);
-      node.append(txt, num, copy, time, ip);
-      if (two == 'hisprint') {
-        console.log(messages.firstChild)
-        messages.insertBefore(node, document.getElementById('messages').firstChild)
-        document.getElementById('his').disabled = false
+      if (two == 'media') {
+        print2(obj, obj.media)
       } else {
-        messages.appendChild(node);
+
+
+
+        var node = document.createElement('li')
+        var num = document.createElement('span')
+        var ip = document.createElement('span')
+        var txt = document.createElement('span')
+        var time = document.createElement('span')
+        var copy = document.createElement('button')
+        var copylogo = document.createElement('lottie-player')
+
+
+        copy.setAttribute("class", "copy")
+        copy.setAttribute("onClick", "copy(this)")
+        copylogo.setAttribute("src", "https://assets6.lottiefiles.com/packages/lf20_niqylzi0.json")
+        copylogo.setAttribute("background", "transparent")
+        copylogo.setAttribute("speed", "3")
+        copylogo.setAttribute("id", "copylogo")
+        copylogo.setAttribute("style", "width:30px; ")
+        // copylogo.setAttribute("loop","true")
+        copylogo.setAttribute("autoplay", "true")
+        ip.setAttribute("style", "float:right; ")
+
+        txt.textContent = obj.data
+        ip.textContent = ' ' + '[' + obj.ip + ']'
+        time.textContent = obj.date
+        num.textContent = obj.num
+        num.setAttribute("class", "block")
+        copy.append(copylogo);
+        node.append(txt, num, copy, time, ip);
+        if (two == 'hisprint') {
+          console.log(messages.firstChild)
+          messages.insertBefore(node, document.getElementById('messages').firstChild)
+          document.getElementById('his').disabled = false
+        } else {
+          messages.appendChild(node);
+        }
+        // document.getElementById('copylogo').stop()
+
+        // window.scrollBy(0,document.body.scrollHeight);
+
       }
-      // document.getElementById('copylogo').stop()
-
-    }
     }
 
 
-    var print2 = async function (obj, type,his) {
+    var print2 = async function (obj, type, his) {
       var node = document.createElement('li')
       var clickdiv = document.createElement('div')
       var num = document.createElement('span')
@@ -189,26 +192,27 @@
 
       if (type == 'img') {
         var img = document.createElement('img'); img.setAttribute("src", obj.data)
-        img.setAttribute("width", "50%"); clickdiv.setAttribute("onclick", "full(this)")
+        img.setAttribute("class", "img"); clickdiv.setAttribute("onclick", "full(this)")
         clickdiv.append(img)
-      } 
+      }
       else if (type == 'audio') {
         var aud = document.createElement('audio')
-        aud.src=obj.data;
+        aud.src = obj.data;
         aud.setAttribute("controls", true)
         aud.style.cssText = 'width:60%;'
         clickdiv.append(aud)
       }
-       else if (type == 'vid') {
+      else if (type == 'vid') {
         var vid = document.createElement('video')
-        vid.src=obj.data;
+        vid.src = obj.data;
         vid.setAttribute("controls", true)
-        
+
         // vid.setAttribute('autoplay', 'true')
+        vid.setAttribute("class", "vid");
         vid.setAttribute('controlsList', 'noplaybackrate  ')
         vid.setAttribute('oncontextmenu', 'return false;')
         vid.disablePictureInPicture = true;
-        vid.style.cssText = 'width:80%;'
+        // vid.style.cssText = 'width:80%;'
         clickdiv.append(vid)
       }
       else {
@@ -219,14 +223,14 @@
 
 
 
-      node.append(clickdiv,num)
+      node.append(clickdiv, num)
 
-      if(his){
+      if (his) {
         messages.insertBefore(node, document.getElementById('messages').firstChild)
         document.getElementById('his').disabled = false
 
 
-      }else{
+      } else {
 
         messages.appendChild(node);
       }
@@ -236,6 +240,7 @@
 
 
     function full(ele) {
+      var scrollposi=window.pageYOffset
       console.log(ele.children[0].src)
       document.getElementById('body').style.display = 'none'
 
@@ -244,13 +249,36 @@
       var cut = document.createElement('button')
       var img = document.createElement('img')
       img.setAttribute("src", ele.children[0].src)
-      img.style.cssText = 'width:99%'
+
+
+
+
+      
+      tempo.style.cssText='position: absolute;top:0;right: 0;bottom: 0;left: 0;display: flex;'
+      
+      img.style.cssText='width:100% ;margin: auto auto; '
+
+
+      document.body.style.cssText = 'background-color: #141412;'
+
+
 
       cut.textContent = 'x'
+      cut.style.cssText = ' position:fixed;top:3.3%;right:4.4%; background-color: rgb(0,0,0, 0.2);outline: none !important;border: none !important;box-shadow: none !important;font-size:150%;color:white;z-index: 1;height:50px;width:50px;border-radius:25px;'
+
+      document.querySelector('meta[name="viewport"]').setAttribute("content", "width=device-width, initial-scale=1.0");
+
+
+
+
+
 
       cut.onclick = function () {
         document.getElementById('body').style.display = ''
+        document.body.style.cssText = 'background-color:white'
         tempo.remove()
+        document.querySelector('meta[name="viewport"]').setAttribute("content", "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0");
+        window.scrollBy(0, scrollposi);
 
       }
 
@@ -281,8 +309,8 @@
         if (obj.data == msgdata) {
 
           if (obj.media) {
-            print(obj,'media')
-            
+            print(obj, 'media')
+
           } else {
             print(obj)
             document.getElementById('input').value = ''
@@ -328,9 +356,9 @@
             const arr = JSON.parse(this.responseText)
             const obj = arr[0]
 
-            if(obj.media){
-              print2(obj,obj.media,'his')
-            }else{
+            if (obj.media) {
+              print2(obj, obj.media, 'his')
+            } else {
 
               print(obj, 'hisprint')
             }
