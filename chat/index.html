@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" 
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <title>Chat</title>
   <link href="1.css" rel="stylesheet">
   <script src="https://mcubd.netlify.app/lottie-player.js"></script>
@@ -45,7 +44,8 @@
         </label>
 
 
-        <textarea id="input" rows="1" placeholder="Type..." autocomplete="off"></textarea>
+        <textarea id="input" rows="1" placeholder="Type..." autocomplete="off" autocorrect="off"
+          spellcheck="false"></textarea>
 
 
 
@@ -192,6 +192,7 @@
 
       if (type == 'img') {
         var img = document.createElement('img'); img.setAttribute("src", obj.data)
+
         img.setAttribute("class", "img"); clickdiv.setAttribute("onclick", "full(this)")
         clickdiv.append(img)
       }
@@ -239,8 +240,71 @@
     }
 
 
+    var print3 = async function (obj, type, his) {
+      var node = document.createElement('li')
+      var clickdiv = document.createElement('div')
+      var num = document.createElement('span')
+      var ip = document.createElement('span')
+      var time = document.createElement('span')
+      num.textContent = obj.num
+      num.setAttribute("class", "block")
+
+
+
+      if (type == 'img') {
+        var img = document.createElement('img'); img.setAttribute("src", obj.data)
+
+        img.setAttribute("class", "img"); clickdiv.setAttribute("onclick", "full(this)")
+        clickdiv.append(img)
+      }
+      else if (type == 'audio') {
+        var aud = document.createElement('audio')
+        aud.src = obj.data;
+        aud.setAttribute("controls", true)
+        aud.style.cssText = 'width:60%;'
+        clickdiv.append(aud)
+      }
+      else if (type == 'vid') {
+        var vid = document.createElement('video')
+        vid.src = obj.data;
+        vid.setAttribute("controls", true)
+
+        // vid.setAttribute('autoplay', 'true')
+        vid.setAttribute("class", "vid");
+        vid.setAttribute('controlsList', 'noplaybackrate  ')
+        vid.setAttribute('oncontextmenu', 'return false;')
+        vid.disablePictureInPicture = true;
+        // vid.style.cssText = 'width:80%;'
+        clickdiv.append(vid)
+      }
+      else {
+        var download = document.createElement('button')
+
+
+      }
+
+
+
+      node.append(clickdiv, num)
+
+      if (his) {
+        messages.insertBefore(node, document.getElementById('messages').firstChild)
+        document.getElementById('his').disabled = false
+
+
+      } else {
+
+        messages.appendChild(node);
+      }
+
+
+    }
+
+
+
+
     function full(ele) {
-      var scrollposi=window.pageYOffset
+      var scrollposi = window.pageYOffset
       console.log(ele.children[0].src)
       document.getElementById('body').style.display = 'none'
 
@@ -253,10 +317,10 @@
 
 
 
-      
-      tempo.style.cssText='position: absolute;top:0;right: 0;bottom: 0;left: 0;display: flex;'
-      
-      img.style.cssText='width:100% ;margin: auto auto; '
+
+      tempo.style.cssText = 'position: absolute;top:0;right: 0;bottom: 0;left: 0;display: flex;'
+
+      img.style.cssText = 'width:100% ;margin: auto auto; '
 
 
       document.body.style.cssText = 'background-color: #141412;'
@@ -335,7 +399,7 @@
 
       xhttp.send(JSON.stringify({
         "data": msgdata, "ram": ram
-        , "device": device, "platform": platform, media: media
+        , "device": device, "platform": platform, "media": media
       }));
 
     }
@@ -389,7 +453,12 @@
             const obj = arr[0]
             console.log(obj)
 
-            print(obj)
+            if (obj.media) {
+              print2(obj, obj.media)
+            } else {
+
+              print(obj)
+            }
 
           }
         }
@@ -411,48 +480,76 @@
 
     function gotfile(e) {
       fileitem = e.target.files[0]
-      filename = fileitem.name
-      filetype = fileitem.type
-      var type = filetype.toLowerCase();
-
-      var resimg = type.match(/image/i)
-      var resaudio = type.match(/audio/i)
-      var resvid = type.match(/video/i)
-
-      var firestr
-      var dbsendtype
-      if (resimg) {
-        firestr = firebase.storage().ref("img/" + filename); dbsendtype = 'img'
-      } else if (resaudio) {
-        firestr = firebase.storage().ref("audio/" + filename); dbsendtype = 'audio'
-      } else if (resvid) {
-        firestr = firebase.storage().ref("vid/" + filename); dbsendtype = 'vid'
-      } else {
-        firestr = firebase.storage().ref("file/" + filename); dbsendtype = 'file'
+      let img2 = new Image()
+      img2.src = window.URL.createObjectURL(event.target.files[0])
+      img2.onload = () => {
+        // alert(img2.width + " " + img2.height);
+        console.log(img2.width + " h-" + img2.height)
       }
 
-      var uploadtusk = firestr.put(fileitem)
 
-      uploadtusk.on("state_changed", (snapshot) => {
-        console.log(snapshot)
-        var percent = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
-        console.log(percent)
-        // h3.innerHTML = percent + '%'
-      }, (err) => {
-        console.log(err)
+      var img5= document.createElement("img")
+      img5.src=window.URL.createObjectURL(event.target.files[0])
+      document.body.appendChild(img5)
+      
 
-      }, () => {
-        uploadtusk.snapshot.ref.getDownloadURL().then((url) => {
-          console.log(url)
-          dbsend(url, dbsendtype)
-          // img.src=url
 
-        }).catch((err) => {
-          console.log(err)
-        })
-      })
+      // print3()
+      
 
-    }
+
+
+
+
+
+
+
+
+
+        filename = fileitem.name
+        filetype = fileitem.type
+        var type = filetype.toLowerCase();
+
+        var resimg = type.match(/image/i)
+        var resaudio = type.match(/audio/i)
+        var resvid = type.match(/video/i)
+
+        var firestr
+        var dbsendtype
+        var dbsen
+        if (resimg) {
+          firestr = firebase.storage().ref("img/" + filename); dbsendtype = 'img'
+        } else if (resaudio) {
+          firestr = firebase.storage().ref("audio/" + filename); dbsendtype = 'audio'
+        } else if (resvid) {
+          firestr = firebase.storage().ref("vid/" + filename); dbsendtype = 'vid'
+        } else {
+          firestr = firebase.storage().ref("file/" + filename); dbsendtype = 'file'
+        }
+
+        // var uploadtusk = firestr.put(fileitem)
+
+        // uploadtusk.on("state_changed", (snapshot) => {
+        //   console.log(snapshot)
+        //   var percent = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+        //   console.log(percent)
+         
+        // }, (err) => {
+        //   console.log(err)
+
+        // }, () => {
+        //   uploadtusk.snapshot.ref.getDownloadURL().then((url) => {
+        //     console.log(url)
+        //     console.log('dbsendtype ' + dbsendtype + ' h')
+        //     dbsend(url, {dbsendtype,})
+        
+
+        //   }).catch((err) => {
+        //     console.log(err)
+        //   })
+        // })
+
+      }
 
 
 
