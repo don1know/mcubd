@@ -439,6 +439,7 @@
 
 
     async function dbsend(msgdata, media) {
+      ws()
       let ram = 'not-found'
       let device = 'not-found'
       let platform = 'not-found'
@@ -676,16 +677,16 @@
 
     });
 
+function ws(){
 
-
-    // update(ref(database, 'db/' + 'child-db-1'), {val:string});
-  // res.send(await all)
-
-var con
+  var con
   const time=new Date().toLocaleTimeString();
   const ran=Math.random();
   var con=time.concat(ran)
     update(ref(database, 'db/' + 'child-db-1'), {val:con});
+}
+
+ws()
 
 
 
