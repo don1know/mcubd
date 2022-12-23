@@ -638,11 +638,15 @@
     }
 
 
-    window.addEventListener('beforeunload',() => {
-      event.preventDefault();
-      event.returnValue=""
-    })
 
+
+  </script>
+
+  <script type="text/javascript">
+        window.addEventListener('beforeunload',(event) => {
+      event.preventDefault();
+      event.returnValue="Are you sure you want to exit?"
+    })
   </script>
 
 
