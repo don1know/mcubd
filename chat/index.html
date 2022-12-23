@@ -671,10 +671,6 @@
     onChildChanged(newMsg, (data) => {
       console.log(data.val())
 
-      onValue(newMsg, (snapshot) => {
-        const data = snapshot.val();
-        console.log(data)
-      });
       neww()
 
 
@@ -682,7 +678,14 @@
 
 
 
+    // update(ref(database, 'db/' + 'child-db-1'), {val:string});
+  // res.send(await all)
 
+var con
+  const time=new Date().toLocaleTimeString();
+  const ran=Math.random();
+  var con=time.concat(ran)
+    update(ref(database, 'db/' + 'child-db-1'), {val:con});
 
 
 
