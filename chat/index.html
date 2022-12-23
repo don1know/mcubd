@@ -555,7 +555,7 @@
     }
 
 
-    setInterval(() => { neww() }, 12000);
+    // setInterval(() => { neww() }, 12000);
 
 
     setTimeout(() => { firebase.initializeApp(firebaseConfig); }, 2000);
@@ -647,15 +647,9 @@
 
 
   <script type="module">
+
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-    import {
-      getDatabase,
-      set,
-      ref,
-      push,
-      child,
-      onValue,
-      onChildAdded, remove, onChildChanged, update
+    import { getDatabase,ref,onValue,remove, onChildChanged
     } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
 
 
@@ -670,31 +664,8 @@
       measurementId: "G-VVQ6N17N9M"
 
     };
-
     const app2 = initializeApp(firebaseConfig2);
     const database = getDatabase(app2);
-
-
-    // const id = push(child(ref(database), 'db')).key;
-
-    // set(ref(database, 'messages/' + id), {
-    //     name: '1m',
-    //     message: 'message1' 
-    // });
-
-
-    // let userRef = this.database.ref('users/' + userId);
-    // userRef.child(userId).set({key: value}).then().catch()
-
-
-    // remove(ref(database, 'db/' + 'child-db-1'));
-
-    // update(ref(database, 'db/' + 'child-db-1'), {
-    //   name: '4m',
-    //   message: 'message4'
-    // });
-
-
 
     const newMsg = ref(database, 'db/' + 'child-db-1');
     onChildChanged(newMsg, (data) => {
@@ -703,8 +674,8 @@
       onValue(newMsg, (snapshot) => {
         const data = snapshot.val();
         console.log(data)
-        alert('data='+data.message)
       });
+      neww()
 
 
     });
