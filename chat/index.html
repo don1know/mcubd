@@ -14,19 +14,19 @@
 <body>
   <div id="body">
 
-    
-  <div id="status" style="display: none;">
-    <div class="bar">
-      <div id="progress" class="progress"></div>
+
+    <div id="status" style="display: none;">
+      <div class="bar">
+        <div id="progress" class="progress"></div>
+      </div>
+      <span id="two" class="upspan two">0%</span>
+
+
+
     </div>
-    <span id="two" class="upspan two">0%</span>
-
-    
-
-  </div>
 
 
-  <!-- if (fileName.length >= 12) { //if file name length is greater than 12 then split it and add ...
+    <!-- if (fileName.length >= 12) { //if file name length is greater than 12 then split it and add ...
     let splitName = fileName.split('.');
     fileName = splitName[0].substring(0, 13) + "... ." + splitName[1];
 } -->
@@ -56,7 +56,7 @@
 
             </path>
           </svg>
-          <input id="f"  onchange="gotfile(event)" type="file" />
+          <input id="f" onchange="gotfile(event)" type="file" />
 
         </label>
 
@@ -268,22 +268,22 @@
       if (type == 'img') {
         // firestr = firebase.storage().ref("img/" + filename); dbsendtype = 'img';print3(fileitem,dbsendtype)
         var node = document.createElement('li')
-      var clickdiv = document.createElement('div')
+        var clickdiv = document.createElement('div')
 
-        let timg = new Image();timg.height=
-        timg.src = window.URL.createObjectURL(fileloc)
+        let timg = new Image(); timg.height =
+          timg.src = window.URL.createObjectURL(fileloc)
         timg.onload = () => {
           console.log(timg.width)
 
           if (timg.height - timg.width > -10) {
-            console.log('tiktok'+timg.height/timg.width)
-            node.style.cssText='border:1px solid green;height: calc(37.5vh);overflow: hidden;'
-            node.style.width='calc(45vh/'+timg.height/timg.width+')'
+            console.log('tiktok' + timg.height / timg.width)
+            node.style.cssText = 'border:1px solid green;height: calc(37.5vh);overflow: hidden;'
+            node.style.width = 'calc(45vh/' + timg.height / timg.width + ')'
 
 
-            clickdiv.style.cssText='height: 100%;display: flex;align-items: center;'
+            clickdiv.style.cssText = 'height: 100%;display: flex;align-items: center;'
             let img = document.createElement("img")
-            img.style.cssText='height: auto;width: 100%;align-self: center'
+            img.style.cssText = 'height: auto;width: 100%;align-self: center'
             img.src = window.URL.createObjectURL(fileloc)
             clickdiv.append(img)
 
@@ -297,7 +297,7 @@
 
             // clickdiv.style.cssText='height: 100%;display: flex;align-items: center;'
             let img = document.createElement("img")
-            img.style.cssText='height: 24.6vh;width:66vw;object-fit:contain;'
+            img.style.cssText = 'height: 24.6vh;width:66vw;object-fit:contain;'
             img.src = window.URL.createObjectURL(fileloc)
             clickdiv.append(img)
 
@@ -455,7 +455,7 @@
         if (obj.data == msgdata) {
 
           if (obj.media) {
-            document.getElementById('status').style.display='none'
+            document.getElementById('status').style.display = 'none'
             print(obj, 'media')
 
           } else {
@@ -613,13 +613,13 @@
 
       var uploadtusk = firestr.put(fileitem)
 
-      document.getElementById('status').style.display=''
+      document.getElementById('status').style.display = ''
       uploadtusk.on("state_changed", (snapshot) => {
         console.log(snapshot)
         var percent = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
         console.log(percent)
-        document.getElementById('progress').style.width=percent+'%'
-        document.getElementById('two').innerText=percent+'%'
+        document.getElementById('progress').style.width = percent + '%'
+        document.getElementById('two').innerText = percent + '%'
 
       }, (err) => {
         console.log(err)
@@ -628,7 +628,7 @@
         uploadtusk.snapshot.ref.getDownloadURL().then((url) => {
           console.log(url)
           // console.log('dbsendtype ' + dbsendtype + ' h')
-          dbsend(url,dbsendtype)
+          dbsend(url, dbsendtype)
 
         }).catch((err) => {
           console.log(err)
@@ -646,7 +646,78 @@
 
 
 
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+    import {
+      getDatabase,
+      set,
+      ref,
+      push,
+      child,
+      onValue,
+      onChildAdded, remove, onChildChanged, update
+    } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
 
+
+    const firebaseConfig2 = {
+      apiKey: "AIzaSyA5gs25IDoaJfCE5_tI7ulE8zossMcnnkY",
+      authDomain: "jsprj-b0693.firebaseapp.com",
+      databaseURL: "https://jsprj-b0693-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "jsprj-b0693",
+      storageBucket: "jsprj-b0693.appspot.com",
+      messagingSenderId: "581883143558",
+      appId: "1:581883143558:web:26fa31b2aa1b5afd19b807",
+      measurementId: "G-VVQ6N17N9M"
+
+    };
+
+    const app2 = initializeApp(firebaseConfig2);
+    const database = getDatabase(app2);
+
+
+    // const id = push(child(ref(database), 'db')).key;
+
+    // set(ref(database, 'messages/' + id), {
+    //     name: '1m',
+    //     message: 'message1' 
+    // });
+
+
+    // let userRef = this.database.ref('users/' + userId);
+    // userRef.child(userId).set({key: value}).then().catch()
+
+
+    // remove(ref(database, 'db/' + 'child-db-1'));
+
+    // update(ref(database, 'db/' + 'child-db-1'), {
+    //   name: '4m',
+    //   message: 'message4'
+    // });
+
+
+
+    const newMsg = ref(database, 'db/' + 'child-db-1');
+    onChildChanged(newMsg, (data) => {
+      console.log(data.val())
+
+      onValue(newMsg, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data)
+        alert('data='+data.message)
+      });
+
+
+    });
+
+
+
+
+
+
+
+
+
+  </script>
 
 </body>
 
