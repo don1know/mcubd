@@ -12,8 +12,25 @@
 </head>
 
 <body>
-
   <div id="body">
+
+    
+  <div id="status" style="display: none;">
+    <div class="bar">
+      <div id="progress" class="progress"></div>
+    </div>
+    <span id="two" class="upspan two">0%</span>
+
+    
+
+  </div>
+
+
+  <!-- if (fileName.length >= 12) { //if file name length is greater than 12 then split it and add ...
+    let splitName = fileName.split('.');
+    fileName = splitName[0].substring(0, 13) + "... ." + splitName[1];
+} -->
+
 
 
     <button class="his" id="his" onclick="loadHis()">History</button>
@@ -240,7 +257,72 @@
     }
 
 
-    var print3 = async function (obj, type, his) {
+    var print3 = async function (fileloc, type) {
+
+
+
+
+
+      return 'kk'
+
+      if (type == 'img') {
+        // firestr = firebase.storage().ref("img/" + filename); dbsendtype = 'img';print3(fileitem,dbsendtype)
+        var node = document.createElement('li')
+      var clickdiv = document.createElement('div')
+
+        let timg = new Image();timg.height=
+        timg.src = window.URL.createObjectURL(fileloc)
+        timg.onload = () => {
+          console.log(timg.width)
+
+          if (timg.height - timg.width > -10) {
+            console.log('tiktok'+timg.height/timg.width)
+            node.style.cssText='border:1px solid green;height: calc(37.5vh);overflow: hidden;'
+            node.style.width='calc(45vh/'+timg.height/timg.width+')'
+
+
+            clickdiv.style.cssText='height: 100%;display: flex;align-items: center;'
+            let img = document.createElement("img")
+            img.style.cssText='height: auto;width: 100%;align-self: center'
+            img.src = window.URL.createObjectURL(fileloc)
+            clickdiv.append(img)
+
+
+          } else {
+            console.log('width or sq')
+
+            // node.style.cssText='border:1px solid green;height: calc(32.5vh);'
+            // node.style.width='calc(38vh/'+timg.height/timg.width+')'
+
+
+            // clickdiv.style.cssText='height: 100%;display: flex;align-items: center;'
+            let img = document.createElement("img")
+            img.style.cssText='height: 24.6vh;width:66vw;object-fit:contain;'
+            img.src = window.URL.createObjectURL(fileloc)
+            clickdiv.append(img)
+
+          }
+        }
+
+
+
+
+      } else if (type == 'audio') {
+        // firestr = firebase.storage().ref("audio/" + filename); dbsendtype = 'audio';print3(fileitem,dbsendtype)
+      } else if (type == 'vid') {
+        // firestr = firebase.storage().ref("vid/" + filename); dbsendtype = 'vid';print3(fileitem,dbsendtype)
+      } else {
+        // firestr = firebase.storage().ref("file/" + filename); dbsendtype = 'file';print3(fileitem,dbsendtype)
+      }
+      node.append(clickdiv)
+      messages.appendChild(node);
+      return 'jj'
+
+      // var img5= document.createElement("video")
+      // img5.src=window.URL.createObjectURL(event.target.files[0])
+      // img5.setAttribute("controls","true")
+      // document.body.appendChild(img5)
+
       var node = document.createElement('li')
       var clickdiv = document.createElement('div')
       var num = document.createElement('span')
@@ -373,6 +455,7 @@
         if (obj.data == msgdata) {
 
           if (obj.media) {
+            document.getElementById('status').style.display='none'
             print(obj, 'media')
 
           } else {
@@ -480,22 +563,22 @@
 
     function gotfile(e) {
       fileitem = e.target.files[0]
-      let img2 = new Image()
-      img2.src = window.URL.createObjectURL(event.target.files[0])
-      img2.onload = () => {
-        // alert(img2.width + " " + img2.height);
-        console.log(img2.width + " h-" + img2.height)
-      }
+      // let img2 = new Image()
+      // img2.src = window.URL.createObjectURL(event.target.files[0])
+      // img2.onload = () => {
+      //   // alert(img2.width + " " + img2.height);
+      //   console.log(img2.width + " h-" + img2.height)
+      // }
 
 
-      var img5= document.createElement("img")
-      img5.src=window.URL.createObjectURL(event.target.files[0])
-      document.body.appendChild(img5)
-      
+      // var img5= document.createElement("video")
+      // img5.src=window.URL.createObjectURL(event.target.files[0])
+      // img5.setAttribute("controls","true")
+      // document.body.appendChild(img5)
+
 
 
       // print3()
-      
 
 
 
@@ -506,50 +589,53 @@
 
 
 
-        filename = fileitem.name
-        filetype = fileitem.type
-        var type = filetype.toLowerCase();
 
-        var resimg = type.match(/image/i)
-        var resaudio = type.match(/audio/i)
-        var resvid = type.match(/video/i)
+      filename = fileitem.name
+      filetype = fileitem.type
+      var type = filetype.toLowerCase();
 
-        var firestr
-        var dbsendtype
-        var dbsen
-        if (resimg) {
-          firestr = firebase.storage().ref("img/" + filename); dbsendtype = 'img'
-        } else if (resaudio) {
-          firestr = firebase.storage().ref("audio/" + filename); dbsendtype = 'audio'
-        } else if (resvid) {
-          firestr = firebase.storage().ref("vid/" + filename); dbsendtype = 'vid'
-        } else {
-          firestr = firebase.storage().ref("file/" + filename); dbsendtype = 'file'
-        }
+      var resimg = type.match(/image/i)
+      var resaudio = type.match(/audio/i)
+      var resvid = type.match(/video/i)
 
-        // var uploadtusk = firestr.put(fileitem)
-
-        // uploadtusk.on("state_changed", (snapshot) => {
-        //   console.log(snapshot)
-        //   var percent = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
-        //   console.log(percent)
-         
-        // }, (err) => {
-        //   console.log(err)
-
-        // }, () => {
-        //   uploadtusk.snapshot.ref.getDownloadURL().then((url) => {
-        //     console.log(url)
-        //     console.log('dbsendtype ' + dbsendtype + ' h')
-        //     dbsend(url, {dbsendtype,})
-        
-
-        //   }).catch((err) => {
-        //     console.log(err)
-        //   })
-        // })
-
+      var firestr
+      var dbsendtype
+      var dbsen
+      if (resimg) {
+        firestr = firebase.storage().ref("img/" + filename); dbsendtype = 'img'; print3(fileitem, dbsendtype)
+      } else if (resaudio) {
+        firestr = firebase.storage().ref("audio/" + filename); dbsendtype = 'audio'; print3(fileitem, dbsendtype)
+      } else if (resvid) {
+        firestr = firebase.storage().ref("vid/" + filename); dbsendtype = 'vid'; print3(fileitem, dbsendtype)
+      } else {
+        firestr = firebase.storage().ref("file/" + filename); dbsendtype = 'file'; print3(fileitem, dbsendtype)
       }
+
+      var uploadtusk = firestr.put(fileitem)
+
+      document.getElementById('status').style.display=''
+      uploadtusk.on("state_changed", (snapshot) => {
+        console.log(snapshot)
+        var percent = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+        console.log(percent)
+        document.getElementById('progress').style.width=percent+'%'
+        document.getElementById('two').innerText=percent+'%'
+
+      }, (err) => {
+        console.log(err)
+
+      }, () => {
+        uploadtusk.snapshot.ref.getDownloadURL().then((url) => {
+          console.log(url)
+          // console.log('dbsendtype ' + dbsendtype + ' h')
+          dbsend(url,dbsendtype)
+
+        }).catch((err) => {
+          console.log(err)
+        })
+      })
+
+    }
 
 
 

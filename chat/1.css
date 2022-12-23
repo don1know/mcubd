@@ -41,7 +41,8 @@
       
       #messages { list-style-type: none; margin: 0; padding: 0; }
       /* #messages > li:nth-child(odd) { background: #efefef; }  */
-      #messages > li { padding: 1rem 0.5rem  1rem 0.5rem;word-wrap: break-word; }
+      /* #messages > li { padding: 1rem 0.5rem  1rem 0.5rem;word-wrap: break-word;overflow: hidden;} */
+      #messages > li { margin: 1rem 0.5rem  1rem 0.5rem;word-wrap: break-word;}
       #h5{margin: 0px;padding: 0px;}
       .copy{outline: none !important;border: none !important;box-shadow: none !important;padding: 0px;}
       .block{display: block;font-size: 6px;}
@@ -60,7 +61,7 @@ a{
 
       hr{margin: 0px;padding: 0px;border-top: 1px solid #fdfdfd;}
 
-      .img,.vid{
+      .img,.preimg,.vid{
             border:1px solid green;
             background-color:black;
             width: calc(40vw);
@@ -72,6 +73,63 @@ a{
             /* object-fit: cover; */
             
 
+      }
+      .preimgv{
+            border:1px solid green;
+            background-color:black;
+            height: calc(38vh);
+            object-fit:contain;
+            border-radius: 6% 0% 6% 6%;
+
+
+      }
+      .preimgh{
+            border:1px solid green;
+            background-color:black;
+            height: calc(24vh);
+            width: calc(62vw);
+            object-fit:contain;
+            border-radius: 6% 0% 6% 6%;
+
+
+      }
+      #status{
+            width: calc(70vw);
+            height: calc(6vh);
+            background-color: #525151;
+            color: #f5f5f5;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+      }
+
+      .bar{
+            height: calc(1vh);
+            width: calc(60vw);
+            border-radius:4px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-55%, -50%);
+      }
+      .progress{
+            background:#141515;
+            border-radius: 4px;
+            height: 100%;
+            width: 0%;
+
+
+      }
+
+      .two{
+            font-size:54%;
+            position: absolute;
+            /* float: right; */
+            top: 50%;
+            right: 2%;
+            transform: translateY(-50%);
       }
 
 
