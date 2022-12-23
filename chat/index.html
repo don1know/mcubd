@@ -643,9 +643,9 @@
   </script>
 
 <script>
-  window.addEventListener("beforeunload", function(event) {
-    event.returnValue = "Write something clever here..";
-  });
+window.onbeforeunload = function () {
+    return "Are you sure";
+};
   </script>
 
 <h1>jjjj</h1>
