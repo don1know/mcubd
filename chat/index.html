@@ -642,11 +642,10 @@
 
   </script>
 
-  <script type="text/javascript">
-        window.addEventListener('beforeunload',(event) => {
-      event.preventDefault();
-      event.returnValue="Reloading will cancel  upload."
-    })
+<script>
+  window.addEventListener("beforeunload", function(event) {
+    event.returnValue = "Write something clever here..";
+  });
   </script>
 
 
