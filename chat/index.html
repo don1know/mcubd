@@ -210,8 +210,12 @@
         // return 6
 
         if (two == 'hisprint') {
-          console.log(messages.firstChild)
+          var old=document.body.scrollHeight
+          console.log(document.body.scrollHeight)
           messages.insertBefore(node, document.getElementById('messages').firstChild)
+          console.log(document.body.scrollHeight+'after')
+          
+          // window.scrollBy(0,old);
           document.getElementById('his').disabled = false
         } else {
           let ul = document.getElementById('messages').lastChild
@@ -527,7 +531,7 @@
       var last = document.getElementById('messages')
 
 
-      if (last.firstChild.querySelector('.block').innerText == 1) { alert('no more');document.getElementById('his').disabled = false} else {
+      if (last.firstChild.querySelector('.block').innerText == 1) { alert('no more');} else {
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/chatdatahis', true);
 
