@@ -677,13 +677,18 @@
 
     });
 
-    window.ws= function (){
-
+  window.ws= function (){
   var con
   const time=new Date().toLocaleTimeString();
   const ran=Math.random();
   var con=time.concat(ran)
     update(ref(database, 'db/' + 'child-db-1'), {val:con});
+    setTimeout(() => {
+      const time=new Date().toLocaleTimeString();
+  const ran=Math.random();
+  var con=time.concat(ran)
+    update(ref(database, 'db/' + 'child-db-1'), {val:con});
+    }, 1000);
 }
 
 ws()
