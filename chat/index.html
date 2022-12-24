@@ -119,6 +119,7 @@
         var ress2=ar2*ress
         var res3=ress2/2
         console.log(res3)
+        
         alert(ar2)
       }
 
@@ -526,7 +527,7 @@
       var last = document.getElementById('messages')
 
 
-      if (last.firstChild.querySelector('.block').innerText == 1) { alert('no more') } else {
+      if (last.firstChild.querySelector('.block').innerText == 1) { alert('no more');document.getElementById('his').disabled = false} else {
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/chatdatahis', true);
 
@@ -583,27 +584,7 @@
 
       }
     }
-    // ----------------------------------------------------
-    var arr = ['e', 'u', 'f', 'h']
-    arr.forEach((item, ind, ar) => {
-      function kk(arr) {
-        if (ind == 0) {
-          return arr == 'h'
-        } else if (ind == 1) {
-          return arr == 'f'
 
-
-        } else if (ind == 2) {
-          return arr == 'u'
-
-
-        } else {
-          return arr == 'e'
-
-        }
-      }
-      console.log(ar.find(kk))
-    });
 
     function neww() {
       var ul = document.getElementById('messages')
