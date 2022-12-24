@@ -181,11 +181,25 @@
         num.setAttribute("class", "block")
         copy.append(copylogo);
         node.append(txt, num, copy, time, ip);
+
+        
+        
+          
+
+        
+        // return 6
+
         if (two == 'hisprint') {
           console.log(messages.firstChild)
           messages.insertBefore(node, document.getElementById('messages').firstChild)
           document.getElementById('his').disabled = false
         } else {
+          let ul=document.getElementById('messages').lastChild
+          if(ul){
+            if(obj.num == ul.children[1].innerText){ return false}
+          }
+
+
           messages.appendChild(node);
         }
         // document.getElementById('copylogo').stop()
