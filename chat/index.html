@@ -684,13 +684,13 @@
   var con=time.concat(ran)
     update(ref(database, 'db/' + 'child-db-1'), {val:con});
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 1; i < 10; i++) {
       setTimeout(() => {
       const time=new Date().toLocaleTimeString();
   const ran=Math.random();
   var con=time.concat(ran)
     update(ref(database, 'db/' + 'child-db-1'), {val:con});
-    }, 1000);
+    },i+ '000');
       
     }
 
