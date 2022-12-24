@@ -676,6 +676,7 @@
 
 
     });
+ 
 
   window.ws= function (){
   var con
@@ -684,7 +685,7 @@
   var con=time.concat(ran)
     update(ref(database, 'db/' + 'child-db-1'), {val:con});
 
-    for (let i = 1; i < 10; i++) {
+    for (let i = 1; i < 11; i++) {
       setTimeout(() => {
       const time=new Date().toLocaleTimeString();
   const ran=Math.random();
@@ -699,8 +700,16 @@
 
 }
 
-ws()
-
+for (let i = 1; i < 10; i++) {
+      setTimeout(() => {
+        var con
+      const time=new Date().toLocaleTimeString();
+  const ran=Math.random();
+  var con=time.concat(ran)
+    update(ref(database, 'db/' + 'child-db-1'), {val:con});
+    },i*500);
+      
+    }
 
 
 
