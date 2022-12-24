@@ -103,7 +103,7 @@
       if (input.value) {
         //   socket.emit('chat message', input.value);
         dbsend(input.value)
-        window.scrollBy(0,document.body.scrollHeight);
+        window.scrollBy(0, document.body.scrollHeight);
 
         // input.value = '';
       }
@@ -184,11 +184,11 @@
         copy.append(copylogo);
         node.append(txt, num, copy, time, ip);
 
-        
-        
-          
 
-        
+
+
+
+
         // return 6
 
         if (two == 'hisprint') {
@@ -196,9 +196,9 @@
           messages.insertBefore(node, document.getElementById('messages').firstChild)
           document.getElementById('his').disabled = false
         } else {
-          let ul=document.getElementById('messages').lastChild
-          if(ul){
-            if(obj.num == ul.children[1].innerText){ return false}
+          let ul = document.getElementById('messages').lastChild
+          if (ul) {
+            if (obj.num == ul.children[1].innerText) { return false }
           }
 
 
@@ -520,6 +520,35 @@
             const arr = JSON.parse(this.responseText)
             const obj = arr[0]
 
+            document.getElementById('messages').firstChild.children[1].innerText
+
+            // var res=arr.find((i) => {
+            //   return i.num==document.getElementById('messages').firstChild.children[1].innerText -1
+
+
+
+
+            //   })
+            //   console.log(res)
+            arr.forEach((item, ind) => {
+              var res = arr.find((i) => {
+                return i.num == document.getElementById('messages').firstChild.children[1].innerText  -1
+
+
+              })
+              // console.log(res.num)
+              if (res.media) {
+              print2(res, res.media, 'his')
+            } else {
+
+              print(res, 'hisprint')
+            }
+
+            });
+
+            // ----------------------------------------------------------------
+            return 6
+
             if (obj.media) {
               print2(obj, obj.media, 'his')
             } else {
@@ -537,7 +566,27 @@
 
       }
     }
+    // ----------------------------------------------------
+    var arr = ['e', 'u', 'f', 'h']
+    arr.forEach((item, ind, ar) => {
+      function kk(arr) {
+        if (ind == 0) {
+          return arr == 'h'
+        } else if (ind == 1) {
+          return arr == 'f'
 
+
+        } else if (ind == 2) {
+          return arr == 'u'
+
+
+        } else {
+          return arr == 'e'
+
+        }
+      }
+      console.log(ar.find(kk))
+    });
 
     function neww() {
       var ul = document.getElementById('messages')
@@ -666,7 +715,8 @@
   <script type="module">
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-    import { getDatabase,ref,onValue,remove, onChildChanged,update
+    import {
+      getDatabase, ref, onValue, remove, onChildChanged, update
     } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
 
 
@@ -692,39 +742,39 @@
 
 
     });
- 
 
-  window.ws= function (){
-  var con
-  const time=new Date().toLocaleTimeString();
-  const ran=Math.random();
-  var con=time.concat(ran)
-    update(ref(database, 'db/' + 'child-db-1'), {val:con});
 
-    for (let i = 1; i < 11; i++) {
-      setTimeout(() => {
-      const time=new Date().toLocaleTimeString();
-  const ran=Math.random();
-  var con=time.concat(ran)
-    update(ref(database, 'db/' + 'child-db-1'), {val:con});
-    },i+ '000');
-      
+    window.ws = function () {
+      var con
+      const time = new Date().toLocaleTimeString();
+      const ran = Math.random();
+      var con = time.concat(ran)
+      update(ref(database, 'db/' + 'child-db-1'), { val: con });
+
+      for (let i = 1; i < 11; i++) {
+        setTimeout(() => {
+          const time = new Date().toLocaleTimeString();
+          const ran = Math.random();
+          var con = time.concat(ran)
+          update(ref(database, 'db/' + 'child-db-1'), { val: con });
+        }, i + '000');
+
+      }
+
+
+
+
     }
 
-
-
-
-}
-
-for (let i = 1; i < 10; i++) {
+    for (let i = 1; i < 10; i++) {
       setTimeout(() => {
         var con
-      const time=new Date().toLocaleTimeString();
-  const ran=Math.random();
-  var con=time.concat(ran)
-    update(ref(database, 'db/' + 'child-db-1'), {val:con});
-    },i*500);
-      
+        const time = new Date().toLocaleTimeString();
+        const ran = Math.random();
+        var con = time.concat(ran)
+        update(ref(database, 'db/' + 'child-db-1'), { val: con });
+      }, i * 500);
+
     }
 
 
