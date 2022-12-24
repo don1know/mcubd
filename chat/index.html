@@ -103,6 +103,8 @@
       if (input.value) {
         //   socket.emit('chat message', input.value);
         dbsend(input.value)
+        window.scrollBy(0,document.body.scrollHeight);
+
         // input.value = '';
       }
 
