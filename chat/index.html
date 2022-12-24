@@ -108,6 +108,22 @@
         // input.value = '';
       }
 
+
+      if (document.getElementById('messages').firstChild.children[1].innerText == 1) {
+        var ar2 = 0
+        for (let item of document.getElementById('messages').children) {
+          // console.log(item.children[1].innerText);
+          ar2 = ar2 + Number(item.children[1].innerText);
+        }
+        var ress=ar2+1
+        var ress2=ar2*ress
+        var res3=ress2/2
+        console.log(res3)
+      }
+
+
+
+
     }
 
 
@@ -532,17 +548,17 @@
             //   console.log(res)
             arr.forEach((item, ind) => {
               var res = arr.find((i) => {
-                return i.num == document.getElementById('messages').firstChild.children[1].innerText  -1
+                return i.num == document.getElementById('messages').firstChild.children[1].innerText - 1
 
 
               })
               // console.log(res.num)
               if (res.media) {
-              print2(res, res.media, 'his')
-            } else {
+                print2(res, res.media, 'his')
+              } else {
 
-              print(res, 'hisprint')
-            }
+                print(res, 'hisprint')
+              }
 
             });
 
