@@ -33,9 +33,20 @@
 
 
 
+
+
     <button class="his" id="his" onclick="loadHis()">History</button>
     <h5 id="h5"></h5>
-    <ul id="messages"></ul>
+    <ul id="messages">
+      <li>
+        <label id="loading">
+          <lottie-player src="./loading.json" background="transparent" speed="1" style=" width: 20%;margin: 0 auto;"
+            loop autoplay></lottie-player>
+
+
+        </label>
+      </li>
+    </ul>
 
 
 
@@ -140,13 +151,41 @@
           document.getElementById('h5').innerText = '0 data in collection'
         } else {
           const arr = JSON.parse(this.responseText)
-          const obj = arr[0]
+          let maxar = []
+          arr.forEach((item, ind) => { maxar.push(item.num) });
+          let maxnum = Math.max(...maxar)
 
-          if (obj.media) {
-            print(obj, 'media')
-          } else {
-            print(obj)
-          }
+
+          arr.forEach((item, ind) => {
+
+            let obj = arr.find((i) => {
+              // return i.num == document.getElementById('messages').firstChild.children[1].innerText - 1
+              if (document.getElementById('messages').childElementCount == 1) {
+                return i.num == maxnum
+              } else {
+                return i.num == document.getElementById('messages').children[1].children[1].innerText - 1
+              }
+
+            })
+
+
+            if (obj.media) {
+              print(obj, 'media')
+            } else {
+              print(obj, 'firstload')
+            }
+
+
+
+          });
+
+
+
+          // if (obj.media) {
+          //   print(obj, 'media')
+          // } else {
+          //   print(obj)
+          // }
 
         }
       }
@@ -166,7 +205,7 @@
       }, 4000);
     }
 
-    var print = async function (obj, two,ne) {
+    var print = async function (obj, two, ne) {
 
       if (two == 'media') {
         print2(obj, obj.media)
@@ -214,20 +253,28 @@
           // console.log(old.getBoundingClientRect())
           // console.log(old)
           // console.log(document.body.scrollHeight)
-          messages.insertBefore(node, document.getElementById('messages').firstChild)
+   
           // var access = document.getElementById("id2");
           // ne.scrollIntoView();
           console.log(ne)
           // console.log('offsethight'+document.body.offsetHeight+' '+ window.pageYOffset)
           // console.log(document.body.scrollHeight+'after')
-          if(ne){
-            let res=document.body.offsetHeight-ne.a
-            window.scrollBy(0,res);
+          if (ne) {
+            let res = document.body.offsetHeight - ne.a
+            window.scrollBy(0, res);
 
           }
           // console.log('res '+res)
           document.getElementById('his').disabled = false
-        } else {
+        }else if(two == 'firstload'){
+          if (document.getElementById('messages').childElementCount == 1) {
+            messages.appendChild(node);
+          } else {
+            messages.insertBefore(node, document.getElementById('messages').children[1])
+          }
+
+        } 
+          else {
           let ul = document.getElementById('messages').lastChild
           if (ul) {
             if (obj.num == ul.children[1].innerText) { return false }
@@ -243,13 +290,13 @@
       }
     }
 
-    window.onscroll = function(ev) {
+    window.onscroll = function (ev) {
       // console.log(ev)
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight -2) {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
         // you're at the bottom of the page
         console.log('down')
-    }
-};
+      }
+    };
     var print2 = async function (obj, type, his) {
       var node = document.createElement('li')
       var clickdiv = document.createElement('div')
@@ -570,7 +617,7 @@
             //   })
             //   console.log(res)
             // let f=document.getElementById('messages').firstChild
-            let f={a:document.body.offsetHeight,b:window.pageYOffset}
+            let f = { a: document.body.offsetHeight, b: window.pageYOffset }
             arr.forEach((item, ind) => {
               var res = arr.find((i) => {
                 return i.num == document.getElementById('messages').firstChild.children[1].innerText - 1
@@ -581,13 +628,13 @@
               if (res.media) {
                 print2(res, res.media, 'his')
               } else {
-                if(arr.length==ind+1){
-                  print(res,'hisprint',f)
+                if (arr.length == ind + 1) {
+                  print(res, 'hisprint', f)
 
 
                 }
 
-                print(res,'hisprint')
+                print(res, 'hisprint')
               }
 
             });
