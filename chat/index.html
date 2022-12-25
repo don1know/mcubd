@@ -25,22 +25,12 @@
 
     </div>
 
-
-    <!-- if (fileName.length >= 12) { //if file name length is greater than 12 then split it and add ...
-    let splitName = fileName.split('.');
-    fileName = splitName[0].substring(0, 13) + "... ." + splitName[1];
-} -->
-
-
-
-
-
-    <button class="his" id="his" onclick="loadHis()">History</button>
+    <!-- <button class="his" id="his" onclick="loadHis()">History</button> -->
     <h5 id="h5"></h5>
     <ul id="messages">
       <li>
         <label id="loading">
-          <lottie-player src="./loading.json" background="transparent" speed="1" style=" width: 20%;margin: 0 auto;"
+          <lottie-player src="./loading.json" background="transparent" speed="1" style=" width: 15%;margin: 0 auto;"
             loop autoplay></lottie-player>
 
 
@@ -49,7 +39,10 @@
     </ul>
 
 
-
+    <br>
+    <br>
+    <br>
+    <br>
     <form id="form" action="">
       <div class="box">
         <hr>
@@ -171,8 +164,9 @@
 
             if (obj.media) {
               print(obj, 'media')
-            } else {
-              print(obj, 'firstload')
+            } 
+            else {
+              if(arr.length==ind+1){print(obj, 'firstload','scroll')}else{print(obj, 'firstload')}
             }
 
 
@@ -253,7 +247,7 @@
           // console.log(old.getBoundingClientRect())
           // console.log(old)
           // console.log(document.body.scrollHeight)
-   
+
           // var access = document.getElementById("id2");
           // ne.scrollIntoView();
           console.log(ne)
@@ -266,15 +260,40 @@
           }
           // console.log('res '+res)
           document.getElementById('his').disabled = false
-        }else if(two == 'firstload'){
+        } else if (two == 'firstload') {
           if (document.getElementById('messages').childElementCount == 1) {
             messages.appendChild(node);
           } else {
             messages.insertBefore(node, document.getElementById('messages').children[1])
           }
+                    // console.log('offsethight'+document.body.offsetHeight+' '+ window.pageYOffset)
+                    if(ne=='scroll'){
+                      // setTimeout(() => {
+                      //   window.scroll(0,document.body.scrollHeight)
+                        
+                      //   console.error('scroll ')
+                      // }, 500);
+                      var inter= setInterval(() => {
+                        window.scroll(0,document.body.scrollHeight)
+                        
+                        console.error('scroll ')
+                        
+                      }, 100);
+                      setTimeout(() => {
+                        clearInterval(inter)
+                        
+                      }, 2000);
 
-        } 
-          else {
+                    }
+
+                    // setTimeout(() => {
+                      
+                    //   window.scroll(0,window.pageYOffset+window.innerHeight)
+                    // }, 500);
+                    // console.log(pageYOffset)
+
+        }
+        else {
           let ul = document.getElementById('messages').lastChild
           if (ul) {
             if (obj.num == ul.children[1].innerText) { return false }
