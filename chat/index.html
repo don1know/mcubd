@@ -216,11 +216,16 @@
           // console.log(document.body.scrollHeight)
           messages.insertBefore(node, document.getElementById('messages').firstChild)
           // var access = document.getElementById("id2");
-          ne.scrollIntoView();
-          // console.log(ne)
+          // ne.scrollIntoView();
+          console.log(ne)
+          // console.log('offsethight'+document.body.offsetHeight+' '+ window.pageYOffset)
           // console.log(document.body.scrollHeight+'after')
+          if(ne){
+            let res=document.body.offsetHeight-ne.a
+            window.scrollBy(0,res);
 
-          // window.scrollBy(0,old);
+          }
+          // console.log('res '+res)
           document.getElementById('his').disabled = false
         } else {
           let ul = document.getElementById('messages').lastChild
@@ -238,7 +243,13 @@
       }
     }
 
-
+    window.onscroll = function(ev) {
+      // console.log(ev)
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight -2) {
+        // you're at the bottom of the page
+        console.log('down')
+    }
+};
     var print2 = async function (obj, type, his) {
       var node = document.createElement('li')
       var clickdiv = document.createElement('div')
@@ -558,19 +569,25 @@
 
             //   })
             //   console.log(res)
-            let f=document.getElementById('messages').firstChild
+            // let f=document.getElementById('messages').firstChild
+            let f={a:document.body.offsetHeight,b:window.pageYOffset}
             arr.forEach((item, ind) => {
               var res = arr.find((i) => {
                 return i.num == document.getElementById('messages').firstChild.children[1].innerText - 1
 
 
               })
-              // console.log(res.num)
+
               if (res.media) {
                 print2(res, res.media, 'his')
               } else {
+                if(arr.length==ind+1){
+                  print(res,'hisprint',f)
 
-                print(res,'hisprint',f)
+
+                }
+
+                print(res,'hisprint')
               }
 
             });
