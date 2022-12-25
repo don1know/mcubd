@@ -115,11 +115,11 @@
           // console.log(item.children[1].innerText);
           ar2 = ar2 + Number(item.children[1].innerText);
         }
-        var ress=ar2+1
-        var ress2=ar2*ress
-        var res3=ress2/2
+        var ress = ar2 + 1
+        var ress2 = ar2 * ress
+        var res3 = ress2 / 2
         console.log(res3)
-        
+
         alert(ar2)
       }
 
@@ -166,7 +166,7 @@
       }, 4000);
     }
 
-    var print = async function (obj, two) {
+    var print = async function (obj, two,ne) {
 
       if (two == 'media') {
         print2(obj, obj.media)
@@ -182,7 +182,7 @@
         var copy = document.createElement('button')
         var copylogo = document.createElement('lottie-player')
 
-
+        node.setAttribute("id", obj.num)
         copy.setAttribute("class", "copy")
         copy.setAttribute("onClick", "copy(this)")
         copylogo.setAttribute("src", "https://assets6.lottiefiles.com/packages/lf20_niqylzi0.json")
@@ -206,15 +206,20 @@
 
 
 
-
+        // console.log(two)
         // return 6
 
         if (two == 'hisprint') {
-          var old=document.body.scrollHeight
-          console.log(document.body.scrollHeight)
+          // let old=document.getElementById('messages').firstChild
+          // console.log(old.getBoundingClientRect())
+          // console.log(old)
+          // console.log(document.body.scrollHeight)
           messages.insertBefore(node, document.getElementById('messages').firstChild)
-          console.log(document.body.scrollHeight+'after')
-          
+          // var access = document.getElementById("id2");
+          ne.scrollIntoView();
+          // console.log(ne)
+          // console.log(document.body.scrollHeight+'after')
+
           // window.scrollBy(0,old);
           document.getElementById('his').disabled = false
         } else {
@@ -241,6 +246,7 @@
       var ip = document.createElement('span')
       var time = document.createElement('span')
       num.textContent = obj.num
+      node.setAttribute("id", obj.num)
       num.setAttribute("class", "block")
 
 
@@ -531,7 +537,7 @@
       var last = document.getElementById('messages')
 
 
-      if (last.firstChild.querySelector('.block').innerText == 1) { alert('no more');} else {
+      if (last.firstChild.querySelector('.block').innerText == 1) { alert('no more'); } else {
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/chatdatahis', true);
 
@@ -552,6 +558,7 @@
 
             //   })
             //   console.log(res)
+            let f=document.getElementById('messages').firstChild
             arr.forEach((item, ind) => {
               var res = arr.find((i) => {
                 return i.num == document.getElementById('messages').firstChild.children[1].innerText - 1
@@ -563,7 +570,7 @@
                 print2(res, res.media, 'his')
               } else {
 
-                print(res, 'hisprint')
+                print(res,'hisprint',f)
               }
 
             });
