@@ -181,7 +181,9 @@ if(document.getElementById('messages').childElementCount >1){
               // }else{
                 
               // }
-              print(obj, 'firstload')
+              if(arr.length==ind+1){
+                print(obj, 'firstload','show')
+              }else{print(obj, 'firstload')}
 
             }
 
@@ -285,10 +287,16 @@ if(document.getElementById('messages').childElementCount >1){
           } else {
             messages.insertBefore(node, document.getElementById('messages').children[1])
           }
-          setTimeout(() => {
-          window.scroll(0,document.body.scrollHeight)
+          setTimeout(() => {window.scroll(0,document.body.scrollHeight)}, 1000);
+          
+          if(ne=='show'){
+            setTimeout(() => {
+              
+              document.getElementById('messages').style.opacity='1'
+            }, 1000);
+              
             
-          }, 800);
+          }
 
 
           // if(ne=='after'){
@@ -296,24 +304,24 @@ if(document.getElementById('messages').childElementCount >1){
             
           // }
                     // console.log('offsethight'+document.body.offsetHeight+' '+ window.pageYOffset)
-                    if(ne=='scroll'){
-                      // setTimeout(() => {
-                      //   window.scroll(0,document.body.scrollHeight)
+                    // if(ne=='scroll'){
+                    //   // setTimeout(() => {
+                    //   //   window.scroll(0,document.body.scrollHeight)
                         
-                      //   console.error('scroll ')
-                      // }, 500);
-                      var inter= setInterval(() => {
-                        window.scroll(0,document.body.scrollHeight)
+                    //   //   console.error('scroll ')
+                    //   // }, 500);
+                    //   var inter= setInterval(() => {
+                    //     window.scroll(0,document.body.scrollHeight)
                         
-                        console.error('scroll ')
+                    //     console.error('scroll ')
                         
-                      }, 100);
-                      setTimeout(() => {
-                        clearInterval(inter)
+                    //   }, 100);
+                    //   setTimeout(() => {
+                    //     clearInterval(inter)
                         
-                      }, 2000);
+                    //   }, 2000);
 
-                    }
+                    // }
 
                     // setTimeout(() => {
                       
