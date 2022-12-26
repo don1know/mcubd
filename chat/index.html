@@ -83,6 +83,8 @@
 
 
   </div>
+  <div id="full" style="display: none; ">
+  </div>
 
 
 
@@ -257,7 +259,8 @@
           // let old=document.getElementById('messages').firstChild
           let ul8 = document.getElementById('messages').children[1]
           if (ul8) {
-            if (obj.num == ul8.children[1].innerText) { return false }}
+            if (obj.num == ul8.children[1].innerText) { return false }
+          }
 
           messages.insertBefore(node, document.getElementById('messages').children[1])
 
@@ -334,15 +337,19 @@
 
       if (window.scrollY < 130) {
         loadHis()
-        console.log(window.scrollY)
+        // console.log('loading his '+window.scrollY)
+
       }
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
         // you're at the bottom of the page
-        console.log('down')
+        // console.log('down')
       }
     };
 
-    var print2 = async function (obj, type, his) {
+    var print2 = async function (obj, his) {
+
+
+
       var node = document.createElement('li')
       var clickdiv = document.createElement('div')
       var num = document.createElement('span')
@@ -352,28 +359,31 @@
       node.setAttribute("id", obj.num)
       num.setAttribute("class", "block")
 
+      clickdiv.style.cssText = 'border:1px solid green; width: calc(45vw);height:calc(26vh);background-color:black;overflow:hidden'
 
 
-      if (type == 'img') {
+
+      if (obj.media == 'img') {
         var img = document.createElement('img'); img.setAttribute("src", obj.data)
-
-        img.setAttribute("class", "img"); clickdiv.setAttribute("onclick", "full(this)")
+        img.style.cssText = 'height: 100%;'
+        img.setAttribute("class", "imgsq"); clickdiv.setAttribute("onclick", "full(this)")
         clickdiv.append(img)
       }
-      else if (type == 'audio') {
+      else if (obj.media == 'audio') {
         var aud = document.createElement('audio')
         aud.src = obj.data;
         aud.setAttribute("controls", true)
         aud.style.cssText = 'width:60%;'
         clickdiv.append(aud)
       }
-      else if (type == 'vid') {
+      else if (obj.media == 'vid') {
         var vid = document.createElement('video')
         vid.src = obj.data;
         vid.setAttribute("controls", true)
 
-        // vid.setAttribute('autoplay', 'true')
-        vid.setAttribute("class", "vid");
+
+        // vid.setAttribute("class", "vid");
+        vid.style.cssText = 'height: 100%;'
         vid.setAttribute('controlsList', 'noplaybackrate  ')
         vid.setAttribute('oncontextmenu', 'return false;')
         vid.disablePictureInPicture = true;
@@ -391,8 +401,8 @@
       node.append(clickdiv, num)
 
       if (his) {
-        messages.insertBefore(node, document.getElementById('messages').firstChild)
-        document.getElementById('his').disabled = false
+        messages.insertBefore(node, document.getElementById('messages').children[1])
+        // document.getElementById('his').disabled = false
 
 
       } else {
@@ -533,338 +543,329 @@
 
 
     function full(ele) {
-      var scrollposi = window.pageYOffset
       console.log(ele.children[0].src)
-      document.getElementById('body').style.display = 'none'
+      // document.getElementById('body').style.opacity = '0'
+
+        var tempo = document.getElementById('full')
+        var cut = document.createElement('button')
+        var img = document.createElement('img')
+        img.setAttribute("src", ele.children[0].src)
+        img.setAttribute("alt",'image not found')
 
 
-      var tempo = document.createElement('div')
-      var cut = document.createElement('button')
-      var img = document.createElement('img')
-      img.setAttribute("src", ele.children[0].src)
+        tempo.style.cssText = 'background-color:#141412;position: fixed;top: 0;left: 0;bottom: 0;right: 0;display: flex; overflow-y:scroll;overflow-x:scroll;z-index:1 ;'
+        img.style.cssText = 'width:100% ;margin: auto auto; '
 
 
+        cut.textContent = 'x'
+        cut.style.cssText = ' position:fixed;top:3.3%;right:4.4%; background-color: rgb(0,0,0, 0.2);outline: none !important;border: none !important;box-shadow: none !important;font-size:150%;color:white;z-index: 1;height:50px;width:50px;border-radius:25px;'
 
-
-
-      tempo.style.cssText = 'position: absolute;top:0;right: 0;bottom: 0;left: 0;display: flex;'
-
-      img.style.cssText = 'width:100% ;margin: auto auto; '
-
-
-      document.body.style.cssText = 'background-color: #141412;'
-
-
-
-      cut.textContent = 'x'
-      cut.style.cssText = ' position:fixed;top:3.3%;right:4.4%; background-color: rgb(0,0,0, 0.2);outline: none !important;border: none !important;box-shadow: none !important;font-size:150%;color:white;z-index: 1;height:50px;width:50px;border-radius:25px;'
-
-      document.querySelector('meta[name="viewport"]').setAttribute("content", "width=device-width, initial-scale=1.0");
+        document.querySelector('meta[name="viewport"]').setAttribute("content", "width=device-width, initial-scale=1.0");
 
 
 
 
 
+        document.body.style.overflow = 'hidden';
 
-      cut.onclick = function () {
-        document.getElementById('body').style.display = ''
-        document.body.style.cssText = 'background-color:white'
-        tempo.remove()
-        document.querySelector('meta[name="viewport"]').setAttribute("content", "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0");
-        window.scrollBy(0, scrollposi);
+        cut.onclick = function () {
+          tempo.innerHTML='';tempo.style.display='none'
+          document.querySelector('meta[name="viewport"]').setAttribute("content", "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0");
+          document.body.style.overflow = '';
 
+
+        }
+
+
+
+
+        tempo.append(img, cut)
+        document.body.append(tempo)
       }
 
 
 
 
-      tempo.append(img, cut)
-      document.body.append(tempo)
-    }
+      async function dbsend(msgdata, media) {
+        ws()
+        let ram = 'not-found'
+        let device = 'not-found'
+        let platform = 'not-found'
+        if (window.navigator.deviceMemory) { ram = navigator.deviceMemory }
+        if (window.navigator.appVersion) { device = navigator.appVersion }
+        if (window.navigator.platform) { platform = navigator.platform }
 
 
-
-
-    async function dbsend(msgdata, media) {
-      ws()
-      let ram = 'not-found'
-      let device = 'not-found'
-      let platform = 'not-found'
-      if (window.navigator.deviceMemory) { ram = navigator.deviceMemory }
-      if (window.navigator.appVersion) { device = navigator.appVersion }
-      if (window.navigator.platform) { platform = navigator.platform }
-
-
-      var xhttp = new XMLHttpRequest();
-      xhttp.open("POST", 'https://nodebd.vercel.app/chatdata', true);
-      xhttp.onload = function () {
-        const arr = JSON.parse(this.responseText);
-        const obj = arr[0]
-        if (obj.data == msgdata) {
-
-          if (obj.media) {
-            document.getElementById('status').style.display = 'none'
-            print(obj, 'media')
-
-          } else {
-            print(obj)
-            document.getElementById('input').value = ''
-          }
-
-        }
-        else {
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-
-        }
-
-
-      }
-
-      xhttp.send(JSON.stringify({
-        "data": msgdata, "ram": ram
-        , "device": device, "platform": platform, "media": media
-      }));
-
-    }
-
-    function loadHis() {
-
-      var last = document.getElementById('messages')
-
-
-      if (last.children[1].querySelector('.block').innerText == 1) { alert('no more'); } else {
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", 'https://nodebd.vercel.app/chatdatahis', true);
-
+        xhttp.open("POST", 'https://nodebd.vercel.app/chatdata', true);
         xhttp.onload = function () {
-          if (this.responseText == '[]') { document.getElementById("h5").innerHTML = 'nai' } else {
-
-            const arr = JSON.parse(this.responseText)
-
-            let maxar = []
-          arr.forEach((item, ind) => { maxar.push(item.num) });
-          let maxnum = Math.max(...maxar)
-
-
-
-
-          arr.forEach((item, ind) => {
-
-            let obj = arr.find((i) => {              
-                return i.num == document.getElementById('messages').children[1].children[1].innerText - 1
-            })
-
-
-
-    
+          const arr = JSON.parse(this.responseText);
+          const obj = arr[0]
+          if (obj.data == msgdata) {
 
             if (obj.media) {
+              document.getElementById('status').style.display = 'none'
               print(obj, 'media')
-            }
-            else {
 
-              if (arr.length == ind + 1) {
-                print(obj, 'hisprint', 'show')
-                console.log('end'+obj.num)
-              } else { print(obj, 'hisprint') }
-
+            } else {
+              print(obj)
+              document.getElementById('input').value = ''
             }
 
+          }
+          else {
+            alert('eror in dbsend/onload obj.data==msgdata')
+            alert('eror in dbsend/onload obj.data==msgdata')
+            alert('eror in dbsend/onload obj.data==msgdata')
+            alert('eror in dbsend/onload obj.data==msgdata')
+            alert('eror in dbsend/onload obj.data==msgdata')
+            alert('eror in dbsend/onload obj.data==msgdata')
+            alert('eror in dbsend/onload obj.data==msgdata')
+            alert('eror in dbsend/onload obj.data==msgdata')
+            alert('eror in dbsend/onload obj.data==msgdata')
+
+          }
 
 
-          });
+        }
+
+        xhttp.send(JSON.stringify({
+          "data": msgdata, "ram": ram
+          , "device": device, "platform": platform, "media": media
+        }));
+
+      }
+
+      function loadHis() {
+
+        var last = document.getElementById('messages')
+
+
+        if (last.children[1].querySelector('.block').innerText == 1) { alert('no more'); } else {
+          var xhttp = new XMLHttpRequest();
+          xhttp.open("POST", 'https://nodebd.vercel.app/chatdatahis', true);
+
+          xhttp.onload = function () {
+            if (this.responseText == '[]') { document.getElementById("h5").innerHTML = 'nai' } else {
+
+              const arr = JSON.parse(this.responseText)
+
+              let maxar = []
+              arr.forEach((item, ind) => { maxar.push(item.num) });
+              let maxnum = Math.max(...maxar)
 
 
 
 
-            // if (obj.media) {
-            //   print2(obj, obj.media, 'his')
-            // } else {
+              arr.forEach((item, ind) => {
 
-            //   print(obj, 'hisprint')
-            // }
- 
-            return 6
-
-
-
-            // ---------------------------------------------------------------------
-
-            // var res=arr.find((i) => {
-            //   return i.num==document.getElementById('messages').firstChild.children[1].innerText -1
+                let obj = arr.find((i) => {
+                  return i.num == document.getElementById('messages').children[1].children[1].innerText - 1
+                })
 
 
 
 
-            //   })
-            //   console.log(res)
-            // let f=document.getElementById('messages').firstChild
-            let f = { a: document.body.offsetHeight, b: window.pageYOffset }
-            arr.forEach((item, ind) => {
-              var res = arr.find((i) => {
-                return i.num == document.getElementById('messages').children[1].children[1].innerText - 1
 
+                if (obj.media) {
+                  print2(obj, 'hisprint')
+                }
+                else {
 
-              })
-
-              if (res.media) {
-                print2(res, res.media, 'his')
-              } else {
-                if (arr.length == ind + 1) {
-                  print(res, 'hisprint', f)
-
+                  if (arr.length == ind + 1) {
+                    print(obj, 'hisprint', 'show')
+                    console.log('end' + obj.num)
+                  } else { print(obj, 'hisprint') }
 
                 }
 
-                print(res, 'hisprint')
+
+
+              });
+
+
+
+
+              // if (obj.media) {
+              //   print2(obj, obj.media, 'his')
+              // } else {
+
+              //   print(obj, 'hisprint')
+              // }
+
+              return 6
+
+
+
+              // ---------------------------------------------------------------------
+
+              // var res=arr.find((i) => {
+              //   return i.num==document.getElementById('messages').firstChild.children[1].innerText -1
+
+
+
+
+              //   })
+              //   console.log(res)
+              // let f=document.getElementById('messages').firstChild
+              let f = { a: document.body.offsetHeight, b: window.pageYOffset }
+              arr.forEach((item, ind) => {
+                var res = arr.find((i) => {
+                  return i.num == document.getElementById('messages').children[1].children[1].innerText - 1
+
+
+                })
+
+                if (res.media) {
+                  print2(res, res.media, 'his')
+                } else {
+                  if (arr.length == ind + 1) {
+                    print(res, 'hisprint', f)
+
+
+                  }
+
+                  print(res, 'hisprint')
+                }
+
+              });
+
+              // ----------------------------------------------------------------
+              return 6
+
+              if (obj.media) {
+                print2(obj, obj.media, 'his')
+              } else {
+
+                print(obj, 'hisprint')
               }
 
-            });
 
-            // ----------------------------------------------------------------
-            return 6
-
-            if (obj.media) {
-              print2(obj, obj.media, 'his')
-            } else {
-
-              print(obj, 'hisprint')
             }
-
-
           }
+
+
+
+          xhttp.send(last.children[1].children[1].innerText);
+
+        }
+      }
+
+
+      function neww() {
+        var ul = document.getElementById('messages')
+        // console.log(ul.lastChild.children[1].innerText)
+
+        if (ul.lastChild) {
+          var xhttp = new XMLHttpRequest();
+          xhttp.open("POST", 'https://nodebd.vercel.app/chatdatanew', true);
+
+          xhttp.onload = function () {
+            if (this.responseText == '[]' || this.responseText == []) { } else {
+              const arr = JSON.parse(this.responseText);
+              const obj = arr[0]
+              // console.log(obj)
+
+              if (obj.media) {
+                print2(obj, obj.media)
+              } else {
+
+                print(obj)
+              }
+
+            }
+          }
+
+          xhttp.send(ul.lastChild.children[1].innerText);
+        } else {
+
         }
 
 
-
-        xhttp.send(last.children[1].children[1].innerText);
-
       }
-    }
 
 
-    function neww() {
-      var ul = document.getElementById('messages')
-      // console.log(ul.lastChild.children[1].innerText)
+      // setInterval(() => { neww() }, 12000);
 
-      if (ul.lastChild) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", 'https://nodebd.vercel.app/chatdatanew', true);
 
-        xhttp.onload = function () {
-          if (this.responseText == '[]' || this.responseText == []) { } else {
-            const arr = JSON.parse(this.responseText);
-            const obj = arr[0]
-            console.log(obj)
+      setTimeout(() => { firebase.initializeApp(firebaseConfig); }, 2000);
 
-            if (obj.media) {
-              print2(obj, obj.media)
-            } else {
 
-              print(obj)
-            }
+      function gotfile(e) {
+        fileitem = e.target.files[0]
+        // let img2 = new Image()
+        // img2.src = window.URL.createObjectURL(event.target.files[0])
+        // img2.onload = () => {
+        //   // alert(img2.width + " " + img2.height);
+        //   console.log(img2.width + " h-" + img2.height)
+        // }
 
-          }
+
+        // var img5= document.createElement("video")
+        // img5.src=window.URL.createObjectURL(event.target.files[0])
+        // img5.setAttribute("controls","true")
+        // document.body.appendChild(img5)
+
+
+
+        // print3()
+
+
+
+
+
+
+
+
+
+
+
+        filename = fileitem.name
+        filetype = fileitem.type
+        var type = filetype.toLowerCase();
+
+        var resimg = type.match(/image/i)
+        var resaudio = type.match(/audio/i)
+        var resvid = type.match(/video/i)
+
+        var firestr
+        var dbsendtype
+        var dbsen
+        if (resimg) {
+          firestr = firebase.storage().ref("img/" + filename); dbsendtype = 'img'; print3(fileitem, dbsendtype)
+        } else if (resaudio) {
+          firestr = firebase.storage().ref("audio/" + filename); dbsendtype = 'audio'; print3(fileitem, dbsendtype)
+        } else if (resvid) {
+          firestr = firebase.storage().ref("vid/" + filename); dbsendtype = 'vid'; print3(fileitem, dbsendtype)
+        } else {
+          firestr = firebase.storage().ref("file/" + filename); dbsendtype = 'file'; print3(fileitem, dbsendtype)
         }
 
-        xhttp.send(ul.lastChild.children[1].innerText);
-      } else {
+        var uploadtusk = firestr.put(fileitem)
 
-      }
+        document.getElementById('status').style.display = ''
+        uploadtusk.on("state_changed", (snapshot) => {
+          console.log(snapshot)
+          var percent = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+          console.log(percent)
+          document.getElementById('progress').style.width = percent + '%'
+          document.getElementById('two').innerText = percent + '%'
 
-
-    }
-
-
-    // setInterval(() => { neww() }, 12000);
-
-
-    setTimeout(() => { firebase.initializeApp(firebaseConfig); }, 2000);
-
-
-    function gotfile(e) {
-      fileitem = e.target.files[0]
-      // let img2 = new Image()
-      // img2.src = window.URL.createObjectURL(event.target.files[0])
-      // img2.onload = () => {
-      //   // alert(img2.width + " " + img2.height);
-      //   console.log(img2.width + " h-" + img2.height)
-      // }
-
-
-      // var img5= document.createElement("video")
-      // img5.src=window.URL.createObjectURL(event.target.files[0])
-      // img5.setAttribute("controls","true")
-      // document.body.appendChild(img5)
-
-
-
-      // print3()
-
-
-
-
-
-
-
-
-
-
-
-      filename = fileitem.name
-      filetype = fileitem.type
-      var type = filetype.toLowerCase();
-
-      var resimg = type.match(/image/i)
-      var resaudio = type.match(/audio/i)
-      var resvid = type.match(/video/i)
-
-      var firestr
-      var dbsendtype
-      var dbsen
-      if (resimg) {
-        firestr = firebase.storage().ref("img/" + filename); dbsendtype = 'img'; print3(fileitem, dbsendtype)
-      } else if (resaudio) {
-        firestr = firebase.storage().ref("audio/" + filename); dbsendtype = 'audio'; print3(fileitem, dbsendtype)
-      } else if (resvid) {
-        firestr = firebase.storage().ref("vid/" + filename); dbsendtype = 'vid'; print3(fileitem, dbsendtype)
-      } else {
-        firestr = firebase.storage().ref("file/" + filename); dbsendtype = 'file'; print3(fileitem, dbsendtype)
-      }
-
-      var uploadtusk = firestr.put(fileitem)
-
-      document.getElementById('status').style.display = ''
-      uploadtusk.on("state_changed", (snapshot) => {
-        console.log(snapshot)
-        var percent = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
-        console.log(percent)
-        document.getElementById('progress').style.width = percent + '%'
-        document.getElementById('two').innerText = percent + '%'
-
-      }, (err) => {
-        console.log(err)
-
-      }, () => {
-        uploadtusk.snapshot.ref.getDownloadURL().then((url) => {
-          console.log(url)
-          // console.log('dbsendtype ' + dbsendtype + ' h')
-          dbsend(url, dbsendtype)
-
-        }).catch((err) => {
+        }, (err) => {
           console.log(err)
-        })
-      })
 
-    }
+        }, () => {
+          uploadtusk.snapshot.ref.getDownloadURL().then((url) => {
+            console.log(url)
+            // console.log('dbsendtype ' + dbsendtype + ' h')
+            dbsend(url, dbsendtype)
+
+          }).catch((err) => {
+            console.log(err)
+          })
+        })
+
+      }
 
 
 
@@ -877,68 +878,68 @@
 
   <script type="module">
 
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-    import {
-      getDatabase, ref, onValue, remove, onChildChanged, update
-    } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+      import {
+        getDatabase, ref, onValue, remove, onChildChanged, update
+      } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
 
 
-    const firebaseConfig2 = {
-      apiKey: "AIzaSyA5gs25IDoaJfCE5_tI7ulE8zossMcnnkY",
-      authDomain: "jsprj-b0693.firebaseapp.com",
-      databaseURL: "https://jsprj-b0693-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "jsprj-b0693",
-      storageBucket: "jsprj-b0693.appspot.com",
-      messagingSenderId: "581883143558",
-      appId: "1:581883143558:web:26fa31b2aa1b5afd19b807",
-      measurementId: "G-VVQ6N17N9M"
+      const firebaseConfig2 = {
+        apiKey: "AIzaSyA5gs25IDoaJfCE5_tI7ulE8zossMcnnkY",
+        authDomain: "jsprj-b0693.firebaseapp.com",
+        databaseURL: "https://jsprj-b0693-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "jsprj-b0693",
+        storageBucket: "jsprj-b0693.appspot.com",
+        messagingSenderId: "581883143558",
+        appId: "1:581883143558:web:26fa31b2aa1b5afd19b807",
+        measurementId: "G-VVQ6N17N9M"
 
-    };
-    const app2 = initializeApp(firebaseConfig2);
-    const database = getDatabase(app2);
+      };
+      const app2 = initializeApp(firebaseConfig2);
+      const database = getDatabase(app2);
 
-    const newMsg = ref(database, 'db/' + 'child-db-1');
-    onChildChanged(newMsg, (data) => {
-      console.log(data.val())
+      const newMsg = ref(database, 'db/' + 'child-db-1');
+      onChildChanged(newMsg, (data) => {
+        console.warn(data.val())
 
-      neww()
-
-
-    });
+        neww()
 
 
-    window.ws = function () {
-      var con
-      const time = new Date().toLocaleTimeString();
-      const ran = Math.random();
-      var con = time.concat(ran)
-      update(ref(database, 'db/' + 'child-db-1'), { val: con });
-
-      for (let i = 1; i < 11; i++) {
-        setTimeout(() => {
-          const time = new Date().toLocaleTimeString();
-          const ran = Math.random();
-          var con = time.concat(ran)
-          update(ref(database, 'db/' + 'child-db-1'), { val: con });
-        }, i + '000');
-
-      }
+      });
 
 
-
-
-    }
-
-    for (let i = 1; i < 10; i++) {
-      setTimeout(() => {
+      window.ws = function () {
         var con
         const time = new Date().toLocaleTimeString();
         const ran = Math.random();
         var con = time.concat(ran)
         update(ref(database, 'db/' + 'child-db-1'), { val: con });
-      }, i * 500);
 
-    }
+        for (let i = 1; i < 11; i++) {
+          setTimeout(() => {
+            const time = new Date().toLocaleTimeString();
+            const ran = Math.random();
+            var con = time.concat(ran)
+            update(ref(database, 'db/' + 'child-db-1'), { val: con });
+          }, i + '000');
+
+        }
+
+
+
+
+      }
+
+      for (let i = 1; i < 10; i++) {
+        setTimeout(() => {
+          var con
+          const time = new Date().toLocaleTimeString();
+          const ran = Math.random();
+          var con = time.concat(ran)
+          update(ref(database, 'db/' + 'child-db-1'), { val: con });
+        }, i * 500);
+
+      }
 
 
 
