@@ -152,7 +152,6 @@
           arr.forEach((item, ind) => {
 
             let obj = arr.find((i) => {
-              // return i.num == document.getElementById('messages').firstChild.children[1].innerText - 1
               if (document.getElementById('messages').childElementCount == 1) {
                 return i.num == maxnum
               } else {
@@ -160,30 +159,21 @@
               }
 
             })
-            
-if(document.getElementById('messages').childElementCount >1){
 
-}
-    
-          
-               
+            if (document.getElementById('messages').childElementCount > 1) {
+
+            }
+
+
+
             if (obj.media) {
               print(obj, 'media')
-            } 
+            }
             else {
-              // if(arr.length==ind+1){print(obj, 'firstload','scroll')}else{print(obj, 'firstload')}
 
-              // if (document.getElementById('messages').childElementCount > 1) {
-              //   setTimeout((objj) => {  print(objj, 'firstload');
-              //   console.log(objj.data)                
-              //   }, ind*1,obj);                
-                
-              // }else{
-                
-              // }
-              if(arr.length==ind+1){
-                print(obj, 'firstload','show')
-              }else{print(obj, 'firstload')}
+              if (arr.length == ind + 1) {
+                print(obj, 'firstload', 'show')
+              } else { print(obj, 'firstload') }
 
             }
 
@@ -194,7 +184,7 @@ if(document.getElementById('messages').childElementCount >1){
 
 
 
- 
+
 
 
 
@@ -265,69 +255,63 @@ if(document.getElementById('messages').childElementCount >1){
 
         if (two == 'hisprint') {
           // let old=document.getElementById('messages').firstChild
-          // console.log(old.getBoundingClientRect())
-          // console.log(old)
-          // console.log(document.body.scrollHeight)
+          let ul8 = document.getElementById('messages').children[1]
+          if (ul8) {
+            if (obj.num == ul8.children[1].innerText) { return false }}
 
-          // var access = document.getElementById("id2");
-          // ne.scrollIntoView();
-          console.log(ne)
-          // console.log('offsethight'+document.body.offsetHeight+' '+ window.pageYOffset)
-          // console.log(document.body.scrollHeight+'after')
-          if (ne) {
-            let res = document.body.offsetHeight - ne.a
-            window.scrollBy(0, res);
+          messages.insertBefore(node, document.getElementById('messages').children[1])
 
-          }
-          // console.log('res '+res)
-          document.getElementById('his').disabled = false
+
+
+
+
         } else if (two == 'firstload') {
           if (document.getElementById('messages').childElementCount == 1) {
             messages.appendChild(node);
           } else {
             messages.insertBefore(node, document.getElementById('messages').children[1])
           }
-          
-          if(ne=='show'){
-            setTimeout(() => {window.scroll(0,document.body.scrollHeight)}, 800);
+
+          if (ne == 'show') {
+            setTimeout(() => { window.scroll(0, document.body.scrollHeight) }, 800);
             setTimeout(() => {
-              
-              document.getElementById('messages').style.opacity='1'
+
+              document.getElementById('messages').style.opacity = '1'
             }, 800);
-              
-            
+
+
           }
 
 
           // if(ne=='after'){
           //   messages.insertBefore(node, document.getElementById('messages').children[1])
-            
+
           // }
-                    // console.log('offsethight'+document.body.offsetHeight+' '+ window.pageYOffset)
-                    // if(ne=='scroll'){
-                    //   // setTimeout(() => {
-                    //   //   window.scroll(0,document.body.scrollHeight)
-                        
-                    //   //   console.error('scroll ')
-                    //   // }, 500);
-                    //   var inter= setInterval(() => {
-                    //     window.scroll(0,document.body.scrollHeight)
-                        
-                    //     console.error('scroll ')
-                        
-                    //   }, 100);
-                    //   setTimeout(() => {
-                    //     clearInterval(inter)
-                        
-                    //   }, 2000);
+          // console.log('offsethight'+document.body.offsetHeight+' '+ window.pageYOffset)
+          // if(ne=='scroll'){
+          //   // setTimeout(() => {
+          //   //   window.scroll(0,document.body.scrollHeight)
 
-                    // }
+          //   //   console.error('scroll ')
+          //   // }, 500);
+          //   var inter= setInterval(() => {
+          //     window.scroll(0,document.body.scrollHeight)
 
-                    // setTimeout(() => {
-                      
-                    //   window.scroll(0,window.pageYOffset+window.innerHeight)
-                    // }, 500);
-                    // console.log(pageYOffset)
+          //     console.error('scroll ')
+
+          //   }, 100);
+          //   setTimeout(() => {
+          //     clearInterval(inter)
+
+          //   }, 2000);
+
+          // }
+
+          // setTimeout(() => {
+
+          //   window.scroll(0,window.pageYOffset+window.innerHeight)
+          // }, 500);
+          // console.log(pageYOffset)
 
         }
         else {
@@ -347,12 +331,17 @@ if(document.getElementById('messages').childElementCount >1){
     }
 
     window.onscroll = function (ev) {
-      // console.log(ev)
+
+      if (window.scrollY < 130) {
+        loadHis()
+        console.log(window.scrollY)
+      }
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
         // you're at the bottom of the page
         console.log('down')
       }
     };
+
     var print2 = async function (obj, type, his) {
       var node = document.createElement('li')
       var clickdiv = document.createElement('div')
@@ -647,22 +636,67 @@ if(document.getElementById('messages').childElementCount >1){
     }
 
     function loadHis() {
-      document.getElementById('his').disabled = true
+
       var last = document.getElementById('messages')
 
 
-      if (last.firstChild.querySelector('.block').innerText == 1) { alert('no more'); } else {
+      if (last.children[1].querySelector('.block').innerText == 1) { alert('no more'); } else {
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/chatdatahis', true);
 
         xhttp.onload = function () {
-          const obj = JSON.parse(this.responseText);
           if (this.responseText == '[]') { document.getElementById("h5").innerHTML = 'nai' } else {
 
             const arr = JSON.parse(this.responseText)
-            const obj = arr[0]
 
-            document.getElementById('messages').firstChild.children[1].innerText
+            let maxar = []
+          arr.forEach((item, ind) => { maxar.push(item.num) });
+          let maxnum = Math.max(...maxar)
+
+
+
+
+          arr.forEach((item, ind) => {
+
+            let obj = arr.find((i) => {              
+                return i.num == document.getElementById('messages').children[1].children[1].innerText - 1
+            })
+
+
+
+    
+
+            if (obj.media) {
+              print(obj, 'media')
+            }
+            else {
+
+              if (arr.length == ind + 1) {
+                print(obj, 'hisprint', 'show')
+                console.log('end'+obj.num)
+              } else { print(obj, 'hisprint') }
+
+            }
+
+
+
+          });
+
+
+
+
+            // if (obj.media) {
+            //   print2(obj, obj.media, 'his')
+            // } else {
+
+            //   print(obj, 'hisprint')
+            // }
+ 
+            return 6
+
+
+
+            // ---------------------------------------------------------------------
 
             // var res=arr.find((i) => {
             //   return i.num==document.getElementById('messages').firstChild.children[1].innerText -1
@@ -676,7 +710,7 @@ if(document.getElementById('messages').childElementCount >1){
             let f = { a: document.body.offsetHeight, b: window.pageYOffset }
             arr.forEach((item, ind) => {
               var res = arr.find((i) => {
-                return i.num == document.getElementById('messages').firstChild.children[1].innerText - 1
+                return i.num == document.getElementById('messages').children[1].children[1].innerText - 1
 
 
               })
@@ -711,7 +745,7 @@ if(document.getElementById('messages').childElementCount >1){
 
 
 
-        xhttp.send(last.firstChild.children[1].innerText);
+        xhttp.send(last.children[1].children[1].innerText);
 
       }
     }
