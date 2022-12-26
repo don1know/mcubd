@@ -27,7 +27,7 @@
 
     <!-- <button class="his" id="his" onclick="loadHis()">History</button> -->
     <h5 id="h5"></h5>
-    <ul id="messages">
+    <ul id="messages" style="opacity: 0;">
       <li>
         <label id="loading">
           <lottie-player src="./loading.json" background="transparent" speed="1" style=" width: 15%;margin: 0 auto;"
@@ -160,13 +160,29 @@
               }
 
             })
+            
+if(document.getElementById('messages').childElementCount >1){
 
-
+}
+    
+          
+               
             if (obj.media) {
               print(obj, 'media')
             } 
             else {
-              if(arr.length==ind+1){print(obj, 'firstload','scroll')}else{print(obj, 'firstload')}
+              // if(arr.length==ind+1){print(obj, 'firstload','scroll')}else{print(obj, 'firstload')}
+
+              // if (document.getElementById('messages').childElementCount > 1) {
+              //   setTimeout((objj) => {  print(objj, 'firstload');
+              //   console.log(objj.data)                
+              //   }, ind*1,obj);                
+                
+              // }else{
+                
+              // }
+              print(obj, 'firstload')
+
             }
 
 
@@ -175,11 +191,12 @@
 
 
 
-          // if (obj.media) {
-          //   print(obj, 'media')
-          // } else {
-          //   print(obj)
-          // }
+
+ 
+
+
+
+
 
         }
       }
@@ -198,6 +215,8 @@
 
       }, 4000);
     }
+
+
 
     var print = async function (obj, two, ne) {
 
@@ -266,6 +285,16 @@
           } else {
             messages.insertBefore(node, document.getElementById('messages').children[1])
           }
+          setTimeout(() => {
+          window.scroll(0,document.body.scrollHeight)
+            
+          }, 800);
+
+
+          // if(ne=='after'){
+          //   messages.insertBefore(node, document.getElementById('messages').children[1])
+            
+          // }
                     // console.log('offsethight'+document.body.offsetHeight+' '+ window.pageYOffset)
                     if(ne=='scroll'){
                       // setTimeout(() => {
