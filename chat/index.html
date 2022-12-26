@@ -287,13 +287,13 @@ if(document.getElementById('messages').childElementCount >1){
           } else {
             messages.insertBefore(node, document.getElementById('messages').children[1])
           }
-          setTimeout(() => {window.scroll(0,document.body.scrollHeight)}, 1000);
           
           if(ne=='show'){
+            setTimeout(() => {window.scroll(0,document.body.scrollHeight)}, 200);
             setTimeout(() => {
               
               document.getElementById('messages').style.opacity='1'
-            }, 1500);
+            }, 200);
               
             
           }
