@@ -264,6 +264,7 @@
         num.setAttribute("class", "block")
         // copy.append(copylogo);
         copy.style.cssText = 'width:6.8%;opacity:.8;'
+        ip.style.opacity=`.2`
         copy.innerHTML = `
         <svg id="Layer_1" height="100%" width="100%" enable-background="new 0 0 64 64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><g><path d="m52.77 9.37h-3.87v-3.86c0-2.99-2.44-5.43-5.43-5.43h-30.25c-2.99 0-5.43 2.44-5.43 5.43v43.51c0 2.99 2.44 5.43 5.43 5.43h3.87v3.87c0 2.99 2.44 5.43 5.43 5.43h30.25c2.99 0 5.43-2.44 5.43-5.43v-43.52c0-2.99-2.43-5.43-5.43-5.43zm-42.11 39.64v-43.5c0-1.42 1.15-2.57 2.57-2.57h30.25c1.42 0 2.57 1.15 2.57 2.57v43.51c0 1.42-1.15 2.57-2.57 2.57h-30.26c-1.41-.01-2.56-1.16-2.56-2.58zm44.68 9.3c0 1.42-1.15 2.57-2.57 2.57h-30.25c-1.42 0-2.57-1.15-2.57-2.57v-3.87h23.52c2.99 0 5.43-2.44 5.43-5.43v-36.78h3.87c1.42 0 2.57 1.15 2.57 2.57z"></path></g></svg>
         `
@@ -347,7 +348,16 @@
       node.setAttribute("id", obj.num)
       num.setAttribute("class", "block")
 
-      // clickdiv.style.cssText = 'border:4px solid green; width: calc(45vw);height:calc(36vh);background-color:black;overflow:hidden'
+      time.innerText=obj.date
+      ip.innerText='['+obj.ip+']'
+      ip.style.cssText=`float:right;opacity:.2`
+      node.style.cssText=`margin-bottom:calc(7vh)`
+      num.style.cssText=`margin-top:calc(.1vh);opacity:.1;`
+      time.style.cssText=`margin-left:calc(1vh)`
+
+
+
+
       clickdiv.style.cssText = 'border:4px solid green; width: calc(45vw);height:calc(36vh);background-color:black;position: relative;overflow:hidden'
 
 
@@ -388,7 +398,6 @@
 
         // vid.setAttribute("class", "vid");
         vid.style.cssText = 'height: 100%; position: relative;left: 50%;transform: translateX(-50%);'
-
         vid.setAttribute('controlsList', 'noplaybackrate  ')
         vid.setAttribute('oncontextmenu', 'return false;')
         vid.disablePictureInPicture = true;
@@ -403,14 +412,13 @@
 
 
 
-      node.append(clickdiv, num)
+      node.append(clickdiv, num,time ,ip)
 
       if (his) {
         messages.insertBefore(node, document.getElementById('messages').children[1])
         // document.getElementById('his').disabled = false
-
-
-      } else {
+      } 
+      else {
 
         messages.appendChild(node);
       }
@@ -565,7 +573,7 @@
 
 
       cut.textContent = 'x'
-      cut.style.cssText = ' position:fixed;top:3.3%;right:4.4%; background-color: rgb(0,0,0, 0.2);outline: none !important;border: none !important;font-size:150%;color:white;z-index: 1;height:50px;width:50px;border-radius:25px; box-shadow: 15px 15px 15px  rgb(255, 255, 255);'
+      cut.style.cssText = ' position:fixed;top:3.3%;right:4.4%; background-color: rgb(0,0,0, 0.2);outline: none !important;border: none !important;font-size:150%;color:white;z-index: 1;height:50px;width:50px;border-radius:25px; box-shadow: 1px 1px 15px  rgba(255, 255, 255,.6);'
 
       document.querySelector('meta[name="viewport"]').setAttribute("content", "width=device-width, initial-scale=1.0");
 
@@ -600,6 +608,7 @@
     });
 
     function fullvid(ele) {
+      screen.orientation.lock('landscape')
       ele.getElementsByTagName('video')[0].requestFullscreen();
       ele.getElementsByTagName('video')[0].play()
     
