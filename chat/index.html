@@ -39,7 +39,6 @@
       </li>
     </ul>
 
-
     <br>
     <br>
     <br>
@@ -92,7 +91,7 @@
   <!-- <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_zxldh066.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player> -->
 
 
-  
+
 
 
 
@@ -211,8 +210,8 @@
       console.log('copied:' + ele.parentElement.firstChild.innerText)
       navigator.clipboard.writeText(ele.parentElement.firstChild.innerText)
 
-console.log(ele)
-ele.innerHTML=`
+      console.log(ele)
+      ele.innerHTML = `
 <svg id="Layer_1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="m256 48.49a208 208 0 0 1 147.08 355.08 208 208 0 1 1 -294.16-294.15 206.64 206.64 0 0 1 147.08-60.93m0-48c-141.38 0-256 114.62-256 256s114.62 256 256 256 256-114.61 256-256-114.62-256-256-256z"></path><path d="m218.08 367.23a24 24 0 0 1 -17-7l-82.63-82.63a24 24 0 0 1 33.94-33.94l65.24 65.23 139.82-146.89a24 24 0 1 1 34.77 33.09l-156.76 164.69a24 24 0 0 1 -17.08 7.45z"></path></svg>
 `
 
@@ -221,7 +220,7 @@ ele.innerHTML=`
       // ele.children[0].stop()
 
       setTimeout(() => {
-        ele.innerHTML=`
+        ele.innerHTML = `
         <svg id="Layer_1" height="100%" width="100%" enable-background="new 0 0 64 64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><g><path d="m52.77 9.37h-3.87v-3.86c0-2.99-2.44-5.43-5.43-5.43h-30.25c-2.99 0-5.43 2.44-5.43 5.43v43.51c0 2.99 2.44 5.43 5.43 5.43h3.87v3.87c0 2.99 2.44 5.43 5.43 5.43h30.25c2.99 0 5.43-2.44 5.43-5.43v-43.52c0-2.99-2.43-5.43-5.43-5.43zm-42.11 39.64v-43.5c0-1.42 1.15-2.57 2.57-2.57h30.25c1.42 0 2.57 1.15 2.57 2.57v43.51c0 1.42-1.15 2.57-2.57 2.57h-30.26c-1.41-.01-2.56-1.16-2.56-2.58zm44.68 9.3c0 1.42-1.15 2.57-2.57 2.57h-30.25c-1.42 0-2.57-1.15-2.57-2.57v-3.87h23.52c2.99 0 5.43-2.44 5.43-5.43v-36.78h3.87c1.42 0 2.57 1.15 2.57 2.57z"></path></g></svg>
         `
 
@@ -235,7 +234,7 @@ ele.innerHTML=`
       if (two == 'media') {
         print2(obj, obj.media)
       }
-       else {
+      else {
 
 
 
@@ -264,8 +263,8 @@ ele.innerHTML=`
         num.textContent = obj.num
         num.setAttribute("class", "block")
         // copy.append(copylogo);
-        copy.style.cssText='width:6.8%;opacity:.8;'
-        copy.innerHTML=`
+        copy.style.cssText = 'width:6.8%;opacity:.8;'
+        copy.innerHTML = `
         <svg id="Layer_1" height="100%" width="100%" enable-background="new 0 0 64 64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><g><path d="m52.77 9.37h-3.87v-3.86c0-2.99-2.44-5.43-5.43-5.43h-30.25c-2.99 0-5.43 2.44-5.43 5.43v43.51c0 2.99 2.44 5.43 5.43 5.43h3.87v3.87c0 2.99 2.44 5.43 5.43 5.43h30.25c2.99 0 5.43-2.44 5.43-5.43v-43.52c0-2.99-2.43-5.43-5.43-5.43zm-42.11 39.64v-43.5c0-1.42 1.15-2.57 2.57-2.57h30.25c1.42 0 2.57 1.15 2.57 2.57v43.51c0 1.42-1.15 2.57-2.57 2.57h-30.26c-1.41-.01-2.56-1.16-2.56-2.58zm44.68 9.3c0 1.42-1.15 2.57-2.57 2.57h-30.25c-1.42 0-2.57-1.15-2.57-2.57v-3.87h23.52c2.99 0 5.43-2.44 5.43-5.43v-36.78h3.87c1.42 0 2.57 1.15 2.57 2.57z"></path></g></svg>
         `
         node.append(txt, num, copy, time, ip);
@@ -289,10 +288,10 @@ ele.innerHTML=`
 
 
         }
-         else if (two == 'firstload') {
+        else if (two == 'firstload') {
           if (document.getElementById('messages').childElementCount == 1) {
             messages.appendChild(node);
-          } 
+          }
           else {
             messages.insertBefore(node, document.getElementById('messages').children[1])
           }
@@ -348,8 +347,8 @@ ele.innerHTML=`
       node.setAttribute("id", obj.num)
       num.setAttribute("class", "block")
 
-      clickdiv.style.cssText = 'border:4px solid green; width: calc(45vw);height:calc(36vh);background-color:black;overflow:hidden'
-
+      // clickdiv.style.cssText = 'border:4px solid green; width: calc(45vw);height:calc(36vh);background-color:black;overflow:hidden'
+      clickdiv.style.cssText = 'border:4px solid green; width: calc(45vw);height:calc(36vh);background-color:black;position: relative;overflow:hidden'
 
 
       if (obj.media == 'img') {
@@ -367,8 +366,21 @@ ele.innerHTML=`
       }
       else if (obj.media == 'vid') {
         var vid = document.createElement('video')
+        var play = document.createElement('div')
 
+        play.style.cssText = `position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);display:inline;`
 
+        play.innerHTML = `
+        <svg id="Layer_1" style=" display:block;margin-left:auto; margin-right:auto; "  width="50%" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1">
+      <circle cx="256" cy="256" fill="#2d4a60" r="224"  style="fill: rgba(0, 0, 0,.2);"></circle>
+      <path d="m361.24 235.054-143.627-82.923a24.186 24.186 0 0 0 -36.28 20.946v165.846a24.186 24.186 0 0 0 36.28 20.946l143.627-82.923a24.187 24.187 0 0 0 0-41.892z" fill="#eaeff0" style="fill: rgb(255, 255, 255);"></path>
+      
+      <path d="m256 490.667a234.667 234.667 0 0 1 -165.935-400.601 234.666 234.666 0 1 1 331.869 331.868 233.127 233.127 0 0 1 -165.934 68.733zm0-448c-117.633 0-213.334 95.7-213.334 213.333s95.701 213.333 213.334 213.333 213.333-95.701 213.333-213.333-95.701-213.333-213.333-213.333z" fill="#000000" style="fill: rgb(255, 255, 255);"></path>
+      
+      <!-- <path d="m205.519 373.831a34.986 34.986 0 0 1 -34.853-34.908v-165.846a34.854 34.854 0 0 1 52.281-30.184l143.627 82.923a34.853 34.853 0 0 1 0 60.367l-143.627 82.923a34.783 34.783 0 0 1 -17.428 4.725zm.069-214.323a13.924 13.924 0 0 0 -6.828 1.86 13.285 13.285 0 0 0 -6.76 11.709v165.846a13.52 13.52 0 0 0 20.28 11.708l143.627-82.923a13.521 13.521 0 0 0 0-23.417l-143.627-82.923a13.225 13.225 0 0 0 -6.692-1.86z" fill="#000000" style="fill: rgb(184, 76, 76);"></path> -->
+      </svg>
+
+        `
 
         vid.src = obj.data;
         // vid.setAttribute("controls", true)
@@ -380,7 +392,8 @@ ele.innerHTML=`
         vid.setAttribute('controlsList', 'noplaybackrate  ')
         vid.setAttribute('oncontextmenu', 'return false;')
         vid.disablePictureInPicture = true;
-        clickdiv.append(vid)
+        clickdiv.setAttribute("onclick", "fullvid(this)")
+        clickdiv.append(vid, play)
       }
       else {
         var download = document.createElement('button')
@@ -537,330 +550,344 @@ ele.innerHTML=`
     function full(ele) {
       console.log(ele.children[0].src)
       document.getElementById('body').style.opacity = '0'
-      document.body.style.backgroundColor='#141412'
+      document.body.style.backgroundColor = '#141412'
 
 
-        var tempo = document.getElementById('full')
-        var cut = document.createElement('button')
-        var img = document.createElement('img')
-        img.setAttribute("src", ele.children[0].src)
-        img.setAttribute("alt",'image not found')
+      var tempo = document.getElementById('full')
+      var cut = document.createElement('button')
+      var img = document.createElement('img')
+      img.setAttribute("src", ele.children[0].src)
+      img.setAttribute("alt", 'image not found')
 
 
-        tempo.style.cssText = 'background-color:#141412;position: fixed;top: 0;left: 0;bottom: 0;right: 0;display: flex; overflow-y:scroll;overflow-x:scroll;z-index:1 ;'
-        img.style.cssText = 'width:100% ;margin: auto auto; '
+      tempo.style.cssText = 'background-color:#141412;position: fixed;top: 0;left: 0;bottom: 0;right: 0;display: flex; overflow-y:scroll;overflow-x:scroll;z-index:1 ;'
+      img.style.cssText = 'width:100% ;margin: auto auto; '
 
 
-        cut.textContent = 'x'
-        cut.style.cssText = ' position:fixed;top:3.3%;right:4.4%; background-color: rgb(0,0,0, 0.2);outline: none !important;border: none !important;box-shadow: none !important;font-size:150%;color:white;z-index: 1;height:50px;width:50px;border-radius:25px;'
+      cut.textContent = 'x'
+      cut.style.cssText = ' position:fixed;top:3.3%;right:4.4%; background-color: rgb(0,0,0, 0.2);outline: none !important;border: none !important;box-shadow: none !important;font-size:150%;color:white;z-index: 1;height:50px;width:50px;border-radius:25px;'
 
-        document.querySelector('meta[name="viewport"]').setAttribute("content", "width=device-width, initial-scale=1.0");
-
-
-
-
-
-        document.body.style.overflow = 'hidden';
-
-        cut.onclick = function () {
-          tempo.innerHTML='';tempo.style.display='none'
-          document.querySelector('meta[name="viewport"]').setAttribute("content", "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0");
-          document.body.style.overflow = '';
-          document.getElementById('body').style.opacity = '1'
-          document.body.style.backgroundColor=''
-
-        }
+      document.querySelector('meta[name="viewport"]').setAttribute("content", "width=device-width, initial-scale=1.0");
 
 
 
 
-        tempo.append(img, cut)
-        // document.body.append(tempo)
+
+      document.body.style.overflow = 'hidden';
+
+      cut.onclick = function () {
+        tempo.innerHTML = ''; tempo.style.display = 'none'
+        document.querySelector('meta[name="viewport"]').setAttribute("content", "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0");
+        document.body.style.overflow = '';
+        document.getElementById('body').style.opacity = '1'
+        document.body.style.backgroundColor = ''
+
       }
 
 
 
 
-      async function dbsend(msgdata, media) {
-        ws()
-        let ram = 'not-found'
-        let device = 'not-found'
-        let platform = 'not-found'
-        if (window.navigator.deviceMemory) { ram = navigator.deviceMemory }
-        if (window.navigator.appVersion) { device = navigator.appVersion }
-        if (window.navigator.platform) { platform = navigator.platform }
+      tempo.append(img, cut)
+      // document.body.append(tempo)
+    }
+
+    addEventListener('fullscreenchange', (e) => {
+      if (document.fullscreenElement) {}
+       else {
+        const vid=document.getElementsByTagName('video')
+        for (const i of vid) {i.pause();}
+      }
+    });
+
+    function fullvid(ele) {
+      ele.getElementsByTagName('video')[0].requestFullscreen();
+      ele.getElementsByTagName('video')[0].play()
+    
+    }
 
 
+
+
+    async function dbsend(msgdata, media) {
+      ws()
+      let ram = 'not-found'
+      let device = 'not-found'
+      let platform = 'not-found'
+      if (window.navigator.deviceMemory) { ram = navigator.deviceMemory }
+      if (window.navigator.appVersion) { device = navigator.appVersion }
+      if (window.navigator.platform) { platform = navigator.platform }
+
+
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("POST", 'https://nodebd.vercel.app/chatdata', true);
+      xhttp.onload = function () {
+        const arr = JSON.parse(this.responseText);
+        const obj = arr[0]
+        if (obj.data == msgdata) {
+
+          if (obj.media) {
+            document.getElementById('status').style.display = 'none'
+            print(obj, 'media')
+
+          } else {
+            print(obj)
+            document.getElementById('input').value = ''
+          }
+
+        }
+        else {
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+          alert('eror in dbsend/onload obj.data==msgdata')
+
+        }
+
+
+      }
+
+      xhttp.send(JSON.stringify({
+        "data": msgdata, "ram": ram
+        , "device": device, "platform": platform, "media": media
+      }));
+
+    }
+
+    function loadHis() {
+
+      var last = document.getElementById('messages')
+
+
+      if (last.children[1].querySelector('.block').innerText == 1) { alert('no more'); } else {
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", 'https://nodebd.vercel.app/chatdata', true);
+        xhttp.open("POST", 'https://nodebd.vercel.app/chatdatahis', true);
+
         xhttp.onload = function () {
-          const arr = JSON.parse(this.responseText);
-          const obj = arr[0]
-          if (obj.data == msgdata) {
+          if (this.responseText == '[]') { document.getElementById("h5").innerHTML = 'nai' } else {
+
+            const arr = JSON.parse(this.responseText)
+
+            let maxar = []
+            arr.forEach((item, ind) => { maxar.push(item.num) });
+            let maxnum = Math.max(...maxar)
+
+
+
+
+            arr.forEach((item, ind) => {
+
+              let obj = arr.find((i) => {
+                return i.num == document.getElementById('messages').children[1].children[1].innerText - 1
+              })
+
+
+
+
+
+              if (obj.media) {
+                print2(obj, 'hisprint')
+              }
+              else {
+
+                if (arr.length == ind + 1) {
+                  print(obj, 'hisprint', 'show')
+                  console.log('end' + obj.num)
+                } else { print(obj, 'hisprint') }
+
+              }
+
+
+
+            });
+
+
+
+
+            // if (obj.media) {
+            //   print2(obj, obj.media, 'his')
+            // } else {
+
+            //   print(obj, 'hisprint')
+            // }
+
+            return 6
+
+
+
+            // ---------------------------------------------------------------------
+
+            // var res=arr.find((i) => {
+            //   return i.num==document.getElementById('messages').firstChild.children[1].innerText -1
+
+
+
+
+            //   })
+            //   console.log(res)
+            // let f=document.getElementById('messages').firstChild
+            let f = { a: document.body.offsetHeight, b: window.pageYOffset }
+            arr.forEach((item, ind) => {
+              var res = arr.find((i) => {
+                return i.num == document.getElementById('messages').children[1].children[1].innerText - 1
+
+
+              })
+
+              if (res.media) {
+                print2(res, res.media, 'his')
+              } else {
+                if (arr.length == ind + 1) {
+                  print(res, 'hisprint', f)
+
+
+                }
+
+                print(res, 'hisprint')
+              }
+
+            });
+
+            // ----------------------------------------------------------------
+            return 6
 
             if (obj.media) {
-              document.getElementById('status').style.display = 'none'
-              print(obj, 'media')
-
+              print2(obj, obj.media, 'his')
             } else {
+
+              print(obj, 'hisprint')
+            }
+
+
+          }
+        }
+
+
+
+        xhttp.send(last.children[1].children[1].innerText);
+
+      }
+    }
+
+
+    function neww() {
+      var ul = document.getElementById('messages')
+      // console.log(ul.lastChild.children[1].innerText)
+
+      if (ul.lastChild) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", 'https://nodebd.vercel.app/chatdatanew', true);
+
+        xhttp.onload = function () {
+          if (this.responseText == '[]' || this.responseText == []) { } else {
+            const arr = JSON.parse(this.responseText);
+            const obj = arr[0]
+            // console.log(obj)
+
+            if (obj.media) {
+              print2(obj, obj.media)
+            } else {
+
               print(obj)
-              document.getElementById('input').value = ''
             }
 
           }
-          else {
-            alert('eror in dbsend/onload obj.data==msgdata')
-            alert('eror in dbsend/onload obj.data==msgdata')
-            alert('eror in dbsend/onload obj.data==msgdata')
-            alert('eror in dbsend/onload obj.data==msgdata')
-            alert('eror in dbsend/onload obj.data==msgdata')
-            alert('eror in dbsend/onload obj.data==msgdata')
-            alert('eror in dbsend/onload obj.data==msgdata')
-            alert('eror in dbsend/onload obj.data==msgdata')
-            alert('eror in dbsend/onload obj.data==msgdata')
-
-          }
-
-
         }
 
-        xhttp.send(JSON.stringify({
-          "data": msgdata, "ram": ram
-          , "device": device, "platform": platform, "media": media
-        }));
-
-      }
-
-      function loadHis() {
-
-        var last = document.getElementById('messages')
-
-
-        if (last.children[1].querySelector('.block').innerText == 1) { alert('no more'); } else {
-          var xhttp = new XMLHttpRequest();
-          xhttp.open("POST", 'https://nodebd.vercel.app/chatdatahis', true);
-
-          xhttp.onload = function () {
-            if (this.responseText == '[]') { document.getElementById("h5").innerHTML = 'nai' } else {
-
-              const arr = JSON.parse(this.responseText)
-
-              let maxar = []
-              arr.forEach((item, ind) => { maxar.push(item.num) });
-              let maxnum = Math.max(...maxar)
-
-
-
-
-              arr.forEach((item, ind) => {
-
-                let obj = arr.find((i) => {
-                  return i.num == document.getElementById('messages').children[1].children[1].innerText - 1
-                })
-
-
-
-
-
-                if (obj.media) {
-                  print2(obj, 'hisprint')
-                }
-                else {
-
-                  if (arr.length == ind + 1) {
-                    print(obj, 'hisprint', 'show')
-                    console.log('end' + obj.num)
-                  } else { print(obj, 'hisprint') }
-
-                }
-
-
-
-              });
-
-
-
-
-              // if (obj.media) {
-              //   print2(obj, obj.media, 'his')
-              // } else {
-
-              //   print(obj, 'hisprint')
-              // }
-
-              return 6
-
-
-
-              // ---------------------------------------------------------------------
-
-              // var res=arr.find((i) => {
-              //   return i.num==document.getElementById('messages').firstChild.children[1].innerText -1
-
-
-
-
-              //   })
-              //   console.log(res)
-              // let f=document.getElementById('messages').firstChild
-              let f = { a: document.body.offsetHeight, b: window.pageYOffset }
-              arr.forEach((item, ind) => {
-                var res = arr.find((i) => {
-                  return i.num == document.getElementById('messages').children[1].children[1].innerText - 1
-
-
-                })
-
-                if (res.media) {
-                  print2(res, res.media, 'his')
-                } else {
-                  if (arr.length == ind + 1) {
-                    print(res, 'hisprint', f)
-
-
-                  }
-
-                  print(res, 'hisprint')
-                }
-
-              });
-
-              // ----------------------------------------------------------------
-              return 6
-
-              if (obj.media) {
-                print2(obj, obj.media, 'his')
-              } else {
-
-                print(obj, 'hisprint')
-              }
-
-
-            }
-          }
-
-
-
-          xhttp.send(last.children[1].children[1].innerText);
-
-        }
-      }
-
-
-      function neww() {
-        var ul = document.getElementById('messages')
-        // console.log(ul.lastChild.children[1].innerText)
-
-        if (ul.lastChild) {
-          var xhttp = new XMLHttpRequest();
-          xhttp.open("POST", 'https://nodebd.vercel.app/chatdatanew', true);
-
-          xhttp.onload = function () {
-            if (this.responseText == '[]' || this.responseText == []) { } else {
-              const arr = JSON.parse(this.responseText);
-              const obj = arr[0]
-              // console.log(obj)
-
-              if (obj.media) {
-                print2(obj, obj.media)
-              } else {
-
-                print(obj)
-              }
-
-            }
-          }
-
-          xhttp.send(ul.lastChild.children[1].innerText);
-        } else {
-
-        }
-
+        xhttp.send(ul.lastChild.children[1].innerText);
+      } else {
 
       }
 
 
-      // setInterval(() => { neww() }, 12000);
+    }
 
 
-      setTimeout(() => { firebase.initializeApp(firebaseConfig); }, 2000);
+    // setInterval(() => { neww() }, 12000);
 
 
-      function gotfile(e) {
-        fileitem = e.target.files[0]
-        // let img2 = new Image()
-        // img2.src = window.URL.createObjectURL(event.target.files[0])
-        // img2.onload = () => {
-        //   // alert(img2.width + " " + img2.height);
-        //   console.log(img2.width + " h-" + img2.height)
-        // }
+    setTimeout(() => { firebase.initializeApp(firebaseConfig); }, 2000);
 
 
-        // var img5= document.createElement("video")
-        // img5.src=window.URL.createObjectURL(event.target.files[0])
-        // img5.setAttribute("controls","true")
-        // document.body.appendChild(img5)
+    function gotfile(e) {
+      fileitem = e.target.files[0]
+      // let img2 = new Image()
+      // img2.src = window.URL.createObjectURL(event.target.files[0])
+      // img2.onload = () => {
+      //   // alert(img2.width + " " + img2.height);
+      //   console.log(img2.width + " h-" + img2.height)
+      // }
 
 
-
-        // print3()
-
-
+      // var img5= document.createElement("video")
+      // img5.src=window.URL.createObjectURL(event.target.files[0])
+      // img5.setAttribute("controls","true")
+      // document.body.appendChild(img5)
 
 
 
-
+      // print3()
 
 
 
 
 
-        filename = fileitem.name
-        filetype = fileitem.type
-        var type = filetype.toLowerCase();
 
-        var resimg = type.match(/image/i)
-        var resaudio = type.match(/audio/i)
-        var resvid = type.match(/video/i)
 
-        var firestr
-        var dbsendtype
-        var dbsen
-        if (resimg) {
-          firestr = firebase.storage().ref("img/" + filename); dbsendtype = 'img'; print3(fileitem, dbsendtype)
-        } else if (resaudio) {
-          firestr = firebase.storage().ref("audio/" + filename); dbsendtype = 'audio'; print3(fileitem, dbsendtype)
-        } else if (resvid) {
-          firestr = firebase.storage().ref("vid/" + filename); dbsendtype = 'vid'; print3(fileitem, dbsendtype)
-        } else {
-          firestr = firebase.storage().ref("file/" + filename); dbsendtype = 'file'; print3(fileitem, dbsendtype)
-        }
 
-        var uploadtusk = firestr.put(fileitem)
 
-        document.getElementById('status').style.display = ''
-        uploadtusk.on("state_changed", (snapshot) => {
-          console.log(snapshot)
-          var percent = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
-          console.log(percent)
-          document.getElementById('progress').style.width = percent + '%'
-          document.getElementById('two').innerText = percent + '%'
 
-        }, (err) => {
+
+      filename = fileitem.name
+      filetype = fileitem.type
+      var type = filetype.toLowerCase();
+
+      var resimg = type.match(/image/i)
+      var resaudio = type.match(/audio/i)
+      var resvid = type.match(/video/i)
+
+      var firestr
+      var dbsendtype
+      var dbsen
+      if (resimg) {
+        firestr = firebase.storage().ref("img/" + filename); dbsendtype = 'img'; print3(fileitem, dbsendtype)
+      } else if (resaudio) {
+        firestr = firebase.storage().ref("audio/" + filename); dbsendtype = 'audio'; print3(fileitem, dbsendtype)
+      } else if (resvid) {
+        firestr = firebase.storage().ref("vid/" + filename); dbsendtype = 'vid'; print3(fileitem, dbsendtype)
+      } else {
+        firestr = firebase.storage().ref("file/" + filename); dbsendtype = 'file'; print3(fileitem, dbsendtype)
+      }
+
+      var uploadtusk = firestr.put(fileitem)
+
+      document.getElementById('status').style.display = ''
+      uploadtusk.on("state_changed", (snapshot) => {
+        console.log(snapshot)
+        var percent = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+        console.log(percent)
+        document.getElementById('progress').style.width = percent + '%'
+        document.getElementById('two').innerText = percent + '%'
+
+      }, (err) => {
+        console.log(err)
+
+      }, () => {
+        uploadtusk.snapshot.ref.getDownloadURL().then((url) => {
+          console.log(url)
+          // console.log('dbsendtype ' + dbsendtype + ' h')
+          dbsend(url, dbsendtype)
+
+        }).catch((err) => {
           console.log(err)
-
-        }, () => {
-          uploadtusk.snapshot.ref.getDownloadURL().then((url) => {
-            console.log(url)
-            // console.log('dbsendtype ' + dbsendtype + ' h')
-            dbsend(url, dbsendtype)
-
-          }).catch((err) => {
-            console.log(err)
-          })
         })
+      })
 
-      }
+    }
 
 
 
@@ -873,68 +900,68 @@ ele.innerHTML=`
 
   <script type="module">
 
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-      import {
-        getDatabase, ref, onValue, remove, onChildChanged, update
-      } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+    import {
+      getDatabase, ref, onValue, remove, onChildChanged, update
+    } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
 
 
-      const firebaseConfig2 = {
-        apiKey: "AIzaSyA5gs25IDoaJfCE5_tI7ulE8zossMcnnkY",
-        authDomain: "jsprj-b0693.firebaseapp.com",
-        databaseURL: "https://jsprj-b0693-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "jsprj-b0693",
-        storageBucket: "jsprj-b0693.appspot.com",
-        messagingSenderId: "581883143558",
-        appId: "1:581883143558:web:26fa31b2aa1b5afd19b807",
-        measurementId: "G-VVQ6N17N9M"
+    const firebaseConfig2 = {
+      apiKey: "AIzaSyA5gs25IDoaJfCE5_tI7ulE8zossMcnnkY",
+      authDomain: "jsprj-b0693.firebaseapp.com",
+      databaseURL: "https://jsprj-b0693-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "jsprj-b0693",
+      storageBucket: "jsprj-b0693.appspot.com",
+      messagingSenderId: "581883143558",
+      appId: "1:581883143558:web:26fa31b2aa1b5afd19b807",
+      measurementId: "G-VVQ6N17N9M"
 
-      };
-      const app2 = initializeApp(firebaseConfig2);
-      const database = getDatabase(app2);
+    };
+    const app2 = initializeApp(firebaseConfig2);
+    const database = getDatabase(app2);
 
-      const newMsg = ref(database, 'db/' + 'child-db-1');
-      onChildChanged(newMsg, (data) => {
-        console.warn(data.val())
+    const newMsg = ref(database, 'db/' + 'child-db-1');
+    onChildChanged(newMsg, (data) => {
+      console.warn(data.val())
 
-        neww()
-
-
-      });
+      neww()
 
 
-      window.ws = function () {
+    });
+
+
+    window.ws = function () {
+      var con
+      const time = new Date().toLocaleTimeString();
+      const ran = Math.random();
+      var con = time.concat(ran)
+      update(ref(database, 'db/' + 'child-db-1'), { val: con });
+
+      for (let i = 1; i < 11; i++) {
+        setTimeout(() => {
+          const time = new Date().toLocaleTimeString();
+          const ran = Math.random();
+          var con = time.concat(ran)
+          update(ref(database, 'db/' + 'child-db-1'), { val: con });
+        }, i + '000');
+
+      }
+
+
+
+
+    }
+
+    for (let i = 1; i < 10; i++) {
+      setTimeout(() => {
         var con
         const time = new Date().toLocaleTimeString();
         const ran = Math.random();
         var con = time.concat(ran)
         update(ref(database, 'db/' + 'child-db-1'), { val: con });
+      }, i * 500);
 
-        for (let i = 1; i < 11; i++) {
-          setTimeout(() => {
-            const time = new Date().toLocaleTimeString();
-            const ran = Math.random();
-            var con = time.concat(ran)
-            update(ref(database, 'db/' + 'child-db-1'), { val: con });
-          }, i + '000');
-
-        }
-
-
-
-
-      }
-
-      for (let i = 1; i < 10; i++) {
-        setTimeout(() => {
-          var con
-          const time = new Date().toLocaleTimeString();
-          const ran = Math.random();
-          var con = time.concat(ran)
-          update(ref(database, 'db/' + 'child-db-1'), { val: con });
-        }, i * 500);
-
-      }
+    }
 
 
 
