@@ -90,7 +90,7 @@
 
 
   <!-- <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_zxldh066.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player> -->
-  <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_zxldh066.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+
 
   
 
@@ -211,11 +211,19 @@
       console.log('copied:' + ele.parentElement.firstChild.innerText)
       navigator.clipboard.writeText(ele.parentElement.firstChild.innerText)
 
+console.log(ele)
+ele.innerHTML=`
+<svg id="Layer_1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="m256 48.49a208 208 0 0 1 147.08 355.08 208 208 0 1 1 -294.16-294.15 206.64 206.64 0 0 1 147.08-60.93m0-48c-141.38 0-256 114.62-256 256s114.62 256 256 256 256-114.61 256-256-114.62-256-256-256z"></path><path d="m218.08 367.23a24 24 0 0 1 -17-7l-82.63-82.63a24 24 0 0 1 33.94-33.94l65.24 65.23 139.82-146.89a24 24 0 1 1 34.77 33.09l-156.76 164.69a24 24 0 0 1 -17.08 7.45z"></path></svg>
+`
 
-      ele.children[0].stop()
+
+
+      // ele.children[0].stop()
 
       setTimeout(() => {
-        ele.children[0].play()
+        ele.innerHTML=`
+        <svg id="Layer_1" height="100%" width="100%" enable-background="new 0 0 64 64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><g><path d="m52.77 9.37h-3.87v-3.86c0-2.99-2.44-5.43-5.43-5.43h-30.25c-2.99 0-5.43 2.44-5.43 5.43v43.51c0 2.99 2.44 5.43 5.43 5.43h3.87v3.87c0 2.99 2.44 5.43 5.43 5.43h30.25c2.99 0 5.43-2.44 5.43-5.43v-43.52c0-2.99-2.43-5.43-5.43-5.43zm-42.11 39.64v-43.5c0-1.42 1.15-2.57 2.57-2.57h30.25c1.42 0 2.57 1.15 2.57 2.57v43.51c0 1.42-1.15 2.57-2.57 2.57h-30.26c-1.41-.01-2.56-1.16-2.56-2.58zm44.68 9.3c0 1.42-1.15 2.57-2.57 2.57h-30.25c-1.42 0-2.57-1.15-2.57-2.57v-3.87h23.52c2.99 0 5.43-2.44 5.43-5.43v-36.78h3.87c1.42 0 2.57 1.15 2.57 2.57z"></path></g></svg>
+        `
 
       }, 4000);
     }
@@ -226,7 +234,8 @@
 
       if (two == 'media') {
         print2(obj, obj.media)
-      } else {
+      }
+       else {
 
 
 
@@ -246,7 +255,6 @@
         copylogo.setAttribute("speed", "3")
         copylogo.setAttribute("id", "copylogo")
         copylogo.setAttribute("style", "width:30px; ")
-        // copylogo.setAttribute("loop","true")
         copylogo.setAttribute("autoplay", "true")
         ip.setAttribute("style", "float:right; ")
 
@@ -255,15 +263,17 @@
         time.textContent = obj.date
         num.textContent = obj.num
         num.setAttribute("class", "block")
-        copy.append(copylogo);
+        // copy.append(copylogo);
+        copy.style.cssText='width:6.8%;opacity:.8;'
+        copy.innerHTML=`
+        <svg id="Layer_1" height="100%" width="100%" enable-background="new 0 0 64 64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><g><path d="m52.77 9.37h-3.87v-3.86c0-2.99-2.44-5.43-5.43-5.43h-30.25c-2.99 0-5.43 2.44-5.43 5.43v43.51c0 2.99 2.44 5.43 5.43 5.43h3.87v3.87c0 2.99 2.44 5.43 5.43 5.43h30.25c2.99 0 5.43-2.44 5.43-5.43v-43.52c0-2.99-2.43-5.43-5.43-5.43zm-42.11 39.64v-43.5c0-1.42 1.15-2.57 2.57-2.57h30.25c1.42 0 2.57 1.15 2.57 2.57v43.51c0 1.42-1.15 2.57-2.57 2.57h-30.26c-1.41-.01-2.56-1.16-2.56-2.58zm44.68 9.3c0 1.42-1.15 2.57-2.57 2.57h-30.25c-1.42 0-2.57-1.15-2.57-2.57v-3.87h23.52c2.99 0 5.43-2.44 5.43-5.43v-36.78h3.87c1.42 0 2.57 1.15 2.57 2.57z"></path></g></svg>
+        `
         node.append(txt, num, copy, time, ip);
 
 
 
 
 
-        // console.log(two)
-        // return 6
 
         if (two == 'hisprint') {
           // let old=document.getElementById('messages').firstChild
@@ -278,10 +288,12 @@
 
 
 
-        } else if (two == 'firstload') {
+        }
+         else if (two == 'firstload') {
           if (document.getElementById('messages').childElementCount == 1) {
             messages.appendChild(node);
-          } else {
+          } 
+          else {
             messages.insertBefore(node, document.getElementById('messages').children[1])
           }
 
@@ -295,37 +307,6 @@
 
           }
 
-
-          // if(ne=='after'){
-          //   messages.insertBefore(node, document.getElementById('messages').children[1])
-
-          // }
-          // console.log('offsethight'+document.body.offsetHeight+' '+ window.pageYOffset)
-          // if(ne=='scroll'){
-          //   // setTimeout(() => {
-          //   //   window.scroll(0,document.body.scrollHeight)
-
-          //   //   console.error('scroll ')
-          //   // }, 500);
-          //   var inter= setInterval(() => {
-          //     window.scroll(0,document.body.scrollHeight)
-
-          //     console.error('scroll ')
-
-          //   }, 100);
-          //   setTimeout(() => {
-          //     clearInterval(inter)
-
-          //   }, 2000);
-
-          // }
-
-          // setTimeout(() => {
-
-          //   window.scroll(0,window.pageYOffset+window.innerHeight)
-          // }, 500);
-          // console.log(pageYOffset)
-
         }
         else {
           let ul = document.getElementById('messages').lastChild
@@ -336,9 +317,7 @@
 
           messages.appendChild(node);
         }
-        // document.getElementById('copylogo').stop()
 
-        // window.scrollBy(0,document.body.scrollHeight);
 
       }
     }
