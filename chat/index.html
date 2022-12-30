@@ -256,6 +256,8 @@
         copylogo.setAttribute("style", "width:30px; ")
         copylogo.setAttribute("autoplay", "true")
         ip.setAttribute("style", "float:right; ")
+        ip.setAttribute("class", "ipspan")
+
 
         txt.textContent = obj.data
         ip.textContent = ' ' + '[' + obj.ip + ']'
@@ -322,17 +324,24 @@
       }
     }
 
+
     window.onscroll = function (ev) {
 
-      if (window.scrollY < 130) {
-        loadHis()
-        // console.log('loading his '+window.scrollY)
-
-      }
+      if (window.scrollY < 130) {loadHis()}
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
         // you're at the bottom of the page
         // console.log('down')
       }
+
+      for (const el of document.getElementsByTagName('audio')) {
+    var rect = el.getBoundingClientRect();
+    var elemTop = rect.top;
+    var elemBottom = rect.bottom;
+    var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+    if(!isVisible){el.pause()}
+        
+      }
+   
     };
 
     var print2 = async function (obj, his) {
@@ -347,6 +356,8 @@
       num.textContent = obj.num
       node.setAttribute("id", obj.num)
       num.setAttribute("class", "block")
+      ip.setAttribute("class", "ipspan")
+
 
       time.innerText=obj.date
       ip.innerText='['+obj.ip+']'
@@ -368,10 +379,12 @@
         clickdiv.append(img)
       }
       else if (obj.media == 'audio') {
+        clickdiv.style.cssText = 'border:4px solid white; width: calc(90vw);height:calc(10vh);background-color: rgba(0, 0, 0, 0);position: relative;overflow:hidden'
+        
         var aud = document.createElement('audio')
         aud.src = obj.data;
         aud.setAttribute("controls", true)
-        aud.style.cssText = 'width:60%;'
+        aud.style.cssText = 'width:100%;'
         clickdiv.append(aud)
       }
       else if (obj.media == 'vid') {
@@ -405,8 +418,17 @@
         clickdiv.append(vid, play)
       }
       else {
-        var download = document.createElement('button')
 
+        clickdiv.style.cssText = 'border:4px solid green; width: calc(90vw);height:calc(10vh);background-color: rgba(0, 0, 0, 0);position: relative;overflow:hidden'
+        
+        var sure = document.createElement('div')
+        // a.innerText='click'
+        sure.style.cssText=`background-color:red;height:100%`
+        sure.innerText=obj.data
+        
+        sure.setAttribute("onclick","down(this)")
+        // aud.style.cssText = 'width:100%;'
+        clickdiv.append(sure)
 
       }
 
@@ -553,7 +575,9 @@
     }
 
 
-
+function down(e){
+ if (confirm("Download the file?")) { open(e.innerHTML,"_self") }
+}
 
     function full(ele) {
       console.log(ele.children[0].src)
@@ -614,7 +638,10 @@
     
     }
 
-
+document.body.onclick=function (){
+const arr= document.getElementsByTagName('audio')
+for (const i of arr) {i.pause()}
+}
 
 
     async function dbsend(msgdata, media) {
