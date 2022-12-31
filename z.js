@@ -7,8 +7,9 @@ b(a)
 
 function b(d){
 
-d.forEach((item) => {
-    console.log(item)
+d.forEach((i) => {
+    console.log(JSON.parse(i))
+    
     
 });
 
