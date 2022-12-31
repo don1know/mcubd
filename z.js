@@ -1,6 +1,16 @@
 
+fetch('https://fbbg.vercel.app/ss')
+.then(async (data) => {
+ a=await data.json()
+b(a)
+})
 
-for (const i of document.getElementById('const').children) {
-    console.log(i)
+function b(d){
+
+d.forEach((item) => {
+    console.log(item)
     
+});
+
+
 }
