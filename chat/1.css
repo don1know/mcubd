@@ -149,8 +149,6 @@ a{
 
       .play{
       display: inline-block;
-      background-color: rgba(0, 0, 0, 0.15);
-
       }
       .ipspan{
             -webkit-user-select: text; 
@@ -158,6 +156,9 @@ a{
             user-select:text;
       }
 
+      .test{
+            
+      }
 
       
         

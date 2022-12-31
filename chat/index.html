@@ -88,12 +88,6 @@
 
 
 
-  <!-- <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_zxldh066.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player> -->
-
-
-
-
-
 
 
 
@@ -101,45 +95,32 @@
     var messages = document.getElementById('messages');
     var form = document.getElementById('form');
     const firebaseConfig = {
-      apiKey: "AIzaSyA5gs25IDoaJfCE5_tI7ulE8zossMcnnkY",
-      authDomain: "jsprj-b0693.firebaseapp.com",
-      databaseURL: "https://jsprj-b0693-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "jsprj-b0693",
-      storageBucket: "jsprj-b0693.appspot.com",
-      messagingSenderId: "581883143558",
-      appId: "1:581883143558:web:26fa31b2aa1b5afd19b807",
-      measurementId: "G-VVQ6N17N9M"
+      // apiKey: "AIzaSyA5gs25IDoaJfCE5_tI7ulE8zossMcnnkY",
+      // authDomain: "jsprj-b0693.firebaseapp.com",
+      // databaseURL: "https://jsprj-b0693-default-rtdb.asia-southeast1.firebasedatabase.app",
+      // projectId: "jsprj-b0693",
+      // storageBucket: "jsprj-b0693.appspot.com",
+      // messagingSenderId: "581883143558",
+      // appId: "1:581883143558:web:26fa31b2aa1b5afd19b807",
+      // measurementId: "G-VVQ6N17N9M"
+      apiKey: "AIzaSyDJ51ctdUuZHsHMKb_Q4zgXYvB-8R_85ys",
+  authDomain: "india-f7d05.firebaseapp.com",
+  projectId: "india-f7d05",
+  storageBucket: "india-f7d05.appspot.com",
+  messagingSenderId: "774955885231",
+  appId: "1:774955885231:web:739c85f36fc8a38d99ea5a",
+  measurementId: "G-ZMVY6C1XTF"
     };
     var fileitem, filename, percent
 
 
     function sendclick() {
-      // e.preventDefault();
+
       if (input.value) {
-        //   socket.emit('chat message', input.value);
-        dbsend(input.value)
+        dbsend(input.value,'normal')
         window.scrollBy(0, document.body.scrollHeight);
 
-        // input.value = '';
       }
-
-
-      if (document.getElementById('messages').firstChild.children[1].innerText == 1) {
-        var ar2 = 0
-        for (let item of document.getElementById('messages').children) {
-          // console.log(item.children[1].innerText);
-          ar2 = ar2 + Number(item.children[1].innerText);
-        }
-        var ress = ar2 + 1
-        var ress2 = ar2 * ress
-        var res3 = ress2 / 2
-        console.log(res3)
-
-        alert(ar2)
-      }
-
-
-
 
     }
 
@@ -266,7 +247,7 @@
         num.setAttribute("class", "block")
         // copy.append(copylogo);
         copy.style.cssText = 'width:6.8%;opacity:.8;'
-        ip.style.opacity=`.2`
+        ip.style.opacity = `.2`
         copy.innerHTML = `
         <svg id="Layer_1" height="100%" width="100%" enable-background="new 0 0 64 64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><g><path d="m52.77 9.37h-3.87v-3.86c0-2.99-2.44-5.43-5.43-5.43h-30.25c-2.99 0-5.43 2.44-5.43 5.43v43.51c0 2.99 2.44 5.43 5.43 5.43h3.87v3.87c0 2.99 2.44 5.43 5.43 5.43h30.25c2.99 0 5.43-2.44 5.43-5.43v-43.52c0-2.99-2.43-5.43-5.43-5.43zm-42.11 39.64v-43.5c0-1.42 1.15-2.57 2.57-2.57h30.25c1.42 0 2.57 1.15 2.57 2.57v43.51c0 1.42-1.15 2.57-2.57 2.57h-30.26c-1.41-.01-2.56-1.16-2.56-2.58zm44.68 9.3c0 1.42-1.15 2.57-2.57 2.57h-30.25c-1.42 0-2.57-1.15-2.57-2.57v-3.87h23.52c2.99 0 5.43-2.44 5.43-5.43v-36.78h3.87c1.42 0 2.57 1.15 2.57 2.57z"></path></g></svg>
         `
@@ -327,21 +308,11 @@
 
     window.onscroll = function (ev) {
 
-      if (window.scrollY < 130) {loadHis()}
+      if (window.scrollY < 130) { loadHis() }
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
         // you're at the bottom of the page
         // console.log('down')
       }
-
-      for (const el of document.getElementsByTagName('audio')) {
-    var rect = el.getBoundingClientRect();
-    var elemTop = rect.top;
-    var elemBottom = rect.bottom;
-    var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
-    if(!isVisible){el.pause()}
-        
-      }
-   
     };
 
     var print2 = async function (obj, his) {
@@ -359,12 +330,12 @@
       ip.setAttribute("class", "ipspan")
 
 
-      time.innerText=obj.date
-      ip.innerText='['+obj.ip+']'
-      ip.style.cssText=`float:right;opacity:.2`
-      node.style.cssText=`margin-bottom:calc(7vh)`
-      num.style.cssText=`margin-top:calc(.1vh);opacity:.1;`
-      time.style.cssText=`margin-left:calc(1vh)`
+      time.innerText = obj.date
+      ip.innerText = '[' + obj.ip + ']'
+      ip.style.cssText = `float:right;opacity:.2`
+      node.style.cssText = `margin-bottom:calc(7vh)`
+      num.style.cssText = `margin-top:calc(.1vh);opacity:.1;`
+      time.style.cssText = `margin-left:calc(1vh)`
 
 
 
@@ -379,12 +350,12 @@
         clickdiv.append(img)
       }
       else if (obj.media == 'audio') {
-        clickdiv.style.cssText = 'border:4px solid white; width: calc(90vw);height:calc(10vh);background-color: rgba(0, 0, 0, 0);position: relative;overflow:hidden'
-        
+        clickdiv.style.cssText = 'border:4px solid white; width: calc(80vw);height:calc(6vh);background-color: rgba(0, 0, 0, 0);position: relative;overflow:hidden'
+
         var aud = document.createElement('audio')
         aud.src = obj.data;
         aud.setAttribute("controls", true)
-        aud.style.cssText = 'width:100%;'
+        aud.style.cssText = 'height:100%'
         clickdiv.append(aud)
       }
       else if (obj.media == 'vid') {
@@ -420,13 +391,13 @@
       else {
 
         clickdiv.style.cssText = 'border:4px solid green; width: calc(90vw);height:calc(10vh);background-color: rgba(0, 0, 0, 0);position: relative;overflow:hidden'
-        
+
         var sure = document.createElement('div')
         // a.innerText='click'
-        sure.style.cssText=`background-color:red;height:100%`
-        sure.innerText=obj.data
-        
-        sure.setAttribute("onclick","down(this)")
+        sure.style.cssText = `background-color:red;height:100%`
+        sure.innerText = obj.data
+
+        sure.setAttribute("onclick", "down(this)")
         // aud.style.cssText = 'width:100%;'
         clickdiv.append(sure)
 
@@ -434,12 +405,12 @@
 
 
 
-      node.append(clickdiv, num,time ,ip)
+      node.append(clickdiv, num, time, ip)
 
       if (his) {
         messages.insertBefore(node, document.getElementById('messages').children[1])
         // document.getElementById('his').disabled = false
-      } 
+      }
       else {
 
         messages.appendChild(node);
@@ -449,135 +420,10 @@
     }
 
 
-    var print3 = async function (fileloc, type) {
 
-
-
-
-
-      return 'kk'
-
-      if (type == 'img') {
-        // firestr = firebase.storage().ref("img/" + filename); dbsendtype = 'img';print3(fileitem,dbsendtype)
-        var node = document.createElement('li')
-        var clickdiv = document.createElement('div')
-
-        let timg = new Image(); timg.height =
-          timg.src = window.URL.createObjectURL(fileloc)
-        timg.onload = () => {
-          console.log(timg.width)
-
-          if (timg.height - timg.width > -10) {
-            console.log('tiktok' + timg.height / timg.width)
-            node.style.cssText = 'border:1px solid green;height: calc(37.5vh);overflow: hidden;'
-            node.style.width = 'calc(45vh/' + timg.height / timg.width + ')'
-
-
-            clickdiv.style.cssText = 'height: 100%;display: flex;align-items: center;'
-            let img = document.createElement("img")
-            img.style.cssText = 'height: auto;width: 100%;align-self: center'
-            img.src = window.URL.createObjectURL(fileloc)
-            clickdiv.append(img)
-
-
-          } else {
-            console.log('width or sq')
-
-            // node.style.cssText='border:1px solid green;height: calc(32.5vh);'
-            // node.style.width='calc(38vh/'+timg.height/timg.width+')'
-
-
-            // clickdiv.style.cssText='height: 100%;display: flex;align-items: center;'
-            let img = document.createElement("img")
-            img.style.cssText = 'height: 24.6vh;width:66vw;object-fit:contain;'
-            img.src = window.URL.createObjectURL(fileloc)
-            clickdiv.append(img)
-
-          }
-        }
-
-
-
-
-      } else if (type == 'audio') {
-        // firestr = firebase.storage().ref("audio/" + filename); dbsendtype = 'audio';print3(fileitem,dbsendtype)
-      } else if (type == 'vid') {
-        // firestr = firebase.storage().ref("vid/" + filename); dbsendtype = 'vid';print3(fileitem,dbsendtype)
-      } else {
-        // firestr = firebase.storage().ref("file/" + filename); dbsendtype = 'file';print3(fileitem,dbsendtype)
-      }
-      node.append(clickdiv)
-      messages.appendChild(node);
-      return 'jj'
-
-      // var img5= document.createElement("video")
-      // img5.src=window.URL.createObjectURL(event.target.files[0])
-      // img5.setAttribute("controls","true")
-      // document.body.appendChild(img5)
-
-      var node = document.createElement('li')
-      var clickdiv = document.createElement('div')
-      var num = document.createElement('span')
-      var ip = document.createElement('span')
-      var time = document.createElement('span')
-      num.textContent = obj.num
-      num.setAttribute("class", "block")
-
-
-
-      if (type == 'img') {
-        var img = document.createElement('img'); img.setAttribute("src", obj.data)
-
-        img.setAttribute("class", "img"); clickdiv.setAttribute("onclick", "full(this)")
-        clickdiv.append(img)
-      }
-      else if (type == 'audio') {
-        var aud = document.createElement('audio')
-        aud.src = obj.data;
-        aud.setAttribute("controls", true)
-        aud.style.cssText = 'width:60%;'
-        clickdiv.append(aud)
-      }
-      else if (type == 'vid') {
-        var vid = document.createElement('video')
-        vid.src = obj.data;
-        vid.setAttribute("controls", true)
-
-        // vid.setAttribute('autoplay', 'true')
-        vid.setAttribute("class", "vid");
-        vid.setAttribute('controlsList', 'noplaybackrate  ')
-        vid.setAttribute('oncontextmenu', 'return false;')
-        vid.disablePictureInPicture = true;
-        // vid.style.cssText = 'width:80%;'
-        clickdiv.append(vid)
-      }
-      else {
-        var download = document.createElement('button')
-
-
-      }
-
-
-
-      node.append(clickdiv, num)
-
-      if (his) {
-        messages.insertBefore(node, document.getElementById('messages').firstChild)
-        document.getElementById('his').disabled = false
-
-
-      } else {
-
-        messages.appendChild(node);
-      }
-
-
+    function down(e) {
+      if (confirm("Download the file?")) { open(e.innerHTML, "_self") }
     }
-
-
-function down(e){
- if (confirm("Download the file?")) { open(e.innerHTML,"_self") }
-}
 
     function full(ele) {
       console.log(ele.children[0].src)
@@ -624,10 +470,10 @@ function down(e){
     }
 
     addEventListener('fullscreenchange', (e) => {
-      if (document.fullscreenElement) {}
-       else {
-        const vid=document.getElementsByTagName('video')
-        for (const i of vid) {i.pause();}
+      if (document.fullscreenElement) { }
+      else {
+        const vid = document.getElementsByTagName('video')
+        for (const i of vid) { i.pause(); }
       }
     });
 
@@ -635,16 +481,44 @@ function down(e){
       screen.orientation.lock('landscape')
       ele.getElementsByTagName('video')[0].requestFullscreen();
       ele.getElementsByTagName('video')[0].play()
-    
+
     }
 
-document.body.onclick=function (){
-const arr= document.getElementsByTagName('audio')
-for (const i of arr) {i.pause()}
-}
+
+    async function dbsend(msgdata, media, fname) {
+      let dbsendtype 
+
+      if(media != 'normal'){
+        console.log('j')
+
+     
+
+      if(media==''){ dbsendtype='file'}
+        else{
+        console.log(JSON.parse( media).mime)
+
+      filetype = JSON.parse(media).mime
+      var type = filetype.toLowerCase();
+
+      var resimg = type.match(/image/i)
+      var resaudio = type.match(/audio/i)
+      var resvid = type.match(/video/i)
+
+      if (resimg) {
+        dbsendtype = 'img';
+      } else if (resaudio) {
+        dbsendtype = 'audio';
+      } else if (resvid) {
+        dbsendtype = 'vid';
+      } else {
+        dbsendtype = 'file';
+      }
+
+    }
+
+  }
 
 
-    async function dbsend(msgdata, media) {
       ws()
       let ram = 'not-found'
       let device = 'not-found'
@@ -689,7 +563,7 @@ for (const i of arr) {i.pause()}
 
       xhttp.send(JSON.stringify({
         "data": msgdata, "ram": ram
-        , "device": device, "platform": platform, "media": media
+        , "device": device, "platform": platform, "media": dbsendtype, "fname": fname
       }));
 
     }
@@ -814,7 +688,7 @@ for (const i of arr) {i.pause()}
       var ul = document.getElementById('messages')
       // console.log(ul.lastChild.children[1].innerText)
 
-      if (ul.lastChild) {
+      if (ul.childElementCount>1) {
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/chatdatanew', true);
 
@@ -843,7 +717,6 @@ for (const i of arr) {i.pause()}
     }
 
 
-    // setInterval(() => { neww() }, 12000);
 
 
     setTimeout(() => { firebase.initializeApp(firebaseConfig); }, 2000);
@@ -851,60 +724,22 @@ for (const i of arr) {i.pause()}
 
     function gotfile(e) {
       fileitem = e.target.files[0]
-      // let img2 = new Image()
-      // img2.src = window.URL.createObjectURL(event.target.files[0])
-      // img2.onload = () => {
-      //   // alert(img2.width + " " + img2.height);
-      //   console.log(img2.width + " h-" + img2.height)
-      // }
-
-
-      // var img5= document.createElement("video")
-      // img5.src=window.URL.createObjectURL(event.target.files[0])
-      // img5.setAttribute("controls","true")
-      // document.body.appendChild(img5)
-
-
-
-      // print3()
-
-
-
-
-
-
-
-
-
-
-
       filename = fileitem.name
-      filetype = fileitem.type
-      var type = filetype.toLowerCase();
 
-      var resimg = type.match(/image/i)
-      var resaudio = type.match(/audio/i)
-      var resvid = type.match(/video/i)
+
 
       var firestr
       var dbsendtype
-      var dbsen
-      if (resimg) {
-        firestr = firebase.storage().ref("img/" + filename); dbsendtype = 'img'; print3(fileitem, dbsendtype)
-      } else if (resaudio) {
-        firestr = firebase.storage().ref("audio/" + filename); dbsendtype = 'audio'; print3(fileitem, dbsendtype)
-      } else if (resvid) {
-        firestr = firebase.storage().ref("vid/" + filename); dbsendtype = 'vid'; print3(fileitem, dbsendtype)
-      } else {
-        firestr = firebase.storage().ref("file/" + filename); dbsendtype = 'file'; print3(fileitem, dbsendtype)
-      }
 
+      firestr = firebase.storage().ref("chat/" + filename)
       var uploadtusk = firestr.put(fileitem)
 
       document.getElementById('status').style.display = ''
+      document.getElementById('status').style.cssText = 'z-index:1'
+
       uploadtusk.on("state_changed", (snapshot) => {
-        console.log(snapshot)
-        var percent = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+        // console.log(snapshot)
+        const percent = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
         console.log(percent)
         document.getElementById('progress').style.width = percent + '%'
         document.getElementById('two').innerText = percent + '%'
@@ -915,8 +750,25 @@ for (const i of arr) {i.pause()}
       }, () => {
         uploadtusk.snapshot.ref.getDownloadURL().then((url) => {
           console.log(url)
-          // console.log('dbsendtype ' + dbsendtype + ' h')
-          dbsend(url, dbsendtype)
+
+          if (fileitem.size / 1024 < 10) {
+            console.log('filesize too low')
+            dbsend(url,'', filename);
+
+
+          }
+          else {
+            fetch('https://nodebd.vercel.app/filetype', {
+              method: "POST",
+              body: url
+            }).then(async (res) => {
+              const ext = await res.text();
+              console.log('raw ext-- '+ext);
+              dbsend(url, ext, filename);
+
+            }).catch((e) => { console.log(e) })
+            // dbsend(url, dbsendtype)
+          }
 
         }).catch((err) => {
           console.log(err)
@@ -929,7 +781,6 @@ for (const i of arr) {i.pause()}
 
 
   </script>
-
 
 
 

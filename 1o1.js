@@ -61,7 +61,7 @@ order.setAttribute('onclick', 'order()')
 // contact.innerText = 'Contact me?/Movie request'
 contact.innerText = ''
 
-h4.innerText = 'WE love u  Henry Cavil'
+h4.innerText = ''
 button1.innerText = 'Marvel'
 button2.innerText = 'Marvel-Seris'
 button3.innerText = 'fox & sony'
@@ -114,7 +114,7 @@ button3.style.cssText = 'height: calc(100vh*.056);font-size: calc(100vh*.056*.3)
 button4.style.cssText = 'height: calc(100vh*.056);font-size: calc(100vh*.056*.3);padding: 0   calc(100vw*.06) 0 calc(100vw*.06);'
 
 
-order.style.cssText = 'padding: 8px   calc(100vw*.06) 15px calc(100vw*.06); background-color:rgba(0, 0, 0, 0.1);color: rgba(255, 255, 255, 0.4);margin-bottom: 165px; outline: none !important;border: none !important;box-shadow: none !important;position:relative'
+order.style.cssText = 'padding: 8px   calc(100vw*.06) 15px calc(100vw*.06); background-color:rgba(0, 0, 0, 0.1);color: rgba(255, 255, 255, 0.4);margin-bottom: 15px; outline: none !important;border: none !important;box-shadow: none !important;position:relative'
 
 hr.style.cssText = 'margin: 0;border-color: #473737;'
 
