@@ -3171,7 +3171,7 @@ setTimeout(() => {
 
 
 
-        imgdiv('John Wick 2 || 1080p [1.6GB]','john2',['https://abcd.bdff.workers.dev/0:/John.Wick-2-mp3.mp4'],'1.6GB')
+    seris('John Wick 2 || 1080p [1.6GB]','john2',['https://abcd.bdff.workers.dev/0:/John.Wick-2-mp3.mp4'],'1.6GB','mv')
 
 
     seris('Major (2022)  [960MB]', 'major',['https://zaynr2h.bdff.workers.dev/0:/mcubd/Others/Major.mp4' ], '960MB','mv' )
