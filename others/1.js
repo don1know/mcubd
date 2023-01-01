@@ -503,7 +503,7 @@ function other() {
 
 
 
-function seris(bname, bimg, videolink, size) {
+function seris(bname, bimg, videolink, size, type) {
     var w = window.innerWidth;
     var h = window.innerHeight;
     var g = w * .3939
@@ -511,6 +511,10 @@ function seris(bname, bimg, videolink, size) {
 
     var chidiv = document.createElement("div");
     var iiidiv = document.createElement("div");
+    var links = document.createElement("div");
+    links.innerText = JSON.stringify(videolink)
+    links.classList.add('link')
+    links.style.cssText = 'display:none'
     var p = document.createElement("p");
     p.innerText = bname
     var image = document.createElement("img");
@@ -520,7 +524,7 @@ function seris(bname, bimg, videolink, size) {
     image.src = '../logoimg/' + bimg + '.jpg'
 
     iiidiv.append(image)
-    chidiv.append(iiidiv, p)
+    chidiv.append(iiidiv, p, links)
     var con = document.getElementById('cont')
     con.appendChild(chidiv)
 
@@ -555,7 +559,11 @@ function seris(bname, bimg, videolink, size) {
 
     chidiv.onclick = () => {
         var con = document.getElementById('cont')
-        con.style.display = 'none'
+        con.style.display = 'none';
+        document.getElementById('order').remove()
+        document.getElementById('h4').remove()
+
+
 
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/', true);
@@ -594,7 +602,11 @@ function seris(bname, bimg, videolink, size) {
 
 
 
-            e1.innerText = 'Episode 1'
+            
+            if (type == 'mv') { e1.innerText = size;e1.style.padding = '32px';
+            e1.style.marginTop = '50%'
+             } else { e1.innerText = 'Episode 1';
+             e1.style.padding = '12px'}
             e2.innerText = 'Episode 2'
             e3.innerText = 'Episode 3'
             e4.innerText = 'Episode 4'
@@ -666,7 +678,6 @@ function seris(bname, bimg, videolink, size) {
 
 
 
-            e1.style.padding = '12px'
             e2.style.padding = '12px'
             e3.style.padding = '12px'
             e4.style.padding = '12px'
@@ -807,6 +818,13 @@ function seris(bname, bimg, videolink, size) {
 
             onli.innerText = 'Watch Online'
             down.innerText = 'Download(' + size + ')'
+
+            if (type == 'mv') { 
+                onli.style.marginTop = '30%'
+
+             } else {
+
+             }
 
             onli.style.display = 'block'
             onli.style.width = '100%'
@@ -3153,7 +3171,7 @@ setTimeout(() => {
 
 
 
-    //     imgdiv('John Wick 2 || 1080p [1.6GB]','john2',{q1080p:'https://abcd.bdff.workers.dev/0:/John.Wick-2-mp3.mp4'},{size1080:'1.6GB'})
+        imgdiv('John Wick 2 || 1080p [1.6GB]','john2',{q1080p:'https://abcd.bdff.workers.dev/0:/John.Wick-2-mp3.mp4'},{size1080:'1.6GB'})
 
 
     seris('Major (2022)  [960MB]', 'major',['https://zaynr2h.bdff.workers.dev/0:/mcubd/Others/Major.mp4' ], '960MB','mv' )
