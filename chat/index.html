@@ -518,8 +518,10 @@
         const arr = JSON.parse(this.responseText);
         const obj = arr[0]
         if (obj.data == msgdata) {
-          
-          window.scroll(0, document.body.scrollHeight)
+          setTimeout(() => {
+            
+            window.scroll(0, document.body.scrollHeight)
+          }, 800);
 
           if (obj.media) {
             document.getElementById('status').style.display = 'none'
