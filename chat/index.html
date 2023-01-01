@@ -26,18 +26,14 @@
 
     </div>
 
-    <!-- <button class="his" id="his" onclick="loadHis()">History</button> -->
+    <span id="loading" style="opacity: 0;">
+      <lottie-player src="./loading.json" background="transparent" speed="1" style=" width: 15%;margin: 0 auto;"
+        loop autoplay></lottie-player>
+
+
+    </span>
     <h5 id="h5"></h5>
-    <ul id="messages" style="opacity: 0;">
-      <li>
-        <label id="loading">
-          <lottie-player src="./loading.json" background="transparent" speed="1" style=" width: 15%;margin: 0 auto;"
-            loop autoplay></lottie-player>
-
-
-        </label>
-      </li>
-    </ul>
+    <ul id="messages" style="opacity: 0;"></ul>
 
     <br>
     <br>
@@ -134,7 +130,11 @@
 
         if (this.responseText == [] || this.responseText == '[]') {
           document.getElementById('h5').innerText = '0 data in collection'
-        } else {
+            setTimeout(() => {
+              document.getElementById('messages').style.opacity = '1';
+            }, 800);
+        }
+         else {
           const arr = JSON.parse(this.responseText)
           let maxar = []
           arr.forEach((item, ind) => { maxar.push(item.num) });
@@ -144,10 +144,10 @@
           arr.forEach((item, ind) => {
 
             let obj = arr.find((i) => {
-              if (document.getElementById('messages').childElementCount == 1) {
+              if (document.getElementById('messages').childElementCount == 0) {
                 return i.num == maxnum
               } else {
-                return i.num == document.getElementById('messages').children[1].children[1].innerText - 1
+                return i.num == document.getElementById('messages').children[0].children[1].innerText - 1
               }
 
             })
@@ -169,15 +169,7 @@
 
             }
 
-
-
           });
-
-
-
-
-
-
 
 
 
@@ -217,25 +209,17 @@
       }
       else {
 
-
-
         var node = document.createElement('li')
         var num = document.createElement('span')
         var ip = document.createElement('span')
         var txt = document.createElement('span')
         var time = document.createElement('span')
         var copy = document.createElement('button')
-        var copylogo = document.createElement('lottie-player')
+
 
         node.setAttribute("id", obj.num)
         copy.setAttribute("class", "copy")
         copy.setAttribute("onClick", "copy(this)")
-        copylogo.setAttribute("src", "https://assets6.lottiefiles.com/packages/lf20_niqylzi0.json")
-        copylogo.setAttribute("background", "transparent")
-        copylogo.setAttribute("speed", "3")
-        copylogo.setAttribute("id", "copylogo")
-        copylogo.setAttribute("style", "width:30px; ")
-        copylogo.setAttribute("autoplay", "true")
         ip.setAttribute("style", "float:right; ")
         ip.setAttribute("class", "ipspan")
 
@@ -245,7 +229,6 @@
         time.textContent = obj.date
         num.textContent = obj.num
         num.setAttribute("class", "block")
-        // copy.append(copylogo);
         copy.style.cssText = 'width:6.8%;opacity:.8;'
         ip.style.opacity = `.2`
         copy.innerHTML = `
@@ -259,25 +242,22 @@
 
 
         if (two == 'hisprint') {
-          // let old=document.getElementById('messages').firstChild
-          let ul8 = document.getElementById('messages').children[1]
+
+          let ul8 = document.getElementById('messages').children[0]
           if (ul8) {
             if (obj.num == ul8.children[1].innerText) { return false }
           }
-
           messages.insertBefore(node, document.getElementById('messages').children[1])
-
-
-
 
 
         }
         else if (two == 'firstload') {
-          if (document.getElementById('messages').childElementCount == 1) {
+
+          if (document.getElementById('messages').childElementCount == 0) {
             messages.appendChild(node);
           }
           else {
-            messages.insertBefore(node, document.getElementById('messages').children[1])
+            messages.insertBefore(node, document.getElementById('messages').children[0])
           }
 
           if (ne == 'show') {
@@ -292,11 +272,13 @@
 
         }
         else {
+          if(document.getElementById('messages').childElementCount==0){
+            document.getElementById('h5').innerHTML=''
+          }
           let ul = document.getElementById('messages').lastChild
           if (ul) {
             if (obj.num == ul.children[1].innerText) { return false }
           }
-
 
           messages.appendChild(node);
         }
@@ -306,13 +288,12 @@
     }
 
 
+    
     window.onscroll = function (ev) {
 
       if (window.scrollY < 130) { loadHis() }
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
-        // you're at the bottom of the page
-        // console.log('down')
-      }
+      // if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {  you're at the bottom of the page }
+      console.log(window.scrollY)
     };
 
     var print2 = async function (obj, his) {
@@ -377,10 +358,7 @@
         `
 
         vid.src = obj.data;
-        // vid.setAttribute("controls", true)
 
-
-        // vid.setAttribute("class", "vid");
         vid.style.cssText = 'height: 100%; position: relative;left: 50%;transform: translateX(-50%);'
         vid.setAttribute('controlsList', 'noplaybackrate  ')
         vid.setAttribute('oncontextmenu', 'return false;')
@@ -408,10 +386,21 @@
       node.append(clickdiv, num, time, ip)
 
       if (his) {
-        messages.insertBefore(node, document.getElementById('messages').children[1])
-        // document.getElementById('his').disabled = false
+        let ul8 = document.getElementById('messages').children[0]
+          if (ul8) {
+            if (obj.num == ul8.children[1].innerText) { return false }
+          }
+
+        messages.insertBefore(node, document.getElementById('messages').children[0])
       }
       else {
+        if(document.getElementById('messages').childElementCount==0){
+            document.getElementById('h5').innerHTML=''
+          }
+          let ul = document.getElementById('messages').lastChild
+          if (ul) {
+            if (obj.num == ul.children[1].innerText) { return false }
+          }
 
         messages.appendChild(node);
       }
@@ -573,31 +562,32 @@
       var last = document.getElementById('messages')
 
 
-      if (last.children[1].querySelector('.block').innerText == 1) { alert('no more'); } else {
+      if (last.children[0].querySelector('.block').innerText == 1) {
+        document.getElementById('h5').innerText = 'end of data in collection'
+            setTimeout(() => {
+              document.getElementById('loading').style.opacity = '0';
+            }, 800); 
+      }
+       else {
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/chatdatahis', true);
 
         xhttp.onload = function () {
-          if (this.responseText == '[]') { document.getElementById("h5").innerHTML = 'nai' } else {
+          if (this.responseText == '[]') {
+            //  document.getElementById("h5").innerHTML = 'nai'
+         } 
+          else {
 
             const arr = JSON.parse(this.responseText)
-
             let maxar = []
             arr.forEach((item, ind) => { maxar.push(item.num) });
             let maxnum = Math.max(...maxar)
 
-
-
-
             arr.forEach((item, ind) => {
 
               let obj = arr.find((i) => {
-                return i.num == document.getElementById('messages').children[1].children[1].innerText - 1
+                return i.num == document.getElementById('messages').children[0].children[1].innerText - 1
               })
-
-
-
-
 
               if (obj.media) {
                 print2(obj, 'hisprint')
@@ -606,12 +596,10 @@
 
                 if (arr.length == ind + 1) {
                   print(obj, 'hisprint', 'show')
-                  console.log('end' + obj.num)
+                  console.log('endhisprint ' + obj.num)
                 } else { print(obj, 'hisprint') }
 
               }
-
-
 
             });
 
@@ -627,58 +615,12 @@
 
             return 6
 
-
-
-            // ---------------------------------------------------------------------
-
-            // var res=arr.find((i) => {
-            //   return i.num==document.getElementById('messages').firstChild.children[1].innerText -1
-
-
-
-
-            //   })
-            //   console.log(res)
-            // let f=document.getElementById('messages').firstChild
-            let f = { a: document.body.offsetHeight, b: window.pageYOffset }
-            arr.forEach((item, ind) => {
-              var res = arr.find((i) => {
-                return i.num == document.getElementById('messages').children[1].children[1].innerText - 1
-
-
-              })
-
-              if (res.media) {
-                print2(res, res.media, 'his')
-              } else {
-                if (arr.length == ind + 1) {
-                  print(res, 'hisprint', f)
-
-
-                }
-
-                print(res, 'hisprint')
-              }
-
-            });
-
-            // ----------------------------------------------------------------
-            return 6
-
-            if (obj.media) {
-              print2(obj, obj.media, 'his')
-            } else {
-
-              print(obj, 'hisprint')
-            }
-
-
           }
         }
 
 
 
-        xhttp.send(last.children[1].children[1].innerText);
+        xhttp.send(last.children[0].children[1].innerText);
 
       }
     }
@@ -688,46 +630,51 @@
       var ul = document.getElementById('messages')
       // console.log(ul.lastChild.children[1].innerText)
 
-      if (ul.childElementCount>1) {
+      if (ul.childElementCount>0) {
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/chatdatanew', true);
 
         xhttp.onload = function () {
-          if (this.responseText == '[]' || this.responseText == []) { } else {
+          if (this.responseText == '[]' || this.responseText == []) { }
+           else {
             const arr = JSON.parse(this.responseText);
             const obj = arr[0]
-            // console.log(obj)
-
-            if (obj.media) {
-              print2(obj, obj.media)
-            } else {
-
-              print(obj)
-            }
-
+            if (obj.media) { print2(obj, obj.media) } else { print(obj) }
           }
         }
 
         xhttp.send(ul.lastChild.children[1].innerText);
-      } else {
+      } 
+      else {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", 'https://nodebd.vercel.app/chatdatanew', true);
+
+        xhttp.onload = function () {
+          if (this.responseText == '[]' || this.responseText == []) { }
+           else {
+            document.getElementById('h5').innerHTML=''
+            const arr = JSON.parse(this.responseText);
+            const obj = arr[0]
+            if (obj.media) { print2(obj, obj.media) } else { print(obj) }
+          }
+        }
+
+        xhttp.send('0');
 
       }
 
 
     }
+ 
 
-
-
-
+  
+ 
     setTimeout(() => { firebase.initializeApp(firebaseConfig); }, 2000);
 
 
     function gotfile(e) {
       fileitem = e.target.files[0]
       filename = fileitem.name
-
-
-
       var firestr
       var dbsendtype
 
@@ -754,8 +701,6 @@
           if (fileitem.size / 1024 < 10) {
             console.log('filesize too low')
             dbsend(url,'', filename);
-
-
           }
           else {
             fetch('https://nodebd.vercel.app/filetype', {
