@@ -238,7 +238,7 @@
             if (obj.num > ul8.children[1].innerText) { return 'l' }
           }
 
-          messages.insertBefore(node, document.getElementById('messages').children[1])
+          messages.insertBefore(node, document.getElementById('messages').children[0])
 
 
         }
@@ -284,7 +284,7 @@
 
       if (window.scrollY < 130) { loadHis() }
       // if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {  you're at the bottom of the page }
-      console.log(window.scrollY)
+      // console.log(window.scrollY)
     };
 
     var print2 =  function (obj, his) {
@@ -582,11 +582,12 @@
             let maxar = []
             arr.forEach((item, ind) => { maxar.push(item.num) });
             let maxnum = Math.max(...maxar)
+            
 
             arr.forEach((item, ind) => {
 
               let obj = arr.find((i) => {
-                return i.num == document.getElementById('messages').children[0].children[1].innerText - 1
+                return i.num == document.getElementById('messages').children[0].children[1].innerText -1
               })
 
               if (obj.media) {
