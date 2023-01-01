@@ -247,8 +247,11 @@
 
           let ul8 = document.getElementById('messages').children[0]
           if (ul8) {
-            if (obj.num == ul8.children[1].innerText) { return false }
+            if (obj.num == ul8.children[1].innerText) { return 'j' }
+            
+            if (obj.num > ul8.children[1].innerText) { return 'l' }
           }
+
           messages.insertBefore(node, document.getElementById('messages').children[1])
 
 
