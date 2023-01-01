@@ -156,10 +156,9 @@ a{
             user-select:text;
       }
 
-      .test{
-            
-      }
-
+   #loading{
+      opacity: 0;
+   }
       
         
 
