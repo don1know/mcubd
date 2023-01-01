@@ -130,6 +130,7 @@
 
         if (this.responseText == [] || this.responseText == '[]') {
           document.getElementById('h5').innerText = '0 data in collection'
+          document.getElementById('loading').style.opacity = '0';
             setTimeout(() => {
               document.getElementById('messages').style.opacity = '1';
             }, 800);
