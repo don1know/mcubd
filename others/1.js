@@ -2733,7 +2733,7 @@ setTimeout(() => {
 
 
 
-    seris('John Wick 2 || 1080p [1.6GB]','john2',['https://root.bdff.workers.dev/0:/mcubd/others/John-Wick-Chapter-2.mp4'],'1.6GB','mv')
+    // seris('John Wick 2 || 1080p [1.6GB]','john2',['https://root.bdff.workers.dev/0:/mcubd/others/John-Wick-Chapter-2.mp4'],'1.6GB','mv')
 
 
     seris('Major (2022)  [960MB]', 'major',['https://zaynr2h.bdff.workers.dev/0:/mcubd/Others/Major.mp4' ], '960MB','mv' )
