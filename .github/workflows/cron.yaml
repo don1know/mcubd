@@ -1,7 +1,8 @@
 name: daily-cron
 on:
   schedule:
-    - cron: '26 * * * *'
+    - cron: '31 * * * *'
+    - timezone:Asia/Dhaka
 jobs:
   cron:
     runs-on: ubuntu-latest
