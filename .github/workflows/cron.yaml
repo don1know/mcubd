@@ -11,7 +11,3 @@ jobs:
           curl --request GET \
           --url 'https://pptrbd.vercel.app/uplinks'
 
-      # - name: Call our API route2
-      #   run: |
-      #     curl --request GET \
-      #     --url 'https://nodebd.vercel.app/cheak_down_links'
