@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,18 +27,15 @@
     </div>
 
     <div id="loading" style="opacity: 0;">
-      <lottie-player src="./loading.json" background="transparent" speed="1" style=" width: 15%;margin: 0 auto;"
-        loop autoplay></lottie-player>
+      <lottie-player src="./loading.json" background="transparent" speed="1" style=" width: 15%;margin: 0 auto;" loop
+        autoplay></lottie-player>
 
 
     </div>
     <h5 id="h5"></h5>
     <ul id="messages" style="opacity: 0;"></ul>
+    <br><br><br><br>
 
-    <br>
-    <br>
-    <br>
-    <br>
     <form id="form" action="">
       <div class="box">
         <hr>
@@ -101,19 +99,21 @@
       // appId: "1:581883143558:web:26fa31b2aa1b5afd19b807",
       // measurementId: "G-VVQ6N17N9M"
       apiKey: "AIzaSyDJ51ctdUuZHsHMKb_Q4zgXYvB-8R_85ys",
-  authDomain: "india-f7d05.firebaseapp.com",
-  projectId: "india-f7d05",
-  storageBucket: "india-f7d05.appspot.com",
-  messagingSenderId: "774955885231",
-  appId: "1:774955885231:web:739c85f36fc8a38d99ea5a",
-  measurementId: "G-ZMVY6C1XTF"
+      authDomain: "india-f7d05.firebaseapp.com",
+      projectId: "india-f7d05",
+      storageBucket: "india-f7d05.appspot.com",
+      messagingSenderId: "774955885231",
+      appId: "1:774955885231:web:739c85f36fc8a38d99ea5a",
+      measurementId: "G-ZMVY6C1XTF"
     };
     var fileitem, filename, percent
 
 
     function sendclick() {
-       if (input.value) {dbsend(input.value,'normal') }}
-    
+      let value = document.getElementById('input').value;
+      if (value) { dbsend(value, 'normal') }
+    }
+
 
 
 
@@ -126,16 +126,15 @@
         if (this.responseText == [] || this.responseText == '[]') {
           document.getElementById('h5').innerText = '0 data in collection'
           document.getElementById('loading').style.opacity = '0';
-            setTimeout(() => {
-              document.getElementById('messages').style.opacity = '1';
-            }, 800);
+          setTimeout(() => {
+            document.getElementById('messages').style.opacity = '1';
+          }, 800);
         }
-         else {
+        else {
           const arr = JSON.parse(this.responseText)
           let maxar = []
-          arr.forEach((item, ind) => { maxar.push(item.num) });
+          arr.forEach((item) => { maxar.push(item.num) });
           let maxnum = Math.max(...maxar)
-
 
           arr.forEach((item, ind) => {
 
@@ -148,9 +147,12 @@
 
             })
 
-            
+
             if (obj.media) {
-              print2(obj,'hisprint')
+              if (arr.length == ind + 1) {
+                print2(obj, 'firstload', 'show')
+              } else { print2(obj, 'firstload') }
+
             }
             else {
               if (arr.length == ind + 1) {
@@ -160,8 +162,6 @@
             }
 
           });
-
-
 
 
         }
@@ -190,96 +190,87 @@
       }, 4000);
     }
 
-   
 
 
 
-    var print =  function (obj, two, ne) {
 
-      if (two == 'media') {
-        print2(obj, ne)
-      }
-      else {
+    var print = function (obj, two, ne) {
 
-        var node = document.createElement('li')
-        var num = document.createElement('span')
-        var ip = document.createElement('span')
-        var txt = document.createElement('span')
-        var time = document.createElement('span')
-        var copy = document.createElement('button')
-        node.setAttribute("id", obj.num)
-        copy.setAttribute("class", "copy")
-        copy.setAttribute("onClick", "copy(this)")
-        ip.setAttribute("style", "float:right; ")
-        ip.setAttribute("class", "ipspan")
-        txt.textContent = obj.data
-        ip.textContent = ' ' + '[' + obj.ip + ']'
-        time.textContent = obj.date
-        num.textContent = obj.num
-        num.setAttribute("class", "block")
-        copy.style.cssText = 'width:6.8%;opacity:.8;'
-        ip.style.opacity = `.2`
-        copy.innerHTML = `
+      var node = document.createElement('li')
+      var num = document.createElement('span')
+      var ip = document.createElement('span')
+      var txt = document.createElement('span')
+      var time = document.createElement('span')
+      var copy = document.createElement('button')
+      node.setAttribute("id", obj.num)
+      copy.setAttribute("class", "copy")
+      copy.setAttribute("onClick", "copy(this)")
+      ip.setAttribute("style", "float:right; ")
+      ip.setAttribute("class", "ipspan")
+      txt.textContent = obj.data
+      ip.textContent = ' ' + '[' + obj.ip + ']'
+      time.textContent = obj.date
+      num.textContent = obj.num
+      num.setAttribute("class", "block")
+      copy.style.cssText = 'width:6.8%;opacity:.8;'
+      ip.style.opacity = `.2`
+      copy.innerHTML = `
         <svg id="Layer_1" height="100%" width="100%" enable-background="new 0 0 64 64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><g><path d="m52.77 9.37h-3.87v-3.86c0-2.99-2.44-5.43-5.43-5.43h-30.25c-2.99 0-5.43 2.44-5.43 5.43v43.51c0 2.99 2.44 5.43 5.43 5.43h3.87v3.87c0 2.99 2.44 5.43 5.43 5.43h30.25c2.99 0 5.43-2.44 5.43-5.43v-43.52c0-2.99-2.43-5.43-5.43-5.43zm-42.11 39.64v-43.5c0-1.42 1.15-2.57 2.57-2.57h30.25c1.42 0 2.57 1.15 2.57 2.57v43.51c0 1.42-1.15 2.57-2.57 2.57h-30.26c-1.41-.01-2.56-1.16-2.56-2.58zm44.68 9.3c0 1.42-1.15 2.57-2.57 2.57h-30.25c-1.42 0-2.57-1.15-2.57-2.57v-3.87h23.52c2.99 0 5.43-2.44 5.43-5.43v-36.78h3.87c1.42 0 2.57 1.15 2.57 2.57z"></path></g></svg>
         `
-        node.append(txt, num, copy, time, ip);
+      node.append(txt, num, copy, time, ip);
 
 
 
 
 
 
-        if (two == 'hisprint') {
+      if (two == 'hisprint') {
 
-          let ul8 = document.getElementById('messages').children[0]
-          if (ul8) {
-            if (obj.num == ul8.children[1].innerText) { return 'j' }
-            
-            if (obj.num > ul8.children[1].innerText) { return 'l' }
-          }
+        let ul8 = document.getElementById('messages').children[0]
+        if (ul8) {
+          if (obj.num == ul8.children[1].innerText) { return 'j' }
 
-          messages.insertBefore(node, document.getElementById('messages').children[0])
-
-
+          if (obj.num > ul8.children[1].innerText) { return 'l' }
         }
-        else if (two == 'firstload') {
 
-          if (document.getElementById('messages').childElementCount == 0) {
-            messages.appendChild(node);
-          }
-          else {
-            messages.insertBefore(node, document.getElementById('messages').children[0])
-          }
-
-          if (ne == 'show') {
-            
-            setTimeout(() => { window.scroll(0, document.body.scrollHeight) }, 800);
-            setTimeout(() => {
-              document.getElementById('messages').style.opacity = '1'
-            }, 800);
-
-
-          }
-
-        }
-        else {
-          if(document.getElementById('messages').childElementCount==0){
-            document.getElementById('h5').innerHTML=''
-          }
-          let ul = document.getElementById('messages').lastChild
-          if (ul) {
-            if (obj.num == ul.children[1].innerText) { return false }
-          }
-
-          messages.appendChild(node);
-        }
+        messages.insertBefore(node, document.getElementById('messages').children[0])
 
 
       }
+      else if (two == 'firstload') {
+
+        if (document.getElementById('messages').childElementCount == 0) {
+          messages.appendChild(node);
+        }
+        else {
+          messages.insertBefore(node, document.getElementById('messages').children[0])
+        }
+
+        if (ne == 'show') {
+          setTimeout(() => { window.scroll(0, document.body.scrollHeight) }, 800); setTimeout(() => {
+            document.getElementById('messages').style.opacity = '1'
+          }, 800);
+        }
+
+      }
+      else {
+        if (document.getElementById('messages').childElementCount == 0) {
+          document.getElementById('h5').innerHTML = ''
+        }
+        let ul = document.getElementById('messages').lastChild
+        if (ul) {
+          if (obj.num == ul.children[1].innerText) { return false }
+        }
+
+        messages.appendChild(node);
+      }
+
+
+
     }
 
 
-    
+
     window.onscroll = function (ev) {
 
       if (window.scrollY < 130) { loadHis() }
@@ -287,9 +278,7 @@
       // console.log(window.scrollY)
     };
 
-    var print2 =  function (obj, his) {
-
-      
+    var print2 = function (obj, his, ne) {
 
       var node = document.createElement('li')
       var clickdiv = document.createElement('div')
@@ -306,7 +295,6 @@
       node.style.cssText = `margin-bottom:calc(7vh)`
       num.style.cssText = `margin-top:calc(.1vh);opacity:.1;`
       time.style.cssText = `margin-left:calc(1vh)`
-
 
       clickdiv.style.cssText = 'border:4px solid green; width: calc(45vw);height:calc(36vh);background-color:black;position: relative;overflow:hidden'
 
@@ -372,32 +360,41 @@
 
       node.append(clickdiv, num, time, ip)
 
-      if (his=='hisprint') {
+      if (his == 'hisprint') {
+
         let ul8 = document.getElementById('messages').children[0]
-          if (ul8) {
-            if (obj.num == ul8.children[1].innerText) { return false }
-          }
+        if (ul8) {
+          if (obj.num == ul8.children[1].innerText) { return 'j' };
+          if (obj.num > ul8.children[1].innerText) { return 'l' }
+        }
 
         messages.insertBefore(node, document.getElementById('messages').children[0])
       }
+      else if (his == 'firstload') {
+
+        if (document.getElementById('messages').childElementCount == 0) {
+          messages.appendChild(node);
+        }
+        else {
+          messages.insertBefore(node, document.getElementById('messages').children[0])
+        }
+
+        if (ne == 'show') {
+          setTimeout(() => { window.scroll(0, document.body.scrollHeight) }, 800); setTimeout(() => {
+            document.getElementById('messages').style.opacity = '1'
+          }, 800);
+        }
+
+
+      }
       else {
-        if(document.getElementById('messages').childElementCount==0){
-            document.getElementById('h5').innerHTML=''
-          }
-          if (his == 'show') {
-            setTimeout(() => { window.scroll(0, document.body.scrollHeight) }, 800);
-            setTimeout(() => {
-              document.getElementById('messages').style.opacity = '1'
-            }, 800);
 
-
-          }
-          let ul = document.getElementById('messages').lastChild
-          if (ul) {
-            if (obj.num == ul.children[1].innerText) { return false }
-          }
-
+        let ul = document.getElementById('messages').lastChild
+        if (ul) {
+          if (obj.num == ul.children[1].innerText) { return false }
+        }
         messages.appendChild(node);
+
       }
 
 
@@ -470,37 +467,32 @@
 
 
     async function dbsend(msgdata, media, fname) {
-      let dbsendtype 
+      let dbsendtype
 
-      if(media != 'normal'){
-        console.log('j')
+      if (media != 'normal') {
 
-     
+        if (media == '') { dbsendtype = 'file' }
+        else {
+          let filetype = JSON.parse(media).mime
+          let type = filetype.toLowerCase();
 
-      if(media==''){ dbsendtype='file'}
-        else{
-        console.log(JSON.parse( media).mime)
+          let resimg = type.match(/image/i)
+          let resaudio = type.match(/audio/i)
+          let resvid = type.match(/video/i)
 
-      filetype = JSON.parse(media).mime
-      var type = filetype.toLowerCase();
+          if (resimg) {
+            dbsendtype = 'img';
+          } else if (resaudio) {
+            dbsendtype = 'audio';
+          } else if (resvid) {
+            dbsendtype = 'vid';
+          } else {
+            dbsendtype = 'file';
+          }
 
-      var resimg = type.match(/image/i)
-      var resaudio = type.match(/audio/i)
-      var resvid = type.match(/video/i)
+        }
 
-      if (resimg) {
-        dbsendtype = 'img';
-      } else if (resaudio) {
-        dbsendtype = 'audio';
-      } else if (resvid) {
-        dbsendtype = 'vid';
-      } else {
-        dbsendtype = 'file';
       }
-
-    }
-
-  }
 
 
       ws()
@@ -518,33 +510,22 @@
         const arr = JSON.parse(this.responseText);
         const obj = arr[0]
         if (obj.data == msgdata) {
+
           setTimeout(() => {
-            
             window.scroll(0, document.body.scrollHeight)
           }, 800);
 
           if (obj.media) {
-            document.getElementById('status').style.display = 'none'
-            print(obj, 'media')
-            // window.scroll(0, document.body.scrollHeight)
+            document.getElementById('status').style.display = 'none'; print2(obj)
           } else {
-            print(obj)
-            document.getElementById('input').value = ''
-            // window.scroll(0, document.body.scrollHeight)
+            print(obj); document.getElementById('input').value = ''
+
           }
 
         }
         else {
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-          alert('eror in dbsend/onload obj.data==msgdata')
-
+          alert('eror app.post.dbsend_API,send again')
+          window.location.reload();
         }
 
 
@@ -558,38 +539,39 @@
     }
 
     function loadHis() {
-
-      var last = document.getElementById('messages')
-
+      let last = document.getElementById('messages')
 
       if (last.children[0].querySelector('.block').innerText == 1) {
-        document.getElementById('h5').innerText = 'end of data in collection'
+        if (document.body.offsetHeight > window.innerHeight * 1.5 ) {
+            document.getElementById('h5').innerText = 'No more history found'
             setTimeout(() => {
               document.getElementById('loading').style.opacity = '0';
-            }, 800); 
+            }, 800);
+          
+        }
       }
-       else {
+      else {
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/chatdatahis', true);
 
         xhttp.onload = function () {
           if (this.responseText == '[]') {
             //  document.getElementById("h5").innerHTML = 'nai'
-         } 
+          }
           else {
 
             const arr = JSON.parse(this.responseText)
             let maxar = []
             arr.forEach((item, ind) => { maxar.push(item.num) });
             let maxnum = Math.max(...maxar)
-            
+
 
             arr.forEach((item, ind) => {
 
               let obj = arr.find((i) => {
-                return i.num == document.getElementById('messages').children[0].children[1].innerText -1
+                return i.num == document.getElementById('messages').children[0].children[1].innerText - 1
               })
- 
+
               if (obj.media) {
                 print2(obj, 'hisprint')
               }
@@ -597,28 +579,14 @@
 
                 if (arr.length == ind + 1) {
                   print(obj, 'hisprint', 'show')
-                  console.log('endhisprint ' + obj.num)
                 } else { print(obj, 'hisprint') }
 
               }
 
             });
 
-
-
-
-            // if (obj.media) {
-            //   print2(obj, obj.media, 'his')
-            // } else {
-
-            //   print(obj, 'hisprint')
-            // }
-
-            return 6
-
           }
         }
-
 
 
         xhttp.send(last.children[0].children[1].innerText);
@@ -631,13 +599,13 @@
       var ul = document.getElementById('messages')
       // console.log(ul.lastChild.children[1].innerText)
 
-      if (ul.childElementCount>0) {
+      if (ul.childElementCount > 0) {
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/chatdatanew', true);
 
         xhttp.onload = function () {
           if (this.responseText == '[]' || this.responseText == []) { }
-           else {
+          else {
             const arr = JSON.parse(this.responseText);
             const obj = arr[0]
             if (obj.media) { print2(obj, obj.media) } else { print(obj) }
@@ -645,15 +613,15 @@
         }
 
         xhttp.send(ul.lastChild.children[1].innerText);
-      } 
+      }
       else {
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", 'https://nodebd.vercel.app/chatdatanew', true);
 
         xhttp.onload = function () {
           if (this.responseText == '[]' || this.responseText == []) { }
-           else {
-            document.getElementById('h5').innerHTML=''
+          else {
+            document.getElementById('h5').innerHTML = ''
             const arr = JSON.parse(this.responseText);
             const obj = arr[0]
             if (obj.media) { print2(obj, obj.media) } else { print(obj) }
@@ -666,10 +634,10 @@
 
 
     }
- 
 
-  
- 
+
+
+
     setTimeout(() => { firebase.initializeApp(firebaseConfig); }, 2000);
 
 
@@ -701,7 +669,7 @@
 
           if (fileitem.size / 1024 < 10) {
             console.log('filesize too low')
-            dbsend(url,'', filename);
+            dbsend(url, '', filename);
           }
           else {
             fetch('https://nodebd.vercel.app/filetype', {
@@ -709,7 +677,7 @@
               body: url
             }).then(async (res) => {
               const ext = await res.text();
-              console.log('raw ext-- '+ext);
+              console.log('raw ext-- ' + ext);
               dbsend(url, ext, filename);
 
             }).catch((e) => { console.log(e) })
@@ -752,6 +720,7 @@
     const database = getDatabase(app2);
 
     const newMsg = ref(database, 'db/' + 'child-db-1');
+
     onChildChanged(newMsg, (data) => {
       console.warn(data.val())
 
