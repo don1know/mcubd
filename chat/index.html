@@ -522,6 +522,11 @@
 
           }
 
+          fetch("http://localhost:8000/chatnot",{
+            method:"POST",
+            body:obj.data
+          })
+
         }
         else {
           alert('eror app.post.dbsend_API,send again')
