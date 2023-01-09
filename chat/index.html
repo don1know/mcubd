@@ -259,7 +259,10 @@
         }
         let ul = document.getElementById('messages').lastChild
         if (ul) {
-          if (obj.num == ul.children[1].innerText) { return false }
+          if (obj.num == ul.children[1].innerText) { return 'j' }
+
+          if (obj.num < ul8.children[1].innerText) { return 'l' }
+        
         }
 
         messages.appendChild(node);
@@ -577,6 +580,7 @@
                 return i.num == document.getElementById('messages').children[0].children[1].innerText - 1
               })
 
+              if(obj != undefined){              
               if (obj.media) {
                 print2(obj, 'hisprint')
               }
@@ -587,6 +591,7 @@
                 } else { print(obj, 'hisprint') }
 
               }
+            }
 
             });
 
@@ -725,13 +730,13 @@
     const database = getDatabase(app2);
 
     const newMsg = ref(database, 'db/' + 'child-db-1');
+    const online = ref(database, 'db/' + 'online-child-db');
+
+
 
     onChildChanged(newMsg, (data) => {
       console.warn(data.val())
-
       neww()
-
-
     });
 
 
